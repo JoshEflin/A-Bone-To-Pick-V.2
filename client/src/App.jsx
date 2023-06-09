@@ -3,81 +3,92 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import './card.css'
+import defaultDog from './assets/images/default-dog.png'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section>
-        <div class="card ">
-            <div class="card-border foil">
-                <div class="card-header">
-                    <span class="name">Slim</span>
-                    <span class="breed">type: Greybutt</span>
-                </div>
-                <div class="card-header">
-                    <span class="age">Age :4</span>
-                </div>
-                <div>
-                    <img src="./assets/images/default-dog.png" />
-                    {/* <!-- <img src="https://api-ninjas.com/images/dogs/greyhound.jpg" alt="picture of a DOG"> --> */}
-                </div>
-                <div class="dog-attributes">
-                    <span class="size">55lbs</span>
-                    <span class="house-trained">3ft </span>
-                </div>
-
-                <div class="dog-stats">
-                    <div class="description">
-                        <span class="item">friendliness:</span>
-                        <span class="item">trainability:</span>
-                        <span class="item">pizazz:</span>
-
-                    </div>
-                    <div class="power-level">
-                        <span class="item2">a a a a a</span>
-                        <span class="item2">b b b</span>
-                        <span class="item2">c c c c c </span>
-                    </div>
-                </div>
+    
+    <section>
+      <div data-id="64812450" class="card">
+          <div class="card-border">
+            <div class="card-header">
+              <span class="name">
+                Bridget
+              </span>
+              <span class="breed">
+                Shepherd
+              </span>
+            </div>
+            <div class="card-header2">
+              <span class="age">
+                Adult
+              </span>
+              <span class="gender">
+                Female
+              </span>
+            </div>
+            <img src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64812450/1/?bust=1685641142" alt="photo of Doggo" />
+            <div class="dog-attributes">
+              <span class="size">
+                size: Large
+              </span>
+              <span class="house-trained">
+                <i class=" fa-solid fa-poop"></i>
+              </span>
+            </div>
+            <div class="dog-stats">
+              <div class="description">
+                <span class="item">
+                  Energy:
+                </span>
+                <span class="item">
+                  Trainability:
+                </span>
+                <span class="item">
+                  Playfulness:
+                </span>
+                <span class="item">                        
+                  Protectiveness:
+                </span>
+                <span class="item evil">
+                  Barking
+                </span>
+              </div>
+              <div class="power-level">
+                <span class="item2">
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                </span>
+                <span class="item2">
+                  <i class=" fa-solid fa-scale-balanced"></i>
+                  <i class=" fa-solid fa-scale-balanced"></i>
+                </span>
+                <span class="item2">
+                  <i class=" fa-solid fa-face-grin-tears"></i>
+                  <i class=" fa-solid fa-face-grin-tears"></i>
+                  <i class=" fa-solid fa-face-grin-tears"></i>
+                </span>
+                <span class="item2">
+                  <i class="fa-solid fa-shield"></i>
+                  <i class="fa-solid fa-shield"></i>
+                  <i class="fa-solid fa-shield"></i>
+                  <i class="fa-solid fa-shield"></i>
+                  <i class="fa-solid fa-shield"></i>
+                 </span>
+                <span class="item2">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <i class="fa-solid fa-volume-high"></i>
+                  <i class="fa-solid fa-volume-high"></i>
+                </span>
+              </div>
             </div>
           </div>
-          <div class="card ">
-            <div class="card-border foil">
-                <div class="card-header">
-                    <span class="name">Slim</span>
-                    <span class="breed">type: Greybutt</span>
-                </div>
-                <div class="card-header">
-                    <span class="age">Age :4</span>
-                </div>
-                <div>
-                    <img src="./assets/images/default-dog.png" />
-                    {/* <!-- <img src="https://api-ninjas.com/images/dogs/greyhound.jpg" alt="picture of a DOG"> --> */}
-                </div>
-                <div class="dog-attributes">
-                    <span class="size">55lbs</span>
-                    <span class="house-trained">3ft </span>
-                </div>
-
-                <div class="dog-stats">
-                    <div class="description">
-                        <span class="item">friendliness:</span>
-                        <span class="item">trainability:</span>
-                        <span class="item">pizazz:</span>
-
-                    </div>
-                    <div class="power-level">
-                        <span class="item2">a a a a a</span>
-                        <span class="item2">b b b</span>
-                        <span class="item2">c c c c c </span>
-                    </div>
-                </div>
-            </div>
-          </div>
+        </div>
     </section>
-    </>
+    
   )
 }
 
