@@ -1,33 +1,24 @@
-import { useState } from 'react'
-import { Link, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import SignupPage from './pages/SignupPage';
-// import ConnectPage from './pages/ConnectPage';
-
-
-
+import { useState } from "react";
+import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import SignupPage from "./pages/SignupPage";
+import ConnectPage from "./pages/ConnectPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-   
     <>
-    <Router>
-      <Routes>
-    <Route
-                    path='/signup'
-                    element={
-                      <SignupPage 
-                     
-                      />}
-                  />
-                  </Routes>
-    </Router>
-     
-      <div>
+      <Router>
+        <Routes>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/connect" element={<ConnectPage />} />
+        </Routes>
+      </Router>
+
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -46,9 +37,9 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
