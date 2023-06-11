@@ -27,7 +27,7 @@ const typeDefs = gql`
   }
   type Dog {
     _id: ID
-    petFinderId: Int!
+    id: Int!
     name: String
     age: String
     sex: String
