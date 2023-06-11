@@ -10,7 +10,6 @@ const dogApiKey = process.env.DOG_API_KEY;
 // TO DO create a class  for dog cards, pass API data through it to serialize dog card data
 class DogCardData {
   constructor(pfData, breed) {
-    console.log("HELLO\n------------------", breed.energy)
     this.id = pfData.id,
     this.name = pfData.name,
     this.age = pfData.age,
@@ -50,7 +49,7 @@ async function getPFToken() {
       }
     );
     const { data } = response;
-    // console.log(response.data);
+    
     return data;
     // response.data has 3 properties: token_type, expires_in, and access_token
   } catch (error) {
@@ -70,7 +69,7 @@ async function getPetsByZip(zipCode, breed) {
       }
     );
     const dogsArrayByZip = data.data.animals;
-    // console.log(dogsArrayByZip);
+    
     return dogsArrayByZip;
   } catch (e) {
     console.error(e);
@@ -85,7 +84,7 @@ async function getDogByID(ID) {
       },
     });
     const dogByID = data.data.animal;
-    // console.log("DOG DATA-----------", dogByID);
+    
     return dogByID;
   } catch (e) {
     console.error(e);
@@ -103,7 +102,7 @@ async function breedInfo(breed) {
       }
     );
 
-    // console.log("BREED DATA----------", data.data);
+    
     return data.data[0];
   } catch (e) {
     console.error(e);
@@ -113,9 +112,7 @@ async function breedInfo(breed) {
 async function serializeCardData(dogID, breed) {
   // for single dog by ID
   const rawDogData = await getDogByID(dogID);
-  // console.log(rawDogData);
   const rawBreedData = await breedInfo(breed);
-  // console.log("BREED STUFF-------", rawBreedData)
   const cardData = await new DogCardData(rawDogData, rawBreedData);
   console.log("SERIALIZED DATA ----------", cardData);
   return cardData;
