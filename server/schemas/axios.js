@@ -1,4 +1,6 @@
 require("dotenv").config();
+const fs = require("fs");
+const defaultDog = fs.readFileSync("../utils/default-dog.png");
 const axios = require("axios");
 
 const petFinderApiKey = process.env.PF_API_KEY;
@@ -6,20 +8,35 @@ const petFinderSecret = process.env.PF_SECRET;
 const dogApiKey = process.env.DOG_API_KEY;
 
 // TO DO create a class  for dog cards, pass API data through it to serialize dog card data
-// class DogCardData(dog, breed){
-//   ID= dogID,
-//       name: name,
-//       age: age,
-//       sex: genderFromPF,
-//       photo: photo,
-//       breed: breedsPrimary,
-//       size: size,
-//       trained: houseTrained,
-//       contact: contact,
-//       description: description,
-//       status: status,
-
-// }
+class DogCardData {
+  constructor(pfData, breed) {
+    console.log("HELLO\n------------------", breed.energy)
+    this.id = pfData.id,
+    this.name = pfData.name,
+    this.age = pfData.age,
+    this.sex = pfData.gender,
+    this.photo = pfData.photo ? pfData.primary_photo_cropped.full : defaultDog,
+    this.breed = pfData.breeds.primary,
+    this.size = pfData.size,
+    this.trained = pfData.attributes.house_trained,
+    this.contact = pfData.contact,
+    this.description = pfData.description,
+    this.status = pfData.status,
+    this.energy = breed.energy,
+    this.playfulness = breed.playfulness,
+    this.protectiveness = breed.protectiveness,
+    this.trainability = breed.trainability,
+    this.barking = breed.barking,
+    this.minHeightFemale = breed.min_height_female,
+    this.maxHeightFemale = breed.max_height_female,
+    this.minWeightFemale = breed.min_weight_female,
+    this.maxWeightFemale = breed.max_weight_female,
+    this.minHeightMale = breed.min_height_male,
+    this.maxHeightMale = breed.max_height_male,
+    this.minWeightMale = breed.max_weight_male,
+    this.maxWeightMale = breed.max_weight_male;
+  }
+}
 
 async function getPFToken() {
   try {
@@ -68,7 +85,8 @@ async function getDogByID(ID) {
       },
     });
     const dogByID = data.data.animal;
-    console.log("DOG DATA-----------", dogByID);
+    // console.log("DOG DATA-----------", dogByID);
+    return dogByID;
   } catch (e) {
     console.error(e);
   }
@@ -86,7 +104,7 @@ async function breedInfo(breed) {
     );
 
     // console.log("BREED DATA----------", data.data);
-    return data.data;
+    return data.data[0];
   } catch (e) {
     console.error(e);
   }
@@ -95,7 +113,12 @@ async function breedInfo(breed) {
 async function serializeCardData(dogID, breed) {
   // for single dog by ID
   const rawDogData = await getDogByID(dogID);
+  // console.log(rawDogData);
   const rawBreedData = await breedInfo(breed);
+  // console.log("BREED STUFF-------", rawBreedData)
+  const cardData = await new DogCardData(rawDogData, rawBreedData);
+  console.log("SERIALIZED DATA ----------", cardData);
+  return cardData;
 }
 
-serializeCardData(63952645, "husky");
+serializeCardData(63952645, "poodle");
