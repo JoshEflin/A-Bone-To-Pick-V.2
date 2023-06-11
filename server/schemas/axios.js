@@ -1,6 +1,4 @@
 require("dotenv").config();
-const fs = require("fs");
-const defaultDog = fs.readFileSync("../utils/default-dog.png");
 const axios = require("axios");
 
 const petFinderApiKey = process.env.PF_API_KEY;
@@ -118,4 +116,6 @@ async function serializeCardData(dogID, breed) {
   return cardData;
 }
 
-// serializeCardData(63952645, "poodle");
+serializeCardData(63952645, "poodle");
+
+module.exports = { getPFToken, getDogByID, breedInfo, serializeCardData };
