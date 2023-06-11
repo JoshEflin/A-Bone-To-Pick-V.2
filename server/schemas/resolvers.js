@@ -6,7 +6,11 @@ const { getPFToken, getDogByID, breedInfo, serializeCardData } = require('./axio
 const resolvers = {
   Query: {
     allDogs: async () => Dog.find(),
-    dogById: async (parent, { dogID, breed }) => {const dogCard = await serializeCardData(dogID, breed)} 
+    dogById: async (parent, { dogID, breed }) => {
+        const dogCard = await serializeCardData(dogID, breed)
+        console.log("resolvers line 11", dogCard)
+        return dogCard;
+    } 
 },
 };
 

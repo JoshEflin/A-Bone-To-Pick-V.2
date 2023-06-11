@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const DogSchema = new Schema(
     {
-        petFinderId: {
+        id: {
             type: Number, // maybe turn into a String
             required: true,
             unique: true,
