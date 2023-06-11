@@ -14,7 +14,7 @@ class DogCardData {
     this.name = pfData.name,
     this.age = pfData.age,
     this.sex = pfData.gender,
-    this.photo = pfData.photo ? pfData.primary_photo_cropped.full : defaultDog,
+    this.photo = pfData.primary_photo_cropped.full
     this.breed = pfData.breeds.primary,
     this.size = pfData.size,
     this.trained = pfData.attributes.house_trained,
@@ -118,4 +118,4 @@ async function serializeCardData(dogID, breed) {
   return cardData;
 }
 
-serializeCardData(63952645, "poodle");
+// serializeCardData(63952645, "poodle");
