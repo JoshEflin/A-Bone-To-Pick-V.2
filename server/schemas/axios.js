@@ -12,7 +12,7 @@ class DogCardData {
     this.name = pfData.name,
     this.age = pfData.age,
     this.sex = pfData.gender,
-    this.photo = pfData.primary_photo_cropped.full
+    this.photo = pfData.primary_photo_cropped ? pfData.primary_photo_cropped.full : undefined;
     this.breed = pfData.breeds.primary,
     this.size = pfData.size,
     this.trained = pfData.attributes.house_trained,
@@ -67,7 +67,7 @@ async function getPetsByZip(zipCode, breed) {
       }
     );
     const dogsArrayByZip = data.data.animals;
-    
+    console.log(dogsArrayByZip)
     return dogsArrayByZip;
   } catch (e) {
     console.error(e);
@@ -111,11 +111,23 @@ async function serializeCardData(dogID, breed) {
   // for single dog by ID
   const rawDogData = await getDogByID(dogID);
   const rawBreedData = await breedInfo(breed);
-  const cardData = await new DogCardData(rawDogData, rawBreedData);
+  const cardData = new DogCardData(rawDogData, rawBreedData);
   console.log("SERIALIZED DATA ----------", cardData);
   return cardData;
 }
 
-serializeCardData(63952645, "poodle");
+async function serializeCardDataArray(zipCode, breed) {
+    const rawBreedData = await breedInfo(breed);
+    const rawDogArr= await getPetsByZip(zipCode,breed);
+    const serializedArr= rawDogArr.map((rawDog)=>{
+        const dogCard = new DogCardData(rawDog,rawBreedData)
+        return dogCard;
+    });
+    console.log(serializedArr);
+    return serializedArr;
+}
+//  getPetsByZip(19148, "husky");
 
-module.exports = { getPFToken, getDogByID, breedInfo, serializeCardData };
+// serializeCardDataArray(19148, "husky");
+
+module.exports = { getPFToken, getDogByID, breedInfo, serializeCardData, serializeCardDataArray };
