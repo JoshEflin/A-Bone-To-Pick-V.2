@@ -61,7 +61,44 @@ const typeDefs = gql`
     dogByZip(zipCode: String, breed: String): [Dog]
   }
 
-  
+  type Mutation {
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+    ): Auth
+    login(
+      email: String!
+      password: String!
+    ): Auth
+    addDog(
+      _id: ID
+      id: Int!
+      name: String
+      age: String
+      sex: String
+      photo: String
+      breed: String
+      size: String
+      trained: Boolean
+      contact: ContactInput
+      description: String
+      status: String
+      energy: String
+      playfulness: Int
+      protectiveness: Int
+      trainability: Int
+      barking: Int
+      minHeightFemale: Int
+      maxHeightFemale: Int
+      minWeightFemale: Int
+      maxWeightFemale: Int
+      minHeightMale: Int
+      maxHeightMale: Int
+      minWeightMale: Int
+      maxWeightMale: Int
+    ): Auth
+  }
 `;
 
 module.exports = typeDefs;
