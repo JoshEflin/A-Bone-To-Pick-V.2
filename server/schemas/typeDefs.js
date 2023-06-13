@@ -42,7 +42,6 @@ const typeDefs = gql`
   }
 
   type Dog {
-    _id: ID
     id: Int!
     name: String
     age: String
@@ -59,14 +58,14 @@ const typeDefs = gql`
     protectiveness: Int
     trainability: Int
     barking: Int
-    minHeightFemale: Int
-    maxHeightFemale: Int
-    minWeightFemale: Int
-    maxWeightFemale: Int
-    minHeightMale: Int
-    maxHeightMale: Int
-    minWeightMale: Int
-    maxWeightMale: Int
+    minHeightFemale: Float
+    maxHeightFemale: Float
+    minWeightFemale: Float
+    maxWeightFemale: Float
+    minHeightMale: Float
+    maxHeightMale: Float
+    minWeightMale: Float
+    maxWeightMale: Float
   }
 
   type Query {
@@ -75,6 +74,7 @@ const typeDefs = gql`
     me: User
     allDogs: [Dog]
     dogById(dogID: String, breed: String): Dog
+    dogByZip(zipCode: String, breed: String): [Dog]
   }
 
   type Mutation {
