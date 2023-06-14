@@ -1,77 +1,77 @@
 function Template(){
 return (
   <section>
-    <div data-id="64812450" class="card">
-        <div class="card-border">
-          <div class="card-header">
-            <span class="name">
+    <div data-id="64812450" className="card">
+        <div className="card-border">
+          <div className="card-header">
+            <span className="name">
               Bridget
             </span>
-            <span class="breed">
+            <span className="breed">
               Shepherd
             </span>
           </div>
-          <div class="card-header2">
-            <span class="age">
+          <div className="card-header2">
+            <span className="age">
               Adult
             </span>
-            <span class="gender">
+            <span className="gender">
               Female
             </span>
           </div>
           <img src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64812450/1/?bust=1685641142" alt="photo of Doggo" />
-          <div class="dog-attributes">
-            <span class="size">
+          <div className="dog-attributes">
+            <span className="size">
               size: Large
             </span>
-            <span class="house-trained">
-              <i class=" fa-solid fa-poop"></i>
+            <span className="house-trained">
+              <i className=" fa-solid fa-poop"></i>
             </span>
           </div>
-          <div class="dog-stats">
-            <div class="description">
-              <span class="item">
+          <div className="dog-stats">
+            <div className="description">
+              <span className="item">
                 Energy:
               </span>
-              <span class="item">
+              <span className="item">
                 Trainability:
               </span>
-              <span class="item">
+              <span className="item">
                 Playfulness:
               </span>
-              <span class="item">                        
+              <span className="item">                        
                 Protectiveness:
               </span>
-              <span class="item evil">
+              <span className="item evil">
                 Barking
               </span>
             </div>
-            <div class="power-level">
-              <span class="item2">
-                <i class="fa-solid fa-bolt-lightning"></i>
-                <i class="fa-solid fa-bolt-lightning"></i>
-                <i class="fa-solid fa-bolt-lightning"></i>
+            <div className="power-level">
+              <span className="item2">
+                <i className="fa-solid fa-bolt-lightning"></i>
+                <i className="fa-solid fa-bolt-lightning"></i>
+                <i className="fa-solid fa-bolt-lightning"></i>
               </span>
-              <span class="item2">
-                <i class=" fa-solid fa-scale-balanced"></i>
-                <i class=" fa-solid fa-scale-balanced"></i>
+              <span className="item2">
+                <i className=" fa-solid fa-scale-balanced"></i>
+                <i className=" fa-solid fa-scale-balanced"></i>
               </span>
-              <span class="item2">
-                <i class=" fa-solid fa-face-grin-tears"></i>
-                <i class=" fa-solid fa-face-grin-tears"></i>
-                <i class=" fa-solid fa-face-grin-tears"></i>
+              <span className="item2">
+                <i className=" fa-solid fa-face-grin-tears"></i>
+                <i className=" fa-solid fa-face-grin-tears"></i>
+                <i className=" fa-solid fa-face-grin-tears"></i>
               </span>
-              <span class="item2">
-                <i class="fa-solid fa-shield"></i>
-                <i class="fa-solid fa-shield"></i>
-                <i class="fa-solid fa-shield"></i>
-                <i class="fa-solid fa-shield"></i>
-                <i class="fa-solid fa-shield"></i>
+              <span className="item2">
+                <i className="fa-solid fa-shield"></i>
+                <i className="fa-solid fa-shield"></i>
+                <i className="fa-solid fa-shield"></i>
+                <i className="fa-solid fa-shield"></i>
+                <i className="fa-solid fa-shield"></i>
                </span>
-              <span class="item2">
-                <i class="fa-solid fa-volume-high"></i>
-                <i class="fa-solid fa-volume-high"></i>
-                <i class="fa-solid fa-volume-high"></i>
+              <span className="item2">
+                <i className="fa-solid fa-volume-high"></i>
+                <i className="fa-solid fa-volume-high"></i>
+                <i className="fa-solid fa-volume-high"></i>
               </span>
             </div>
           </div>

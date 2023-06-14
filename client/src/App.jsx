@@ -7,7 +7,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import './card.css'
 import defaultDog from './assets/images/default-dog.png'
-import Template from './components/Template'
+import DogCard from './components/cards/DogCard'
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 
@@ -48,7 +48,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>
-    <Template />
+    <DogCard />
     </ApolloProvider>
     </>
   )
