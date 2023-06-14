@@ -14,7 +14,8 @@ import LoginPage from "./pages/LoginPage";
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  
+  uri: 'http://localhost:3001/graphql',
 });
 
 // sets request middleware to attach JWT token to each request with authorization header
