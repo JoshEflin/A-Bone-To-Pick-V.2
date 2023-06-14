@@ -1,7 +1,6 @@
 // taken straight from brew buddies auth.js
 const jwt = require('jsonwebtoken');
 
-const secret = 'cheeee33333rs';
 const expiration = '2h';
 
 module.exports = {
@@ -19,7 +18,7 @@ module.exports = {
     }
     // adds the decoded user data to request to be accessed in resolver
     try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      const { data } = jwt.verify(token, process.env.secret, { maxAge: expiration });
       req.user = data;
     } catch {
       console.log('Invalid token');
@@ -29,6 +28,6 @@ module.exports = {
   },
   signToken({ email, username, _id }) {
     const payload = { email, username, _id };
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+    return jwt.sign({ data: payload }, process.env.secret, { expiresIn: expiration });
   },
 };
