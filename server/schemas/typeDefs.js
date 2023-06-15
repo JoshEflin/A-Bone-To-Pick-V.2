@@ -73,11 +73,11 @@ const typeDefs = gql`
     user(username: String): User
     me: User
     allDogs: [Dog]
+  }
+  
+  type Mutation {
     dogById(dogID: String, breed: String): Dog
     dogByZip(zipCode: String, breed: String): [Dog]
-  }
-
-  type Mutation {
     addUser(
       username: String!
       email: String!

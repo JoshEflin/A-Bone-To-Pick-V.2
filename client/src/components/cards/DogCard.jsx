@@ -1,12 +1,12 @@
-import { GET_BY_ID, GET_BY_ZIP } from "../../utils/queries";
+import { GET_BY_ID, GET_BY_ZIP } from "../../utils/mutations";
 import Template from "./Template.jsx"
 import { useState } from "react";
 import { useMutation,useQuery } from "@apollo/client";
 
 
  export default function DoggyDash (){
-  const [zipString, setZipString] = useState("Enter Zip")
-  const [breedString, setBreedString] = useState("Enter Breed")
+  const [zipString, setZipString] = useState("")
+  const [breedString, setBreedString] = useState("")
   const [cardSelectedIndex, isCardSelectedIndex]= useState('-1');
   const [dogCardData, setDogCardData] = useState(null)
   const [DogsByZip, {error:errorZip, data:dataZip}] = useMutation(GET_BY_ZIP);
@@ -24,8 +24,8 @@ import { useMutation,useQuery } from "@apollo/client";
     event.preventDefault();
 
     const searchData = {
-      zipCode: {zipString},
-      breed:{breedString}
+      zipCode: zipString,
+      breed: breedString
     }
     try {
       const {data} = await DogsByZip({
