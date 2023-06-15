@@ -21,6 +21,8 @@ const resolvers = {
         },
         allDogs: async () =>
             Dog.find(),
+        },
+    Mutation: {
         dogById: async (parent, { dogID, breed }) => {
             const dogCard = await serializeCardData(dogID, breed)
             console.log("resolvers line 25", dogCard)
@@ -32,8 +34,6 @@ const resolvers = {
             console.log("dogByZip resolver\n------------------",dogCardArray );
             return dogCardArray;
         },
-    },
-    Mutation: {
         addUser: async (
             parent,
             {

@@ -217,14 +217,14 @@ function makeDogCard(currentDog) {
                     contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
                     phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
                     emailIcon.setAttribute('src', './assets/images/mail.png');
-                    
+                    // ----------
                     status.textContent = ourDog.status;
                     description.textContent = ourDog.description;
                     primaryBreed.textContent = ourDog.breeds.primary;
                     heightRange.textContent = currentDog.minHeightFemale + "inches - " + currentDog.maxHeightMale + "inches";
                     weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                     sex.textContent = ourDog.gender;
-                    
+                    // -----------------------
                     photo.setAttribute('src', currentDog.photo);
                     photo.onerror = function () {
                       photo.setAttribute('src', "./assets/images/default-dog.png");
