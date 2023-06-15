@@ -121,10 +121,10 @@ export const RESCUE_DOG_TO_DB = gql`
         address {
           address1
           address2
-          city: String
-          state: String
-          postcode: String
-          country: String
+          city
+          state
+          postcode
+          country
           }
         }
       description
@@ -161,10 +161,10 @@ export const RESCUE_DOG_TO_DB = gql`
         address {
           address1
           address2
-          city: String
-          state: String
-          postcode: String
-          country: String
+          city
+          state
+          postcode
+          country
           }
         }
       description
