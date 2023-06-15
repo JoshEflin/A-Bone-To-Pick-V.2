@@ -22,11 +22,19 @@ const typeDefs = gql`
   type Address {
     address1: String
     address2: String
+    city: String
+    state: String
+    postcode: String
+    country: String
   }
 
   input AddressInput {
     address1: String
     address2: String
+    city: String
+    state: String
+    postcode: String
+    country: String
   }
 
   input ContactInput {
@@ -53,7 +61,7 @@ const typeDefs = gql`
     contact: Contact
     description: String
     status: String
-    energy: String
+    energy: Int
     playfulness: Int
     protectiveness: Int
     trainability: Int
@@ -100,19 +108,19 @@ const typeDefs = gql`
       contact: ContactInput
       description: String
       status: String
-      energy: String
+      energy: Int
       playfulness: Int
       protectiveness: Int
       trainability: Int
       barking: Int
-      minHeightFemale: Int
-      maxHeightFemale: Int
-      minWeightFemale: Int
-      maxWeightFemale: Int
-      minHeightMale: Int
-      maxHeightMale: Int
-      minWeightMale: Int
-      maxWeightMale: Int
+      minHeightFemale: Float
+      maxHeightFemale: Float
+      minWeightFemale: Float
+      maxWeightFemale: Float
+      minHeightMale: Float
+      maxHeightMale: Float
+      minWeightMale: Float
+      maxWeightMale: Float
     ): Auth
   }
 `;

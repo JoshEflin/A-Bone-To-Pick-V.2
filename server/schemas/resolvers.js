@@ -66,6 +66,81 @@ const resolvers = {
             return { token, user };
         },
         // addDog: needs to be created.  I am not sure the how similar it will be to the query dogById.  
+        addDog: async (
+            parent, 
+            { 
+                id, 
+                name, 
+                age, 
+                sex, 
+                photo, 
+                breed, 
+                size, 
+                trained, 
+                contact, 
+                description, 
+                status, 
+                energy, 
+                playfulness, 
+                protectiveness, 
+                trainability, 
+                barking, 
+                minHeightFemale, 
+                maxHeightFemale, 
+                minWeightFemale, 
+                maxWeightFemale, 
+                minHeightMale, 
+                maxHeightMale, 
+                minWeightMale, 
+                maxWeightMale 
+            },
+            context
+            ) => {
+                if (context.user) {
+                    const newDog = await Dog.create({
+                        id, 
+                        name, 
+                        age, 
+                        sex, 
+                        photo, 
+                        breed, 
+                        size, 
+                        trained, 
+                        contact, 
+                        description, 
+                        status, 
+                        energy, 
+                        playfulness, 
+                        protectiveness, 
+                        trainability, 
+                        barking, 
+                        minHeightFemale, 
+                        maxHeightFemale, 
+                        minWeightFemale, 
+                        maxWeightFemale, 
+                        minHeightMale, 
+                        maxHeightMale, 
+                        minWeightMale, 
+                        maxWeightMale 
+                    });
+                    const newUserDog = await User.findOneAndUpdate(
+                        { _id: context.user._id },
+                        {
+                            $addToSet: {
+                                dogCards: newDog._id
+                            },
+                        },
+                        {
+                            new: true,
+                        }
+                    );
+                    const token = signToken(newUserDog);
+                    return {
+                        token,
+                        dog: newDog,
+                    };
+                }
+            },
     }
 };
 

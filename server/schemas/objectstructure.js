@@ -149,7 +149,7 @@ const breedData = [
 // Template for finished Card--
 
 const dogCardTempate = {
-  ID: 64812450,
+  id: 64812450,
   name: "Bridget",
   age: "Adult",
   sex: "Female",
@@ -186,3 +186,39 @@ const dogCardTempate = {
   minWeightMale: 110,
   maxWeightMale: 150,
 };
+
+// graphql template
+// {
+//   "addDogId": 64812450,
+//   "name": "Bridget",
+//   "age": "Adult",
+//   "sex": "Female",
+//   "photo":
+//     "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64812450/1/?bust=1685641142",
+//   "breed": "Shepherd",
+//   "size": "Large",
+//   "trained": false,
+//   "contact": {
+//     "email": "info@savedme.org",
+//     "phone": "(215) 240-1240",
+//     "address": {
+//       "address1": "2000 Harrison Street",
+//       "address2": null,
+//     },
+//   },
+//   "description": null,
+//   "status": "adoptable",
+//   "energy": 3,
+//   "playfulness": 3,
+//   "protectiveness": 5,
+//   "trainability": 2,
+//   "barking": 3,
+//   "minHeightFemale": 29,
+//   "maxHeightFemale": 29,
+//   "minWeightFemale": 80,
+//   "maxWeightFemale": 120,
+//   "minHeightMale": 29,
+//   "maxHeightMale": 29,
+//   "minWeightMale": 110,
+//   "maxWeightMale": 150,
+// }
