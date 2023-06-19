@@ -24,11 +24,11 @@ import defaultDog from "./assets/images/default-dog.png";
 import DogCard from "./components/cards/DogCard";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 
-const { Content, Header, Footer } = Layout;
+const { Content} = Layout;
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
