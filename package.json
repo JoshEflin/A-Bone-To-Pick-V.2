@@ -15,6 +15,6 @@
     "concurrently": "^8.0.1"
   },
   "dependencies": {
-    "antd": "^5.6.1"
+    
   }
 }
