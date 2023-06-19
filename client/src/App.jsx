@@ -56,7 +56,19 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <ConfigProvider>
+      <ConfigProvider
+    theme={{
+      token: {
+        colorPink: '#ecb2b5',
+        colorLightGreen: '#93c1b8',
+        colorDarkGreen: '#86a48d',
+        colorOrange: '#86a48d',
+        colorTan: '#f3ebcf',
+        colorPurple: '#f3ebcf',
+        colorLightPink: '##f8dcce'
+      },
+    }}
+  >
           <Layout>
             <Router>
               <Header />
