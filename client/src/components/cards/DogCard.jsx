@@ -33,6 +33,66 @@ class DogCardClass {
       (this.maxWeightMale = data.maxWeightMale);
   }
 }
+
+function EnergyIcon({ num }) {
+  // console.log(num)
+  let value;
+  if (num === 0) {
+    return <i className="fa-solid fa-bolt-lightning"></i>;
+  } else {
+    const icons = [];
+    for (let i = 0; i < num; i++) {
+      icons.push(<i className="fa-solid fa-bolt-lightning" key={i}></i>);
+    }
+    value = icons;
+  }
+  return value;
+}
+function TrainabilityIcon({ num }) {
+  console.log(num, " Trainability");
+  let value;
+  if (num === 0) {
+    return <i className=" fa-solid fa-scale-balanced"></i>;
+  } else {
+    const icons = [];
+    for (let i = 0; i < num; i++) {
+      icons.push(<i className="fa-solid fa-scale-balanced" key={i}></i>);
+    }
+    value = icons;
+  }
+  return value;
+}
+
+function PlayIcon({ num }) {
+  console.log(num, "Playfulness");
+  let value;
+  if (num === 0) {
+    return <i className="fa-solid fa-face-grin-tears"></i>;
+  } else {
+    const icons = [];
+    for (let i = 0; i < num; i++) {
+      icons.push(<i className="fa-solid fa-face-grin-tears" key={i}></i>);
+    }
+    value = icons;
+  }
+  return value;
+}
+
+function ProtectIcon({ num }) {
+  console.log(num, "Protectiveness");
+  let value;
+  if (num === 0) {
+    return <i className="fa-solid fa-shield"></i>;
+  } else {
+    const icons = [];
+    for (let i = 0; i < num; i++) {
+      icons.push(<i className="fa-solid fa-shield" key={i}></i>);
+    }
+    value = icons;
+  }
+  return value;
+}
+
 function DogCards({ props }) {
   if (props === null) {
     return <div>hello</div>;
@@ -71,25 +131,17 @@ function DogCards({ props }) {
               </div>
               <div className="power-level">
                 <span className="item2">
-                  <i className="fa-solid fa-bolt-lightning"></i>
-                  <i className="fa-solid fa-bolt-lightning"></i>
-                  <i className="fa-solid fa-bolt-lightning"></i>
+                  <EnergyIcon num={dogCard.energy} />
+                </span>
+
+                <span className="item2">
+                  <TrainabilityIcon num={dogCard.trainability} />
                 </span>
                 <span className="item2">
-                  <i className=" fa-solid fa-scale-balanced"></i>
-                  <i className=" fa-solid fa-scale-balanced"></i>
+                  <PlayIcon num={dogCard.playfulness} />
                 </span>
                 <span className="item2">
-                  <i className=" fa-solid fa-face-grin-tears"></i>
-                  <i className=" fa-solid fa-face-grin-tears"></i>
-                  <i className=" fa-solid fa-face-grin-tears"></i>
-                </span>
-                <span className="item2">
-                  <i className="fa-solid fa-shield"></i>
-                  <i className="fa-solid fa-shield"></i>
-                  <i className="fa-solid fa-shield"></i>
-                  <i className="fa-solid fa-shield"></i>
-                  <i className="fa-solid fa-shield"></i>
+                  <ProtectIcon num={dogCard.protectiveness} />
                 </span>
                 <span className="item2">
                   <i className="fa-solid fa-volume-high"></i>

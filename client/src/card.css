@@ -1,5 +1,6 @@
 /* card view is the container that holds all the dog cards*/
 .card-view{
+    ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,23 +94,23 @@ nav{
   color:hsl(60, 9%, 69%);
 }
 .dog-stats{
-    display: flex;
+  display: flex;
 }
-  .description{
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    margin-right:2rem;
-    color:#59594A;
+.description{
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  margin-right:2rem;
+  color:#59594A;
   }
-  .evil {
+.evil {
     color:#CF5C36;
-  }
-  .power-level{
-    display: flex;
-    flex-direction: column;
-    /* width:50px; */
-  }
+}
+.power-level{
+   display: flex;
+  flex-direction: column;
+  /* width:50px; */
+}
 @media screen and (min-width:767px) {
   .card{
     padding:.5rem;

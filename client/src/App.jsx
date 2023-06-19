@@ -27,7 +27,8 @@ import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const { Content } = Layout;
+
+const { Content} = Layout;
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
