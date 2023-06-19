@@ -27,8 +27,7 @@ import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
-const { Content} = Layout;
+const { Content } = Layout;
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
@@ -59,19 +58,7 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-      <ConfigProvider
-    theme={{
-      token: {
-        colorPink: '#ecb2b5',
-        colorLightGreen: '#93c1b8',
-        colorDarkGreen: '#86a48d',
-        colorOrange: '#86a48d',
-        colorTan: '#f3ebcf',
-        colorPurple: '#f3ebcf',
-        colorLightPink: '##f8dcce'
-      },
-    }}
-  >
+        <ConfigProvider>
           <Layout>
             <Router>
               <Header />
