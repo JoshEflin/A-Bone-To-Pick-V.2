@@ -1,0 +1,7 @@
+colorPink: "#ecb2b5"
+colorLightGreen: "#93c1b8"
+colorDarkGreen: "#86a48d"
+colorOrange: "##df9a5c"
+colorTan: "#f3ebcf"
+colorPurple: "#f3ebcf"
+colorLightPink: "##f8dcce"
