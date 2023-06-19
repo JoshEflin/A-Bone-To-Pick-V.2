@@ -16,16 +16,13 @@ import {
   theme,
 } from "antd";
 import { setContext } from "@apollo/client/link/context";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "./card.css";
-import defaultDog from "./assets/images/default-dog.png";
-import DogCard from "./components/cards/DogCard";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import DoggyDash from "./components/cards/DoggyDash";
 
 const { Content } = Layout;
 
@@ -67,7 +64,7 @@ function App() {
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
-                  <Route path="/" element={<DogCard />} />
+                  <Route path="/" element={<DoggyDash />} />
                 </Routes>
               </Content>
               <Footer />
