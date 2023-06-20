@@ -1,12 +1,13 @@
 import { Row, Col, Space } from 'antd';
 import styles from './Header.module.css';
+import dogIcon from '../assets/images/dogiconedit.png'
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <Row>
         <Col>
-          <img src="../assets/images/dogiconedit.png" alt="Logo" className={styles.logo} />
+          <img src={ dogIcon } alt="Logo" className={styles.logo} />
           <Space direction="vertical" size="middle" style={{ paddingBottom: '50px' }}>
           </Space>
         </Col>
