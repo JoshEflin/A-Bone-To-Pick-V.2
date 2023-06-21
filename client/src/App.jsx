@@ -20,9 +20,10 @@ import "./App.css";
 import "./card.css";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
-import Header from "./components/Header";
+import Nav from "./components/Header";
 import Footer from "./components/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
+// import Test from "./components/TEST";
 
 const { Content } = Layout;
 
@@ -58,7 +59,7 @@ function App() {
         <ConfigProvider>
           <Layout>
             <Router>
-              <Header />
+              <Nav />
               <Content>
                 <p>This is content!!!!!  Hello World</p>
                 <Routes>

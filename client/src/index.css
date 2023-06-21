@@ -68,3 +68,25 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+/* .header {
+    background-color: #df9a5c;
+}
+.collapsed 
+.logo {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+}
+  
+.title {
+  font-size: 24px;
+  color: white;
+  margin: 5px;
+  padding-bottom: 10px;
+}
+.logobox {
+  display: flex;
+  align-items: center;
+} */
