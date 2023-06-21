@@ -10,7 +10,7 @@ export default function DoggyDash() {
   const [idString, setIdString] = useState("");
   const [form] = Form.useForm();
   const [breedString, setBreedString] = useState("");
-  const [cardSelectedIndex, setCardSelectedIndex] = useState("-1");
+  const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
   const [dogCardData, setDogCardData] = useState(null);
   const [DogsByZip, { error: errorZip, data: dataZip }] =
     useMutation(GET_BY_ZIP);
@@ -48,7 +48,11 @@ export default function DoggyDash() {
       console.error(e);
     }
   };
- if (cardSelectedIndex !== -1) {
+  const handleCardSelect = (index) => {
+   console.log(index)
+    setCardSelectedIndex(index);
+  };
+ if (cardSelectedIndex == -1) {
   return (
     <>
       <Form layout="vertical" form={form}>
@@ -71,7 +75,7 @@ export default function DoggyDash() {
     <button type = "submit" onClick={handleSearchSubmit}></button> */}
       </Form>
       <section>
-        <DogCards props={dogCardData} fn= {setCardSelectedIndex} />
+        <DogCards props={dogCardData} fn={handleCardSelect} />
       </section>
     </>
   );
