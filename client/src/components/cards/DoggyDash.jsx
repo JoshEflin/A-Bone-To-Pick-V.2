@@ -80,11 +80,14 @@ export default function DoggyDash() {
     </>
   );
  } else {
-  <>
+  return (
+    <>
   <section>
       <DogCards props={dogCardData} fn={handleCardSelect} index={cardSelectedIndex} />
       </section>
       </>
+  )
+  
  }
   
 }
