@@ -1,10 +1,10 @@
-import { Row, Col, Space } from 'antd';
+import { Row, Col, Space, Layout } from 'antd';
 import styles from './Header.module.css';
-import dogIcon from '../assets/images/dogiconedit.png'
-import { ADD_USER, LOGIN } from '../utils/mutations';
-import Auth from "../utils/auth"
+import dogIcon from '../../assets/images/dogiconedit.png'
+import { ADD_USER, LOGIN } from '../../utils/mutations'
+import Auth from "../../utils/auth"
 import {Link } from 'react-router-dom';
-import {Layout} from 'antd';
+
 import { useState, useEffect } from 'react';
 
 const {Header} = Layout
@@ -44,12 +44,13 @@ const {Header} = Layout
         </Col>
         <Col span={8}>
         <Space direction="horizontal" size="middle" style={{ paddingLeft: '50px' }}>
+         <Link>
          <h2>Profile</h2>
-         
+         </Link>
+         <Link to='/login'>
          <h2>Login</h2>
+         </Link>
         </Space>
-
-
         </Col>
       </Row>
     </Header>

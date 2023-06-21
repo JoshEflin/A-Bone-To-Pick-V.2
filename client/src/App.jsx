@@ -18,10 +18,10 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import "./card.css";
-import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage";
-import Nav from "./components/Header";
-import Footer from "./components/Footer";
+import SignupPage from "./pages/SignupForm";
+import LoginPage from "./pages/LoginForm";
+import Nav from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
 // import Test from "./components/TEST";
 
