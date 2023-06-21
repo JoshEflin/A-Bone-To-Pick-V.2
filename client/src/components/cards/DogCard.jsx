@@ -45,7 +45,7 @@ function EnergyIcon({ num }) {
   return value;
 }
 function TrainabilityIcon({ num }) {
-  console.log(num, " Trainability");
+  // console.log(num, " Trainability");
   let value;
   if (num === 0) {
     return <i className=" fa-solid fa-scale-balanced"></i>;
@@ -60,7 +60,7 @@ function TrainabilityIcon({ num }) {
 }
 
 function PlayIcon({ num }) {
-  console.log(num, "Playfulness");
+  // console.log(num, "Playfulness");
   let value;
   if (num === 0) {
     return <i className="fa-solid fa-face-grin-tears"></i>;
@@ -75,7 +75,7 @@ function PlayIcon({ num }) {
 }
 
 function ProtectIcon({ num }) {
-  console.log(num, "Protectiveness");
+  // console.log(num, "Protectiveness");
   let value;
   if (num === 0) {
     return <i className="fa-solid fa-shield"></i>;
@@ -89,8 +89,7 @@ function ProtectIcon({ num }) {
   return value;
 }
 
-export default function DogCards({ props,fn }) {
-  
+export default function DogCards({ props, fn }) {
   if (props === null) {
     return <div>hello</div>;
   } else {
@@ -98,9 +97,9 @@ export default function DogCards({ props,fn }) {
     const { dogByZip } = props;
     const dogCardArr = dogByZip.map((card, i) => {
       const dogCard = new DogCardClass(card);
-      console.log(dogCard);
+      // console.log(dogCard);
       return (
-        <div data-id={dogCard.id} key={i} className="card">
+        <div data-id={dogCard.id} key={i} className="card" onClick={() => fn(i)}>
           <div className="card-border">
             <div className="card-header">
               <span className="name">{dogCard.name}</span>
