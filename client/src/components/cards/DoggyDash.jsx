@@ -1,20 +1,21 @@
 import { GET_BY_ID, GET_BY_ZIP, RESCUE_DOG_TO_DB } from "../../utils/mutations";
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Input, Form, Button } from "antd";
+import { Input, Form, Button, Modal } from "antd";
 import DogCards from "./DogCard";
 
 
 export default function DoggyDash() {
   const [zipString, setZipString] = useState("");
   const [idString, setIdString] = useState("");
+  const [showModal, setShowModal] = useState(false)
   const [form] = Form.useForm();
   const [breedString, setBreedString] = useState("");
   const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
   const [dogCardData, setDogCardData] = useState(null);
   const [DogsByZip, { error: errorZip, data: dataZip }] =
     useMutation(GET_BY_ZIP);
-
+   
   // const [DogsById, {error:errorId, data:dataId}] = useMutation(GET_BY_ID);
   const saveDog = (data) => {
     const [saveMyDogCard, { error: errorDogCard, data: dataDogCard }] =
@@ -51,6 +52,11 @@ export default function DoggyDash() {
   const handleCardSelect = (index) => {
     setCardSelectedIndex(index);   
     console.log(index) 
+    setShowModal(true);
+  };
+  const handleModalClose = () => {
+    setCardSelectedIndex(-1);
+    setShowModal(false);
   };
  if (cardSelectedIndex === -1) {
   return (
@@ -82,9 +88,11 @@ export default function DoggyDash() {
  } else {
   return (
     <>
-  <section>
-      <DogCards props={dogCardData} fn={handleCardSelect} index={cardSelectedIndex} />
-      </section>
+   <Modal visible={showModal} onCancel={handleModalClose} footer={null}>
+        <section>
+          <DogCards props={dogCardData} fn={handleCardSelect} index={cardSelectedIndex} />
+        </section>
+      </Modal>
       </>
   )
   
