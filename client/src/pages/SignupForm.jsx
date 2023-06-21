@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-
+import { Link } from "react-router-dom";
 const Signup = () => {
   const [userFormData, setUserFormData] = useState({
     username: "",
@@ -159,7 +159,7 @@ const Signup = () => {
         >
           Signup
         </Button>
-        Or <a href="/login">Already a user? Login now!</a>
+        Or <Link to="/login">Already a user? Login now!</Link>
       </Form.Item>
     </Form>
   );
