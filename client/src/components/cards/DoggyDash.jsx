@@ -1,5 +1,5 @@
 import { GET_BY_ID, GET_BY_ZIP, RESCUE_DOG_TO_DB } from "../../utils/mutations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { Input, Form, Button } from "antd";
 import DogCards from "./DogCard";
@@ -49,10 +49,10 @@ export default function DoggyDash() {
     }
   };
   const handleCardSelect = (index) => {
-   console.log(index)
-    setCardSelectedIndex(index);
+    setCardSelectedIndex(index);   
+    console.log(index) 
   };
- if (cardSelectedIndex == -1) {
+ if (cardSelectedIndex === -1) {
   return (
     <>
       <Form layout="vertical" form={form}>
@@ -75,12 +75,16 @@ export default function DoggyDash() {
     <button type = "submit" onClick={handleSearchSubmit}></button> */}
       </Form>
       <section>
-        <DogCards props={dogCardData} fn={handleCardSelect} />
+      <DogCards props={dogCardData} fn={handleCardSelect} index={cardSelectedIndex} />
       </section>
     </>
   );
  } else {
- return <p> JEW</p>
+  <>
+  <section>
+      <DogCards props={dogCardData} fn={handleCardSelect} index={cardSelectedIndex} />
+      </section>
+      </>
  }
   
 }
