@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { Input, Form, Button, Modal } from "antd";
 import DogCards from "./DogCard";
-
+import Auth from '../../utils/auth';
 
 export default function DoggyDash() {
   const [zipString, setZipString] = useState("");
@@ -13,6 +13,8 @@ export default function DoggyDash() {
   const [breedString, setBreedString] = useState("");
   const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
   const [dogCardData, setDogCardData] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [rescueDogtoDB, {error}] = useMutation(RESCUE_DOG_TO_DB)
   const [DogsByZip, { error: errorZip, data: dataZip }] =
     useMutation(GET_BY_ZIP);
    
@@ -42,13 +44,13 @@ export default function DoggyDash() {
       const { data } = await DogsByZip({
         variables: { ...searchData },
       });
-      console.log(data);
       await setDogCardData(data);
       console.log(dogCardData, " Dog-Card-Data");
     } catch (e) {
       console.error(e);
     }
   };
+  
   const handleCardSelect = (index) => {
     setCardSelectedIndex(index);   
     console.log(index) 
@@ -58,6 +60,37 @@ export default function DoggyDash() {
     setCardSelectedIndex(-1);
     setShowModal(false);
   };
+  const handleRescueDogtoDB = async () => {
+    let myDog = dogCardData.dogByZip[cardSelectedIndex]
+    const contactData = {
+      email: myDog.email,
+      phone: myDog.phone,
+      address: {
+        address1: myDog.address1,
+        city: myDog.city,
+        state: myDog.state,
+        postcode: myDog.postcode,
+        country: myDog.country,
+      },
+    };
+    try {
+      const { data } = await rescueDogtoDB({
+        variables: {
+          addDogId: myDog.id,
+          ...myDog,
+          contact: contactData,
+        },
+      });
+        if (!data) {
+            throw new Error('Unable to add dog.');
+        }  
+        console.log("You saved them")
+    } catch (err) {
+      console.error(err);
+     
+    }
+};
+  
  if (cardSelectedIndex === -1) {
   return (
     <>
@@ -86,16 +119,23 @@ export default function DoggyDash() {
     </>
   );
  } else {
+  if (Auth.loggedIn()) {
   return (
     <>
-   <Modal visible={showModal} onCancel={handleModalClose} footer={null}>
+   <Modal open={showModal} onCancel={handleModalClose} footer={null}>
         <section>
           <DogCards props={dogCardData} fn={handleCardSelect} index={cardSelectedIndex} />
         </section>
+        <Button>Rescue</Button>
+        {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}
+        <div>{dogCardData.dogByZip[cardSelectedIndex].contact.email}</div>
+        <div>{dogCardData.dogByZip[cardSelectedIndex].contact.phone}</div>
+        <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
+        <Button>Share me!</Button>
+        <section>More Info Here</section>
       </Modal>
       </>
   )
-  
- }
+ }}
   
 }

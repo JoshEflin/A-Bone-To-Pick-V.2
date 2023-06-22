@@ -95,8 +95,7 @@ export default function DogCards({ props, fn, index }) {
     return <div>No dogs found.</div>;
   } else if(index !== -1) {
     const dogCard = new DogCardClass(props.dogByZip[index])
-    console.log(dogCard)
-    console.log("hellooooooooo")
+    // console.log(dogCard)
     return (
       <div data-id={dogCard.id}  className="card" >
         <div className="card-border">
