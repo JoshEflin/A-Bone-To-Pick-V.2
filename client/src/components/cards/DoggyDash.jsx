@@ -136,6 +136,10 @@ export default function DoggyDash() {
       </Modal>
       </>
   )
+ } else {
+  return (
+    <h2>Please Log In!</h2>
+  )
  }}
   
 }
