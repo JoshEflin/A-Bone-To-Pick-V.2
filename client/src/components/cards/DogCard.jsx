@@ -1,5 +1,6 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
+import { Col } from 'antd'
 
 class DogCardClass {
   constructor(data) {
@@ -97,6 +98,7 @@ export default function DogCards({ props, fn, index }) {
     const dogCard = new DogCardClass(props.dogByZip[index])
     // console.log(dogCard)
     return (
+      <Col>
       <div data-id={dogCard.id}  className="card" >
         <div className="card-border">
             <div className="card-header">
@@ -146,6 +148,7 @@ export default function DogCards({ props, fn, index }) {
             </div>
           </div>
       </div>
+      </Col>
     );
   
   } else {

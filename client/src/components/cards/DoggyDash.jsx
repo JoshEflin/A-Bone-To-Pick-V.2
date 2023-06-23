@@ -1,7 +1,7 @@
 import { GET_BY_ID, GET_BY_ZIP, RESCUE_DOG_TO_DB } from "../../utils/mutations";
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Input, Form, Button, Modal } from "antd";
+import { Input, Form, Button, Modal, Row } from "antd";
 import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
@@ -121,11 +121,13 @@ export default function DoggyDash() {
     <button type = "submit" onClick={handleSearchSubmit}></button> */}
         </Form>
         <section>
+          <Row justify="center">
           <DogCards
             props={dogCardData}
             fn={handleCardSelect}
             index={cardSelectedIndex}
           />
+          </Row>
         </section>
       </>
     );
