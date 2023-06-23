@@ -1,5 +1,6 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
+import { Col } from 'antd'
 
 class DogCardClass {
   constructor(data) {
@@ -89,9 +90,67 @@ function ProtectIcon({ num }) {
   return value;
 }
 
-export default function DogCards({ props, fn }) {
-  if (props === null) {
-    return <div>hello</div>;
+export default function DogCards({ props, fn, index }) {
+  // console.log(index)
+  if (!props ) {
+    return <div>No dogs found.</div>;
+  } else if(index !== -1) {
+    const dogCard = new DogCardClass(props.dogByZip[index])
+    // console.log(dogCard)
+    return (
+      <Col>
+      <div data-id={dogCard.id}  className="card" >
+        <div className="card-border">
+            <div className="card-header">
+              <span className="name">{dogCard.name}</span>
+              <span className="breed">{dogCard.breed}</span>
+            </div>
+            <div className="card-header2">
+              <span className="age">{dogCard.age}</span>
+              <span className="gender">{dogCard.sex}</span>
+            </div>
+            <img src={dogCard.photo} alt="photo of Doggo" />
+            <div className="dog-attributes">
+              <span className="size">{dogCard.size}</span>
+              <span className="house-trained">
+                {/* ternary here */}
+                <i className=" fa-solid fa-poop"></i>
+              </span>
+            </div>
+            <div className="dog-stats">
+              <div className="description">
+                <span className="item">Energy:</span>
+                <span className="item">Trainability:</span>
+                <span className="item">Playfulness:</span>
+                <span className="item">Protectiveness:</span>
+                <span className="item evil">Barking</span>
+              </div>
+              <div className="power-level">
+                <span className="item2">
+                  <EnergyIcon num={dogCard.energy} />
+                </span>
+
+                <span className="item2">
+                  <TrainabilityIcon num={dogCard.trainability} />
+                </span>
+                <span className="item2">
+                  <PlayIcon num={dogCard.playfulness} />
+                </span>
+                <span className="item2">
+                  <ProtectIcon num={dogCard.protectiveness} />
+                </span>
+                <span className="item2">
+                  <i className="fa-solid fa-volume-high"></i>
+                  <i className="fa-solid fa-volume-high"></i>
+                  <i className="fa-solid fa-volume-high"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      </Col>
+    );
+  
   } else {
     // console.log(props)
     const { dogByZip } = props;
