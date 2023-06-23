@@ -23,6 +23,7 @@ import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
+import ProfilePage from "./pages/ProfilePage";
 
 const { Content } = Layout;
 
@@ -65,6 +66,7 @@ function App() {
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<DoggyDash />} />
+                  <Route path="/profile/:username" element={<ProfilePage />} />
                 </Routes>
               </Content>
               <Footer />
