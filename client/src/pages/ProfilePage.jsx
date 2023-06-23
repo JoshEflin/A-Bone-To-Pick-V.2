@@ -7,15 +7,16 @@ import styles from "./ProfilePage.module.css";
 export default function Profile() {
   const navigate = useNavigate();
 
-  const { username } = useParams();
+  const   id   = useParams();
+  console.log(id)
   const {
     loading: loadingUser,
     error: errorUser,
     data: dataUser,
   } = useQuery(GET_USER, {
-    variables: { username },
+    variables:  id ,
   });
-  const userData = dataUser?.user;
+  const userData = dataUser?.data;
   const {
     loading: loadingMe,
     error: errorMe,
@@ -23,31 +24,16 @@ export default function Profile() {
     refetch,
   } = useQuery(GET_ME);
   const meData = dataMe;
-//   const imageData = userData?.profilePic;
-//   let profilePic =
-//     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
-//   if (!userData) {
-//     return <div>Loading...</div>; // return a loading state if userData is falsy
-//   }
 
   return (
     <>
       <Row>
         <Col>
           <div>
-            {imageData ? (
-              <img
-                className={styles.profilePic}
-                src={imageData}
-                alt="Database profile"
-              />
-            ) : (
-              <img
-                className={styles.profilePic}
-                src={profilePic}
-                alt="Default profile"
-              />
-            )}
+            {userData.username}
+          </div>
+          <div>
+            {userData.email}
           </div>
         </Col>
       </Row>

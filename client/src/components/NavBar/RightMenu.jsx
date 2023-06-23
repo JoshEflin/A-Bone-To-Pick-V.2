@@ -10,6 +10,8 @@ const logout = (event) => {
 };
 
 const RightMenu = ({ mode }) => {
+  console.log(Auth.getProfile())
+  const username = Auth.getProfile()
   return (
     <Menu
       mode={mode}
@@ -26,7 +28,7 @@ const RightMenu = ({ mode }) => {
         }
       >
         <Menu.Item key="profile">
-          <CodeOutlined /> <Link to="/profile">Profile</Link>
+          <CodeOutlined /> <Link to={`/profile/${username.data._id}`}>Profile</Link>
         </Menu.Item>
         <Menu.Item key="logout">
           <Link to="/" onClick={logout}>

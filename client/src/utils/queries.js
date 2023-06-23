@@ -35,8 +35,8 @@ query Me {
     }
   }
 `;
-export const GET_USER = `query User($username: String) {
-  user(username: $username) {
+export const GET_USER = `query User($id: ID!) {
+  user(_id: $id) {
     _id
     username
     email

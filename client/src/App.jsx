@@ -85,7 +85,7 @@ function App() {
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<DoggyDash />} />
-                  <Route path="/profile/:username" element={<ProfilePage />} />
+                  <Route path="/profile/:_id" element={<ProfilePage />} />
                 </Routes>
               </Content> 
               <Footer />
