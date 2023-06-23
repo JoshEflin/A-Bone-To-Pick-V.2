@@ -9,7 +9,11 @@ const resolvers = {
         users: async () =>
             User.find().populate(['dogCards']),
         // finding one user by _id.   parameter might be changed to another parameter
-        user: async (parent, { id }) => User.findOne({ id }).populate(['dogCards']),
+        user: async (parent,  id ) =>  {
+            console.log(id);
+            
+            return User.findOne({ _id:id._id }).populate(['dogCards']
+        )},
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate(

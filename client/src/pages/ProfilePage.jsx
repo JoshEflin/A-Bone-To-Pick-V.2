@@ -4,19 +4,22 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
 import styles from "./ProfilePage.module.css";
 
-export default function Profile() {
+export default function  Profile() {
   const navigate = useNavigate();
 
-  const   id   = useParams();
-  console.log(id)
+  const   {_id }  = useParams();
+  console.log(_id)
   const {
     loading: loadingUser,
     error: errorUser,
     data: dataUser,
-  } = useQuery(GET_USER, {
-    variables:  id ,
+  } =  useQuery(GET_USER, {
+    variables:  {
+      id:_id,
+    },
   });
-  const userData = dataUser?.data;
+  const userData = dataUser?.user;
+  console.log(userData)
   const {
     loading: loadingMe,
     error: errorMe,
@@ -30,10 +33,10 @@ export default function Profile() {
       <Row>
         <Col>
           <div>
-            {userData.username}
+            {userData?.username}
           </div>
           <div>
-            {userData.email}
+            {userData?.email}
           </div>
         </Col>
       </Row>

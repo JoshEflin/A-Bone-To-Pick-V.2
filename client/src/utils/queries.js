@@ -35,49 +35,12 @@ query Me {
     }
   }
 `;
-export const GET_USER = `query User($id: ID!) {
+export const GET_USER =  gql`query User($id: ID!) {
   user(_id: $id) {
     _id
     username
     email
     password
-    dogCards {
-      id
-      name
-      age
-      sex
-      photo
-      breed
-      size
-      trained
-      contact {
-        email
-        phone
-        address {
-          address1
-          address2
-          city
-          state
-          postcode
-          country
-        }
-      }
-      description
-      status
-      energy
-      playfulness
-      protectiveness
-      trainability
-      barking
-      minHeightFemale
-      maxHeightFemale
-      minWeightFemale
-      maxWeightFemale
-      minHeightMale
-      maxHeightMale
-      minWeightMale
-      maxWeightMale
-    }
   }
 }
 `
