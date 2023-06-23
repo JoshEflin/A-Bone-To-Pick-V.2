@@ -68,17 +68,17 @@ export default function DoggyDash(props ) {
       console.error(err);
     }
   };
-
+  const isMobile = window.innerWidth <= 480;
   if (cardSelectedIndex === -1) {
     return (
         
         <section>
           <Row justify="center">
-          <DogCards
-            props={dogCardData}
-            fn={handleCardSelect}
-            index={cardSelectedIndex}
-          />
+            <DogCards
+              props={dogCardData}
+              fn={handleCardSelect}
+              index={cardSelectedIndex}
+            />
           </Row>
         </section>
 
@@ -87,31 +87,51 @@ export default function DoggyDash(props ) {
     if (Auth.loggedIn()) {
       return (
         <>
-          <Modal open={showModal} onCancel={handleModalClose} footer={null} width="50%">
+          <Modal
+            open={showModal}
+            onCancel={handleModalClose}
+            footer={null}
+            width="75%"
+            style={{ maxWidth: "100%" }}
+          >
             <Row>
               <Col>
-              <DogCards
-                props={dogCardData}
-                fn={handleCardSelect}
-                index={cardSelectedIndex}
-              />
-            </Col>
-            <Col>
-            <Button>Rescue</Button>
-            {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}
-            <div>{dogCardData.dogByZip[cardSelectedIndex].contact.email}</div>
-            <div>{dogCardData.dogByZip[cardSelectedIndex].contact.phone}</div>
-            {meData &&
-            meData.me.dogCards.some(
-              (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].id
-            ) ? (
-              <Button>Share me!</Button>
-            ) : (
-              <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
-            )}
+                {isMobile ? (
+                  <DogCards
+                    props={dogCardData}
+                    fn={handleCardSelect}
+                    index={cardSelectedIndex}
+                  />
+                ) : (
+                  <img
+                    href={dogCardData.dogByZip[cardSelectedIndex].photo}
+                  ></img>
+                )}
+              </Col>
+              <img
+                href={dogCardData.dogByZip[cardSelectedIndex].photo}
+                src="Dog Photo"
+              ></img>
+              <Col>
+                <Button>Rescue</Button>
+                {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}
+                <div>
+                  {dogCardData.dogByZip[cardSelectedIndex].contact.email}
+                </div>
+                <div>
+                  {dogCardData.dogByZip[cardSelectedIndex].contact.phone}
+                </div>
+                {meData &&
+                meData.me.dogCards.some(
+                  (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].id
+                ) ? (
+                  <Button>Share me!</Button>
+                ) : (
+                  <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
+                )}
 
-            {console.log(meData)}
-            </Col>
+                {console.log(meData)}
+              </Col>
             </Row>
           </Modal>
         </>
