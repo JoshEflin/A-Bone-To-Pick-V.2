@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -28,10 +28,10 @@ body {
   /* /* display: flex; */ 
   /*removed to have app fill the screen upon first entering landing page during development*/
   /* place-items: center; */
-  min-width: 80%;
+  /* min-width: 80%;
   min-height: 100vh;
-}
-
+} */
+/* 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -67,4 +67,26 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+
+/* .header {
+    background-color: #df9a5c;
 }
+.collapsed 
+.logo {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+}
+  
+.title {
+  font-size: 24px;
+  color: white;
+  margin: 5px;
+  padding-bottom: 10px;
+}
+.logobox {
+  display: flex;
+  align-items: center;
+} */

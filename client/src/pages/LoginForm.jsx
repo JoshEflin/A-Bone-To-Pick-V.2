@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
+import {Link} from 'react-router-dom';
 
 
 const Login = () => {
@@ -89,7 +90,7 @@ const Login = () => {
         <Button disabled={!(userFormData.email && userFormData.password)} type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a href="/signup">Register now!</a>
+        Or <Link to="/signup">Register now!</Link>
       </Form.Item>
     </Form>
 
