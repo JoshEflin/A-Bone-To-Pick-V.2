@@ -1,7 +1,7 @@
 import { GET_BY_ID, GET_BY_ZIP, RESCUE_DOG_TO_DB } from "../../utils/mutations";
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Input, Form, Button, Modal, Row } from "antd";
+import { Input, Form, Button, Modal, Row, Col } from "antd";
 import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
@@ -135,14 +135,16 @@ export default function DoggyDash() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <Modal open={showModal} onCancel={handleModalClose} footer={null}>
-            <section>
+          <Modal open={showModal} onCancel={handleModalClose} footer={null} width="50%">
+            <Row>
+              <Col>
               <DogCards
                 props={dogCardData}
                 fn={handleCardSelect}
                 index={cardSelectedIndex}
               />
-            </section>
+            </Col>
+            <Col>
             <Button>Rescue</Button>
             {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}
             <div>{dogCardData.dogByZip[cardSelectedIndex].contact.email}</div>
@@ -157,7 +159,8 @@ export default function DoggyDash() {
             )}
 
             {console.log(meData)}
-            <section>More Info Here</section>
+            </Col>
+            </Row>
           </Modal>
         </>
       );
