@@ -20,10 +20,16 @@ import "./App.css";
 import "./card.css";
 import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
-import Nav from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
-// import Test from "./components/TEST";
+import { Header } from "antd/es/layout/layout";
+import NavBar from './components/NavBar'
+import Auth from "./utils/auth"
+
+const logout = (event)=> {
+  event.preventDefault();
+  Auth.logout()
+}
 
 const { Content } = Layout;
 
@@ -51,23 +57,35 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 function App() {
+  const token = {
+    colorPrimary: "#df9a5c", // ugly orange
+    
+  }
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   const [count, setCount] = useState(0);
 
   return (
     <>
       <ApolloProvider client={client}>
-        <ConfigProvider>
+        <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: token.colorPrimary,
+          }
+        }}>
           <Layout>
             <Router>
-              <Nav />
-              <Content>
-                <p>This is content!!!!!  Hello World</p>
+              <NavBar />
+               <Content>
+                <p onClick = {logout}>This is content!!!!!  Hello World</p>
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<DoggyDash />} />
                 </Routes>
-              </Content>
+              </Content> 
               <Footer />
             </Router>
           </Layout>

@@ -1,68 +1,93 @@
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
-import React from 'react';
-const { Header, Content, Footer, Sider } = Layout;
+import { Layout, Anchor, Row,Menu, Col } from "antd";
+import { useState } from "react";
+import styles from "./Header/Header.module.css"
+import dogIcon from "../assets/images/dogiconedit.png";
+import { ADD_USER, LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
+import { MenuOutlined, MenuFoldOutlined } from "@ant-design/icons";
+// const { Link } = Anchor;
+const { Header } = Layout;
+
 const Test = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const [collapsed, setCollapsed] = useState(false);
+
+  const showDrawer = () => {
+    setCollapsed(true);
+  };
+  const onClose = ()  => {
+    setCollapsed(false)
+  }
+ const toggleCollapse = () => {
+  setCollapsed(!collapsed)
+ }
+  const handleMenuClick = () => {
+    console.log(hello);
+  };
+  const logout = (event) => {
+    event.preventDefault();
+    console.log("logout clicked")
+    Auth.logout();
+  };
+
   return (
-    <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['4']}
-          items={[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-            (icon, index) => ({
-              key: String(index + 1),
-              icon: React.createElement(icon),
-              label: `nav ${index + 1}`,
-            }),
-          )}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-        <Content
-          style={{
-            margin: '24px 16px 0',
-          }}
-        >
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
+      <Header className={"header"}>
+        <Row>
+          <Menu
+            // theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={["1"]}
+            className={`header menu ${collapsed ? "collapsed" : ""}`}
           >
-            content
+            <Menu.Item key="0">
+              <div className="logobox">
+                <img src={dogIcon} alt="Logo" className="logo" />
+                <h1 className="title">Bone To Pick</h1>
+              </div>
+            </Menu.Item>
+
+            <Menu.Item key="1" onClick={handleMenuClick}>
+              Profile
+            </Menu.Item>
+            <Menu.Item key="2" onClick={handleMenuClick}>
+              Login
+            </Menu.Item>
+            <Menu.Item key="3" onClick={handleMenuClick}>
+              Sign Up
+            </Menu.Item>
+            {/* Add more menu items as needed */}
+          <div className="hamburger-menu" onClick={toggleCollapse}>
+            {" "}
+            <MenuOutlined />
+            bone
           </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
-      </Layout>
-    </Layout>
+          </Menu>
+          {/* Add the rest of your content */}
+        </Row>
+      </Header>
+  //   <Header className="header">
+  //     <Row>
+  //     <div className="logobox">
+  //       <img src={dogIcon} alt="Logo" className={styles.logo} />
+  //       <h1 className={styles.title}>Bone To Pick</h1>
+  //     </div>
+  //     <div className="mobileHidden">
+  //       {/* <Anchor targetOffset={"65"}> */}
+  //         <Link to="home" title = "Home"/>
+  //         {Auth.loggedIn() ? (
+  //           <Link  onClick={logout} title="Logout" />
+  //         ) :(
+  //           <>
+  //             <Link to = "login" title="Login" />     
+  //             <Link to = "signup" title = "Signup" /></>
+
+  //         )}
+          
+  //       {/* </Anchor> */}
+  //     </div>
+  //     </Row>
+  //   </Header>
   );
 };
+
 export default Test;
