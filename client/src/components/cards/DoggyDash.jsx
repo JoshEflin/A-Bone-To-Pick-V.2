@@ -33,6 +33,7 @@ export default function DoggyDash(props ) {
     setCardSelectedIndex(index);
     console.log(index);
     setShowModal(true);
+    
   };
   const handleModalClose = () => {
     setCardSelectedIndex(-1);
@@ -69,6 +70,8 @@ export default function DoggyDash(props ) {
     }
   };
   const isMobile = window.innerWidth <= 480;
+  const dogPhoto = dogCardData && dogCardData.dogByZip[cardSelectedIndex]?.photo || '';
+  
   if (cardSelectedIndex === -1) {
     return (
         
@@ -96,22 +99,17 @@ export default function DoggyDash(props ) {
           >
             <Row>
               <Col>
-                {isMobile ? (
+                {dogCardData && isMobile ? (
+                  <img className="mobileDog" src={dogPhoto} alt="Dog Photo" />
+                ) : (
                   <DogCards
                     props={dogCardData}
                     fn={handleCardSelect}
                     index={cardSelectedIndex}
                   />
-                ) : (
-                  <img
-                    href={dogCardData.dogByZip[cardSelectedIndex].photo}
-                  ></img>
                 )}
               </Col>
-              <img
-                href={dogCardData.dogByZip[cardSelectedIndex].photo}
-                src="Dog Photo"
-              ></img>
+              {/* <img src={dogPhoto} alt="Dog Photo" /> */}
               <Col>
                 <Button>Rescue</Button>
                 {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}

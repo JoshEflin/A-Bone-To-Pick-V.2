@@ -111,6 +111,9 @@ nav{
   flex-direction: column;
   /* width:50px; */
 }
+.mobileDog {
+  max-width: 100%;
+}
 @media screen and (min-width:767px) {
   .card{
     padding:.5rem;
