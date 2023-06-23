@@ -18,11 +18,18 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import "./card.css";
-import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import SignupPage from "./pages/SignupForm";
+import LoginPage from "./pages/LoginForm";
+import Footer from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
+import { Header } from "antd/es/layout/layout";
+import NavBar from './components/NavBar'
+import Auth from "./utils/auth"
+
+const logout = (event)=> {
+  event.preventDefault();
+  Auth.logout()
+}
 
 const { Content } = Layout;
 
@@ -50,23 +57,35 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 function App() {
+  const token = {
+    colorPrimary: "#df9a5c", // ugly orange
+    
+  }
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   const [count, setCount] = useState(0);
 
   return (
     <>
       <ApolloProvider client={client}>
-        <ConfigProvider>
+        <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: token.colorPrimary,
+          }
+        }}>
           <Layout>
             <Router>
-              <Header />
-              <Content>
-                <p>This is content!!!!!  Hello World</p>
+              <NavBar />
+               <Content>
+                <p onClick = {logout}>This is content!!!!!  Hello World</p>
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<DoggyDash />} />
                 </Routes>
-              </Content>
+              </Content> 
               <Footer />
             </Router>
           </Layout>

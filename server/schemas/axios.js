@@ -5,7 +5,7 @@ const petFinderApiKey = process.env.PF_API_KEY;
 const petFinderSecret = process.env.PF_SECRET;
 const dogApiKey = process.env.DOG_API_KEY;
 
-// TO DO create a class  for dog cards, pass API data through it to serialize dog card data
+// TO DO : if a user inputs an incorrect breed, still return a valid object to the front end with attributes from pfData.
 class DogCardData {
   constructor(pfData, breed) {
     this.id = pfData.id,
