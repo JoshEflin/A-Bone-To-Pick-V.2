@@ -7,6 +7,7 @@ query Me {
       username
       email
       password
+      profilePic
       dogCards {
         id
         name
@@ -41,6 +42,7 @@ export const GET_USER =  gql`query User($id: ID!) {
     username
     email
     password
+    profilePic
   }
 }
 `

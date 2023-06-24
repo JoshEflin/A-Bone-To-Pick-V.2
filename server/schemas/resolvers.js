@@ -43,6 +43,7 @@ const resolvers = {
                 username,
                 email,
                 password,
+                profilePic,
             }
         ) => {
             const newUser = await User.create(
@@ -50,6 +51,7 @@ const resolvers = {
                     username,
                     email,
                     password,
+                    profilePic,
                 });
             const token = signToken(newUser);
             return { token, user: newUser };

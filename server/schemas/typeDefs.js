@@ -11,6 +11,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    profilePic: String
     dogCards: [Dog]
   }
 
@@ -90,6 +91,7 @@ const typeDefs = gql`
       username: String!
       email: String!
       password: String!
+      profilePic: String
     ): Auth
     login(
       email: String!

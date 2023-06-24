@@ -42,6 +42,7 @@ const Signup = () => {
       email: "",
       password: "",
       confirm: "",
+      profilePic: "",
     });
   };
 
@@ -148,6 +149,25 @@ const Signup = () => {
           name="confirm"
           onChange={handleInputChange}
           value={userFormData.confirm}
+        />
+      </Form.Item>
+      <Form.Item
+        name="profilePic"
+        label="Image Link"
+        tooltip="Please give us a link for an image of you!"
+        rules={[
+          {
+            required: false,
+            message: "Please give us a link for an image of you!",
+            whitespace: true,
+          },
+        ]}
+      >
+        <Input
+          placeholder="Image Link"
+          name="profilePic"
+          onChange={handleInputChange}
+          value={userFormData.profilePic}
         />
       </Form.Item>
       <Form.Item>
