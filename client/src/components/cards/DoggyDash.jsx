@@ -149,7 +149,7 @@ export default function DoggyDash() {
             <div>{dogCardData.dogByZip[cardSelectedIndex].contact.phone}</div>
             {meData &&
             meData.me.dogCards.some(
-              (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].dogId
+              (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].id
             ) ? (
               <Button>Share me!</Button>
             ) : (

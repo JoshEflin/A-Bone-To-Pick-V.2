@@ -95,6 +95,9 @@ export const RESCUE_DOG_TO_DB = gql`
         email
         password
         profilePic
+        dogCards {
+          id
+        }
       }
     }
   }
