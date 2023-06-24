@@ -30,11 +30,12 @@ export const LOGIN = gql`
     login(email: $email, password: $password) {
       token
     }
-  }`;
+  }
+`;
 
 export const RESCUE_DOG_TO_DB = gql`
-  mutation rescueDogtoDB(
-    $rescueDogtoDbId: Int!
+  mutation SaveDog(
+    $dogId: Int!
     $userId: ID
     $name: String
     $age: String
@@ -59,9 +60,10 @@ export const RESCUE_DOG_TO_DB = gql`
     $maxHeightMale: Float
     $minWeightMale: Float
     $maxWeightMale: Float
-    
   ) {
-    rescueDogtoDB(
+    saveDog(
+      dogId: $dogId
+      userId: $userId
       name: $name
       age: $age
       sex: $sex
@@ -85,10 +87,15 @@ export const RESCUE_DOG_TO_DB = gql`
       maxHeightMale: $maxHeightMale
       minWeightMale: $minWeightMale
       maxWeightMale: $maxWeightMale
-      dogId: $rescueDogtoDbId
-      userId: $userId
     ) {
       token
+      user {
+        _id
+        username
+        email
+        password
+        profilePic
+      }
     }
   }
 `;

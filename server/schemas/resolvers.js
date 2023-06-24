@@ -62,7 +62,7 @@ const resolvers = {
       return { token, user };
     },
     // addDog: needs to be created.  I am not sure the how similar it will be to the query dogById.
-    rescueDogtoDB: async (
+    saveDog: async (
       parent,
       {
         userId,

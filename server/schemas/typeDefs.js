@@ -100,7 +100,7 @@ const typeDefs = gql`
       password: String!
     ): Auth
 
-    rescueDogtoDB(
+    saveDog(
       userId: ID
       dogId: Int!
       name: String

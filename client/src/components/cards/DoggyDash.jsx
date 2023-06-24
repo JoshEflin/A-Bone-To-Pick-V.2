@@ -84,7 +84,7 @@ export default function DoggyDash() {
     try {
       const { data } = await rescueDogtoDB({
         variables: {
-          rescueDogtoDbId: myDog.id,
+          dogId: myDog.id,
           userId:meData.me._id,
           ...myDog,
           contact: contactData,
@@ -110,17 +110,13 @@ export default function DoggyDash() {
           <Form.Item label="Enter Breed " name="BreedSearch">
             <Input placeholder="Breed" onChange={handleBreedSearch} />
           </Form.Item>
-          {/* <h2> SEARCH ME</h2> */}
-          {/* <label htmlFor="dog-search"></label>
-    <input type="text" onChange={(handleZipSearch)} value = {zipString} /> */}
-          {/* <label htmlFor="data"></label> */}
+    
           <Form.Item name="submit">
             <Button type="primary" onClick={handleSearchSubmit}>
               Search{" "}
             </Button>
           </Form.Item>
-          {/* <input type="text" onChange={handleBreedSearch} value = {breedString} />
-    <button type = "submit" onClick={handleSearchSubmit}></button> */}
+          
         </Form>
         <section>
           <Row justify="center">
