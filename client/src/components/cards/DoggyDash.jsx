@@ -69,6 +69,7 @@ export default function DoggyDash() {
   };
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardData.dogByZip[cardSelectedIndex];
+    console.log(myDog)
     const contactData = {
       email: myDog.email,
       phone: myDog.phone,
@@ -83,7 +84,8 @@ export default function DoggyDash() {
     try {
       const { data } = await rescueDogtoDB({
         variables: {
-          addDogId: myDog.id,
+          rescueDogtoDbId: myDog.id,
+          userId:meData.me._id,
           ...myDog,
           contact: contactData,
         },
@@ -151,7 +153,7 @@ export default function DoggyDash() {
             <div>{dogCardData.dogByZip[cardSelectedIndex].contact.phone}</div>
             {meData &&
             meData.me.dogCards.some(
-              (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].id
+              (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].dogId
             ) ? (
               <Button>Share me!</Button>
             ) : (

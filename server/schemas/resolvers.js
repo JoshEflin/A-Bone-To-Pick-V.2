@@ -94,7 +94,8 @@ const resolvers = {
       context
     ) => {
     
-      console.log(userId);
+      console.log(userId, " this shuld be user id");
+      console.log(dogId)
       console.log("From addDog mutation");
 
       if (dogId) {
@@ -104,8 +105,8 @@ const resolvers = {
         // saves dog to the user
         if (savableDog === null ||undefined) {
           const newDog = await Dog.create({
-            _id,
-            id,
+          
+            id:dogId ,
             name,
             age,
             sex,
@@ -135,13 +136,21 @@ const resolvers = {
             { _id: userId },
             {
               $addToSet: {
-                dogCards: newDog._id,
+                dogCards: newDog._id
               },
             },
             {
               new: true,
             }
           );
+          const newDogUser = await Dog.findByIdAndUpdate(
+            { _id: newDog._id },
+              {
+                $addToSet: {
+                  users: userId,
+                },
+              }
+          )
           const token = signToken(newUserDog);
           return {
             token,
@@ -164,7 +173,7 @@ const resolvers = {
                 new: true,
               }
             );
-            console.log(context.user)
+            console.log(newUserDog)
             const updateDog = await Dog.findOneAndUpdate(
                 
               { id: savableDog.id },
