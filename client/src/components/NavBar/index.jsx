@@ -7,10 +7,12 @@ import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
 import Auth from '../../utils/auth'
 import dogIcon from '../../assets/images/dogiconedit.png'
+import SearchBar from "../SearchBar";
 
 const { Header } = Layout;
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {DogCardData, setDogCardData} = props
 
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
@@ -66,6 +68,7 @@ const Navbar = () => {
           </div>
         </Layout.Header>
       </Layout>
+      <SearchBar setDogCardData={setDogCardData}/>
     </nav>
   );
 };
