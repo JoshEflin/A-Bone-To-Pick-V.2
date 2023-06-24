@@ -25,13 +25,17 @@ import DoggyDash from "./components/cards/DoggyDash";
 import ProfilePage from "./pages/ProfilePage";
 import NavBar from './components/NavBar';
 import Auth from "./utils/auth";
+import SearchBar from "./components/SearchBar";
+
+const { Content } = Layout;
+
+
 
 const logout = (event)=> {
   event.preventDefault();
   Auth.logout()
 }
 
-const { Content } = Layout;
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
@@ -65,6 +69,8 @@ function App() {
     token: { colorBgContainer },
   } = theme.useToken();
   const [count, setCount] = useState(0);
+  const [dogCardData, setDogCardData] = useState(null);
+ 
 
   return (
     <>
@@ -77,13 +83,13 @@ function App() {
         }}>
           <Layout>
             <Router>
-              <NavBar />
+              <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData}/>
                <Content>
                 <p onClick = {logout}>This is content!!!!!  Hello World</p>
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
-                  <Route path="/" element={<DoggyDash />} />
+                  <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData}  />}/>
                   <Route path="/profile/:_id" element={<ProfilePage />} />
                 </Routes>
               </Content> 

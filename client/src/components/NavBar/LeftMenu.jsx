@@ -13,7 +13,8 @@ const LeftMenu = ({ mode }) => {
       mode={mode}
       
     >
-      <Menu.Item key="Home">Home</Menu.Item>
+      <Menu.Item key="Home"><Link to='/'>Home</Link></Menu.Item>
+      
       <Menu.Item key = "search">Find Doggos</Menu.Item>
       {Auth.loggedIn() ? (
         <>

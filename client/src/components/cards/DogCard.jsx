@@ -91,7 +91,7 @@ function ProtectIcon({ num }) {
 }
 
 export default function DogCards({ props, fn, index }) {
-  // console.log(index)
+  console.log(props)
   if (!props ) {
     return <div>No dogs found.</div>;
   } else if(index !== -1) {

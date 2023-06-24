@@ -5,15 +5,19 @@ import { Input, Form, Button, Modal, Row, Col } from "antd";
 import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
+import SearchBar from "../SearchBar";
 
-export default function DoggyDash() {
+export default function DoggyDash(props ) {
+  const {dogCardData, setDogCardData} = props;
+  console.log(dogCardData);
+  console.log(setDogCardData)
   const [zipString, setZipString] = useState("");
   const [idString, setIdString] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [form] = Form.useForm();
   const [breedString, setBreedString] = useState("");
   const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
-  const [dogCardData, setDogCardData] = useState(null);
+  // const [dogCardData, setDogCardData] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [rescueDogtoDB, { error }] = useMutation(RESCUE_DOG_TO_DB);
   const [DogsByZip, { error: errorZip, data: dataZip }] =
@@ -24,39 +28,6 @@ export default function DoggyDash() {
     data: meData,
     refetch: refetchMe,
   } = useQuery(GET_ME);
-
-  // const [DogsById, {error:errorId, data:dataId}] = useMutation(GET_BY_ID);
-  const saveDog = (data) => {
-    const [saveMyDogCard, { error: errorDogCard, data: dataDogCard }] =
-      useMutation(RESCUE_DOG_TO_DB, {
-        variables: { ...data },
-      });
-  };
-  const handleZipSearch = (event) => {
-    const { name, value } = event.target;
-    setZipString(value);
-  };
-  const handleBreedSearch = (event) => {
-    const { name, value } = event.target;
-    setBreedString(value);
-  };
-  const handleSearchSubmit = async (event) => {
-    event.preventDefault();
-
-    const searchData = {
-      zipCode: zipString,
-      breed: breedString,
-    };
-    try {
-      const { data } = await DogsByZip({
-        variables: { ...searchData },
-      });
-      await setDogCardData(data);
-      console.log(dogCardData, " Dog-Card-Data");
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const handleCardSelect = (index) => {
     setCardSelectedIndex(index);
@@ -100,26 +71,7 @@ export default function DoggyDash() {
 
   if (cardSelectedIndex === -1) {
     return (
-      <>
-        <Form layout="vertical" form={form}>
-          <Form.Item label="Enter Zip Code" name="zipSearch">
-            <Input placeholder=" ZipCode" onChange={handleZipSearch} />
-          </Form.Item>
-          <Form.Item label="Enter Breed " name="BreedSearch">
-            <Input placeholder="Breed" onChange={handleBreedSearch} />
-          </Form.Item>
-          {/* <h2> SEARCH ME</h2> */}
-          {/* <label htmlFor="dog-search"></label>
-    <input type="text" onChange={(handleZipSearch)} value = {zipString} /> */}
-          {/* <label htmlFor="data"></label> */}
-          <Form.Item name="submit">
-            <Button type="primary" onClick={handleSearchSubmit}>
-              Search{" "}
-            </Button>
-          </Form.Item>
-          {/* <input type="text" onChange={handleBreedSearch} value = {breedString} />
-    <button type = "submit" onClick={handleSearchSubmit}></button> */}
-        </Form>
+        
         <section>
           <Row justify="center">
           <DogCards
@@ -129,7 +81,7 @@ export default function DoggyDash() {
           />
           </Row>
         </section>
-      </>
+
     );
   } else {
     if (Auth.loggedIn()) {
