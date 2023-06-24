@@ -33,7 +33,6 @@ export default function DoggyDash(props ) {
     setCardSelectedIndex(index);
     console.log(index);
     setShowModal(true);
-    
   };
   const handleModalClose = () => {
     setCardSelectedIndex(-1);
@@ -70,8 +69,9 @@ export default function DoggyDash(props ) {
     }
   };
   const isMobile = window.innerWidth <= 480;
-  const dogPhoto = dogCardData && dogCardData.dogByZip[cardSelectedIndex]?.photo || '';
-  
+  const dogPhoto =
+    (dogCardData && dogCardData.dogByZip[cardSelectedIndex]?.photo) || "";
+
   if (cardSelectedIndex === -1) {
     return (
         
@@ -123,7 +123,11 @@ export default function DoggyDash(props ) {
                 meData.me.dogCards.some(
                   (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].id
                 ) ? (
-                  <Button>Share me!</Button>
+                  <Button
+                    href={`/singleDog/${dogCardData.dogByZip[cardSelectedIndex].id}`}
+                  >
+                    Share me!
+                  </Button>
                 ) : (
                   <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
                 )}
