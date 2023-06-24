@@ -47,7 +47,7 @@ export const RESCUE_DOG_TO_DB = gql`
     $maxHeightMale: Float, 
     $minWeightMale: Float, 
     $maxWeightMale: Float) {
-    addDog(id: $addDogId, 
+    rescueDogtoDB(id: $addDogId, 
       name: $name, 
       age: $age, 
       sex: $sex, 

@@ -4,6 +4,7 @@ import { Col } from 'antd'
 
 class DogCardClass {
   constructor(data) {
+    (this._id = data._id),
     (this.id = data.id),
       (this.name = data.name),
       (this.age = data.age),

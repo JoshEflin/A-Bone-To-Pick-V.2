@@ -51,6 +51,7 @@ const typeDefs = gql`
   }
 
   type Dog {
+    _id: ID
     id: Int!
     name: String
     age: String
@@ -97,7 +98,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addDog(
+    rescueDogtoDB(
       _id: ID
       id: Int!
       name: String

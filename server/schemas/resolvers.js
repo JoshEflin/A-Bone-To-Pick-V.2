@@ -71,9 +71,10 @@ const resolvers = {
             return { token, user };
         },
         // addDog: needs to be created.  I am not sure the how similar it will be to the query dogById.  
-        addDog: async (
+        rescueDogtoDB: async (
             parent, 
             { 
+                _id,
                 id, 
                 name, 
                 age, 
@@ -101,8 +102,30 @@ const resolvers = {
             },
             context
             ) => {
+                console.log("From addDog mutation")
                 if (context.user) {
+                    const savableDog = await Dog.findOne({id: id})
+                    if (savableDog.id === id) {
+                        console.log("Dog already exists but here's a card!");
+                        const newUserDog = await User.findOneAndUpdate(
+                            { _id: context.user._id },
+                            {
+                                $addToSet: {
+                                    dogCards: savableDog._id
+                                },
+                            },
+                            {
+                                new: true,
+                            }
+                        );
+                        const token = signToken(newUserDog);
+                        return {
+                            token,
+                            dog: savableDog,
+                        };
+                    }
                     const newDog = await Dog.create({
+                        _id,
                         id, 
                         name, 
                         age, 
