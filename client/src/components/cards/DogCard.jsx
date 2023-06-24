@@ -1,10 +1,11 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
-import { Col } from 'antd'
+import { Col } from "antd";
 
 class DogCardClass {
   constructor(data) {
-    (this.id = data.id),
+    (this._id = data._id),
+      (this.dogId = data.id),
       (this.name = data.name),
       (this.age = data.age),
       (this.sex = data.sex),
@@ -94,13 +95,13 @@ export default function DogCards({ props, fn, index }) {
   console.log(props)
   if (!props ) {
     return <div>No dogs found.</div>;
-  } else if(index !== -1) {
-    const dogCard = new DogCardClass(props.dogByZip[index])
+  } else if (index !== -1) {
+    const dogCard = new DogCardClass(props.dogByZip[index]);
     // console.log(dogCard)
     return (
       <Col>
-      <div data-id={dogCard.id}  className="card" >
-        <div className="card-border">
+        <div  className="card">
+          <div className="card-border">
             <div className="card-header">
               <span className="name">{dogCard.name}</span>
               <span className="breed">{dogCard.breed}</span>
@@ -147,10 +148,9 @@ export default function DogCards({ props, fn, index }) {
               </div>
             </div>
           </div>
-      </div>
+        </div>
       </Col>
     );
-  
   } else {
     // console.log(props)
     const { dogByZip } = props;
@@ -158,7 +158,12 @@ export default function DogCards({ props, fn, index }) {
       const dogCard = new DogCardClass(card);
       // console.log(dogCard);
       return (
-        <div data-id={dogCard.id} key={i} className="card" onClick={() => fn(i)}>
+        <div
+          
+          key={i}
+          className="card"
+          onClick={() => fn(i)}
+        >
           <div className="card-border">
             <div className="card-header">
               <span className="name">{dogCard.name}</span>

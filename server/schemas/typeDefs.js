@@ -51,6 +51,7 @@ const typeDefs = gql`
   }
 
   type Dog {
+    _id: ID
     id: Int!
     name: String
     age: String
@@ -75,6 +76,7 @@ const typeDefs = gql`
     maxHeightMale: Float
     minWeightMale: Float
     maxWeightMale: Float
+    users: [User]
   }
 
   type Query {
@@ -97,9 +99,10 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addDog(
-      _id: ID
-      id: Int!
+
+    saveDog(
+      userId: ID
+      dogId: Int!
       name: String
       age: String
       sex: String

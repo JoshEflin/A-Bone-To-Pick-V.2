@@ -40,6 +40,7 @@ export default function DoggyDash(props ) {
   };
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardData.dogByZip[cardSelectedIndex];
+    console.log(myDog)
     const contactData = {
       email: myDog.email,
       phone: myDog.phone,
@@ -54,7 +55,8 @@ export default function DoggyDash(props ) {
     try {
       const { data } = await rescueDogtoDB({
         variables: {
-          addDogId: myDog.id,
+          dogId: myDog.id,
+          userId:meData.me._id,
           ...myDog,
           contact: contactData,
         },

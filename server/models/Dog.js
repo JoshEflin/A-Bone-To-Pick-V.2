@@ -102,6 +102,12 @@ const DogSchema = new Schema(
         maxWeightMale: {
             type: Number,  
         },
+        users: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
 
     }
 );
