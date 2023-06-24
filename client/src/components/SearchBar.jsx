@@ -41,7 +41,7 @@ export default function SearchBar({setDogCardData}, dogCardData) {
 
   return (
    
-    <Form layout="vertical" form={form}>
+    <Form  className = "search-form" layout="horizontal" form={form}>
       <Form.Item label="Enter Zip Code" name="zipSearch">
         <Input placeholder=" ZipCode" onChange={handleZipSearch} />
       </Form.Item>

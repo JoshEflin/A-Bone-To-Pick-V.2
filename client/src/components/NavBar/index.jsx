@@ -35,6 +35,7 @@ const Navbar = (props) => {
   };
 
   return (
+    <>
     <nav className="navbar">
       <Layout>
         <Layout.Header className="header">
@@ -68,8 +69,9 @@ const Navbar = (props) => {
           </div>
         </Layout.Header>
       </Layout>
-      <SearchBar setDogCardData={setDogCardData}/>
     </nav>
+      <SearchBar setDogCardData={setDogCardData}/>
+      </>
   );
 };
 
