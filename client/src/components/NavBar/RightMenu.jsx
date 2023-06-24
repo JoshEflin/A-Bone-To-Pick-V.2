@@ -11,13 +11,11 @@ const logout = (event) => {
 
 const RightMenu = ({ mode }) => {
   return (
-    <Menu
+    <Menu 
       mode={mode}
-      style={{
-        backgroundColor: "#df9a5c",
-      }}
+      
     >
-      <Menu.SubMenu
+      <Menu.SubMenu 
         title={
           <>
             <Avatar icon={<UserOutlined />} />

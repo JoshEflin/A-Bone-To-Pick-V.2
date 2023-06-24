@@ -11,17 +11,22 @@ const LeftMenu = ({ mode }) => {
   return (
     <Menu
       mode={mode}
-      style={{
-        backgroundColor: "#df9a5c",
-      }}
+      
     >
       <Menu.Item key="Home">Home</Menu.Item>
+      <Menu.Item key = "search">Find Doggos</Menu.Item>
       {Auth.loggedIn() ? (
+        <>
+        <Menu.Item key="Profile">
+          <Link to='/' ></Link>
+        </Menu.Item>
+        {/* browse doggyy database */}
         <Menu.Item key="Logout">
           <Link to="/" onClick={logout}>
             Logout
           </Link>
         </Menu.Item>
+        </>
       ) : (
         <>
           <Menu.Item key="Login">

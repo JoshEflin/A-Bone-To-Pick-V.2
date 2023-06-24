@@ -22,9 +22,8 @@ import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
 import Footer from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
-import { Header } from "antd/es/layout/layout";
-import NavBar from './components/NavBar'
-import Auth from "./utils/auth"
+import NavBar from './components/NavBar';
+import Auth from "./utils/auth";
 
 const logout = (event)=> {
   event.preventDefault();

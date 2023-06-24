@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Layout, Button, Drawer,theme, Row, Col} from "antd";
+
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Layout, Button, Drawer } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
-import { MenuOutlined } from "@ant-design/icons";
-import { useLocation } from "react-router-dom";
 import Auth from '../../utils/auth'
 import dogIcon from '../../assets/images/dogiconedit.png'
-import {Link} from 'react-router-dom'
+
+const { Header } = Layout;
 
 const Navbar = () => {
 
@@ -23,60 +25,49 @@ const Navbar = () => {
     setVisible(false);
   }, [location]);
   // Upto here
-  
+
   const logout = (event) => {
     event.preventDefault();
     console.log("logout clicked")
     Auth.logout();
   };
+
   return (
     <nav className="navbar">
-    
-        <Row>
       <Layout>
-        <Layout.Header className="header" style={
-          {
-            backgroundColor:"#df9a5c",
-          }
-        }>
-          {/* <Col span={8}> */}
+        <Layout.Header className="header">
+            <img src={dogIcon} alt="Logo" className="logo" />
           <div className="logobox">
-          <img src={dogIcon} alt="Logo" className="logo" />
-          <h1 className="title"> Bone To Pick</h1>
-          
-          
-             
-            </div>
-            {/* </Col> */}
-            {/* <Col span={8}> */}
-              <LeftMenu mode={"horizontal"} />
-            <Button className="menuButton" type="text" onClick={showDrawer}>
-              <MenuOutlined />
-            </Button>
-            {/* </Col> */}
+            <h1 className="title">A Bone To Pick</h1>
+
+          </div>
             <div className="rightMenu">
               <RightMenu mode={"horizontal"} />
             </div>
-
+          <div className="navbar-menu">
+            <div className="leftMenu">
+              <LeftMenu mode={"horizontal"} />
+            </div>
+            <Button className="menuButton" type="text" onClick={showDrawer}>
+              <MenuOutlined />
+            </Button>
+            
             <Drawer
-              title={"Brand Here"}
+              title={"A Bone To Pick"}
               placement="right"
               closable={true}
               onClose={showDrawer}
               open={visible}
               style={{ zIndex: 99999 }}
-              >
+            >
               <LeftMenu mode={"inline"} />
               <RightMenu mode={"inline"} />
             </Drawer>
-          
+          </div>
         </Layout.Header>
       </Layout>
-        </Row>
-      
     </nav>
   );
 };
-
 
 export default Navbar;
