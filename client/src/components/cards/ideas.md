@@ -14,3 +14,11 @@ doginfoDisplay
  dog card array
 
   set state variable  for card index 
+
+
+  Move Form into Nav,
+
+  Change Z index of side menu on phones
+  put our shit into the stock nav
+
+  

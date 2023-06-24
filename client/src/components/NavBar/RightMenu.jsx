@@ -40,7 +40,35 @@ const RightMenu = ({ mode }) => {
         </Menu.SubMenu>
       </Menu>
     );
+  } else {
+    return (
+      <Menu 
+      mode={mode}
+      
+    >
+      <Menu.SubMenu 
+        title={
+          <>
+            <Avatar icon={<UserOutlined />} />
+            <span className="username">John Doe</span>
+          </>
+        }
+      >
+        <Menu.Item key="profile">
+          <CodeOutlined /> <Link to="/profile">Profile</Link>
+        </Menu.Item>
+        <Menu.Item key="logout">
+          <Link to="/" onClick={logout}>
+            <LogoutOutlined /> Logout
+          </Link>
+        </Menu.Item>
+      </Menu.SubMenu>
+    </Menu>
+  );
+
   }
 };
 
 export default RightMenu;
+
+
