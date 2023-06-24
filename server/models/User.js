@@ -21,6 +21,10 @@ const userSchema = new Schema(
             min: [8, 'must be at least 8 characters'],
             max: [25, 'must be less than 25 characters'],
         },
+        profilePic: {
+            type: String,
+            required: false,
+          },
         dogCards: [
             {
                 type: Schema.Types.ObjectId,

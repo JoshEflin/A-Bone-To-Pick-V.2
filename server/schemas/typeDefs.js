@@ -11,6 +11,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    profilePic: String
     dogCards: [Dog]
   }
 
@@ -78,7 +79,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(username: String): User
+    user(_id: ID!): User
     me: User
     allDogs: [Dog]
   }
@@ -90,6 +91,7 @@ const typeDefs = gql`
       username: String!
       email: String!
       password: String!
+      profilePic: String
     ): Auth
     login(
       email: String!

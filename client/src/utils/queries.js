@@ -7,6 +7,7 @@ query Me {
       username
       email
       password
+      profilePic
       dogCards {
         id
         name
@@ -34,4 +35,14 @@ query Me {
       }
     }
   }
+`;
+export const GET_USER =  gql`query User($id: ID!) {
+  user(_id: $id) {
+    _id
+    username
+    email
+    password
+    profilePic
+  }
+}
 `
