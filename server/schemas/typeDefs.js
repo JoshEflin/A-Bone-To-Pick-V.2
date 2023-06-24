@@ -99,9 +99,10 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+
     rescueDogtoDB(
-      _id: ID
-      id: Int!
+      userId: ID
+      dogId: Int!
       name: String
       age: String
       sex: String
@@ -125,7 +126,7 @@ const typeDefs = gql`
       maxHeightMale: Float
       minWeightMale: Float
       maxWeightMale: Float
-    ): [User]
+    ): Auth
   }
 `;
 
