@@ -76,6 +76,7 @@ const typeDefs = gql`
     maxHeightMale: Float
     minWeightMale: Float
     maxWeightMale: Float
+    users: [User]
   }
 
   type Query {
@@ -124,7 +125,7 @@ const typeDefs = gql`
       maxHeightMale: Float
       minWeightMale: Float
       maxWeightMale: Float
-    ): Auth
+    ): [User]
   }
 `;
 

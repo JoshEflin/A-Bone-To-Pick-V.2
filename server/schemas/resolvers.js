@@ -23,7 +23,7 @@ const resolvers = {
             throw new AuthenticationError('Please log in to do this.');
         },
         allDogs: async () =>
-            Dog.find(),
+            Dog.find().populate(['users']),
         },
     Mutation: {
         dogById: async (parent, { dogID, breed }) => {
@@ -104,25 +104,37 @@ const resolvers = {
             ) => {
                 console.log("From addDog mutation")
                 if (context.user) {
-                    const savableDog = await Dog.findOne({id: id})
-                    if (savableDog.id === id) {
-                        console.log("Dog already exists but here's a card!");
-                        const newUserDog = await User.findOneAndUpdate(
-                            { _id: context.user._id },
-                            {
-                                $addToSet: {
-                                    dogCards: savableDog._id
+                    if (id) {
+                        const savableDog = await Dog.findOne({id: id})
+                    } //check to see if a dog is already in database.  If it is
+                        // saves dog to the user
+                        if (savableDog.id === id) {
+                            console.log("Dog already exists but here's a card!");
+                            const newUserDog = await User.findOneAndUpdate(
+                                { _id: context.user._id },
+                                {
+                                    $addToSet: {
+                                        dogCards: savableDog._id
+                                    },
                                 },
-                            },
                             {
                                 new: true,
                             }
+                        );
+                        const updateDog = await Dog.findOneAndUpdate(
+                             { id: savableDog.id },
+                             {
+                                $addToSet: {
+                                    users: context.user._id 
+                                }
+                             }
                         );
                         const token = signToken(newUserDog);
                         return {
                             token,
                             dog: savableDog,
                         };
+
                     }
                     const newDog = await Dog.create({
                         _id,
