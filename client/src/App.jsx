@@ -22,6 +22,7 @@ import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
 import Footer from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
+import ProfilePage from "./pages/ProfilePage";
 import { Header } from "antd/es/layout/layout";
 import NavBar from './components/NavBar'
 import Auth from "./utils/auth"
@@ -84,6 +85,7 @@ function App() {
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<DoggyDash />} />
+                  <Route path="/profile/:_id" element={<ProfilePage />} />
                 </Routes>
               </Content> 
               <Footer />

@@ -8,9 +8,12 @@ const resolvers = {
     Query: {
         users: async () =>
             User.find().populate(['dogCards']),
-        // finding one user by username.  Username parameter might be changed to another parameter
-        user: async (parent, { username }) =>
-            User.findOne({ username }).populate(['dogCards']),
+        // finding one user by _id.   parameter might be changed to another parameter
+        user: async (parent,  id ) =>  {
+            console.log(id);
+            
+            return User.findOne({ _id:id._id }).populate(['dogCards']
+        )},
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate(
@@ -40,6 +43,7 @@ const resolvers = {
                 username,
                 email,
                 password,
+                profilePic,
             }
         ) => {
             const newUser = await User.create(
@@ -47,6 +51,7 @@ const resolvers = {
                     username,
                     email,
                     password,
+                    profilePic,
                 });
             const token = signToken(newUser);
             return { token, user: newUser };
