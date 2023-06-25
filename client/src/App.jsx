@@ -40,7 +40,7 @@ const logout = (event)=> {
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "/graphql",
 });
 
 // sets request middleware to attach JWT token to each request with authorization header
