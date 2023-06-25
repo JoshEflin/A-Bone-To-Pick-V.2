@@ -48,7 +48,7 @@ const Login = () => {
   return (
     <>
    
-    <Form form={form} onFinish={handleFormSubmit}>
+    <Form id="login-form" form={form} onFinish={handleFormSubmit}>
       {error && <Alert dismissible message="Error" description="Something went wrong with your login credentials!" type="error"
       closable onClose={() => setShowAlert(false)} show={showAlert} variant='danger'></Alert>} 
          

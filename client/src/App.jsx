@@ -20,7 +20,7 @@ import "./App.css";
 import "./card.css";
 import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
-import Footer from "./components/Footer/Footer";
+import Foot from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
 import ProfilePage from "./pages/ProfilePage";
 import NavBar from './components/NavBar';
@@ -90,10 +90,10 @@ function App() {
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData}  />}/>
-                  <Route path="/profile/:_id" element={<ProfilePage />} />
+                  <Route path="/profile/:_id" element={<ProfilePage setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
                 </Routes>
               </Content> 
-              <Footer />
+              <Foot />
             </Router>
           </Layout>
         </ConfigProvider>

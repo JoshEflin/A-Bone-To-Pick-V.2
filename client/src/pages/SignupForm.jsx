@@ -47,7 +47,7 @@ const Signup = () => {
   };
 
   return (
-    <Form form={form} onFinish={handleFormSubmit}>
+    <Form id= "signup-form" form={form} onFinish={handleFormSubmit}>
       {error && (
         <Alert
           dismissible
