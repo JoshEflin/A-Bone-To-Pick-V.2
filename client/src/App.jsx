@@ -81,11 +81,11 @@ function App() {
             colorPrimary: token.colorPrimary,
           }
         }}>
-          <Layout>
+          <Layout style={{minHeight:'100vh', alignItems:'center'}}>
             <Router>
               <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData}/>
-               <Content>
-                <p onClick = {logout}>This is content!!!!!  Hello World</p>
+               <Content style = {{alignItems:'center', maxWidth:'80%'}}>
+                {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />

@@ -17,7 +17,7 @@ const RightMenu = ({ mode }) => {
       <Menu
         mode={mode}
         style={{
-          backgroundColor: "#df9a5c",
+          backgroundColor: "#df9a5c"
         }}
       >
         <Menu.SubMenu
