@@ -40,8 +40,8 @@ export default function Profile(props) {
   if (meData && userData && meData._id === userData._id) {
     return (
       <>
-        <Row>
-        <Col>
+        <Row className={styles.profileRow}>
+        <Col span={6}>
           <div>
             {imageData ? (
               <img
@@ -57,11 +57,11 @@ export default function Profile(props) {
               />
             )}
           </div>
-          </Col>
-          <Col>
-          <DoggyDash setDogCardData={setDogCardData} dogCardData={dogCardData}/>
             <div>meProfile username is {userData?.username}</div>
             <div>meProfile email is {userData?.email}</div>
+          </Col>
+          <Col className={styles.doggyDash}  sm={24} md={16}>
+          <DoggyDash setDogCardData={setDogCardData} dogCardData={dogCardData}/>
           </Col>
         </Row>
       </>

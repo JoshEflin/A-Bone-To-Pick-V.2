@@ -1,4 +1,11 @@
 .profilePic{
-    width: 300px;
+    width: 200px;
     border-radius: 100%;
 }
+
+@media (max-width: 768px) {
+    .profileRow {
+      display: flex;
+      flex-direction: column;
+    }
+  }

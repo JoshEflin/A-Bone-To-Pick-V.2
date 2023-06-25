@@ -22,7 +22,7 @@ const LeftMenu = ({ mode, setDogCardData }) => {
       {Auth.loggedIn() ? (
         <>
           <Menu.Item key="Profile">
-            <Link to="/"></Link>
+            <Link to="/"></Link>  
           </Menu.Item>
           {/* browse doggyy database */}
           <Menu.Item key="Logout">
