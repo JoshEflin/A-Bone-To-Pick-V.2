@@ -11,20 +11,26 @@ const logout = (event) => {
 const LeftMenu = ({ mode, setDogCardData }) => {
   // console.log(setDogCardData);
   return (
-    <Menu  className = "left-menu2" mode={mode}>
+    <Menu
+      style={{ alignItems: "center", justifyContent: "center" }}
+      className="left-menu2"
+      mode={mode}
+    >
       <Menu.Item key="search-api">
         <SearchBar setDogCardData={setDogCardData} />
       </Menu.Item>
       <Menu.Item key="Home">
         <Link to="/">Home</Link>
       </Menu.Item>
-      <Menu.Item key="search-db">Find Doggos</Menu.Item>
+      <Menu.Item key="search-db">Popular Dogs</Menu.Item>
       {Auth.loggedIn() ? (
         <>
           <Menu.Item key="Profile">
-            <Link to="/"></Link>  
+            <Link to="/">Profile</Link>
           </Menu.Item>
-          {/* browse doggyy database */}
+          <Menu.Item key="friends">
+            <Link to='myFriends'>Friends</Link>
+          </Menu.Item>
           <Menu.Item key="Logout">
             <Link to="/" onClick={logout}>
               Logout

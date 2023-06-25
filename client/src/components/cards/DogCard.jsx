@@ -1,6 +1,8 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
+import drawnLogo from "../../assets/images/homepagelogo.png"
 import { Col } from "antd";
+import {Link} from 'react-router-dom'
 
 class DogCardClass {
   constructor(data) {
@@ -94,7 +96,21 @@ function ProtectIcon({ num }) {
 export default function DogCards({ props, fn, index }) {
   console.log(props);
   if (!props) {
-    return <div>No dogs found.</div>;
+    return (
+    <div classname='empty-doggy-dash'>
+      <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
+      <div>
+        A Bone To Pick is  the perfect dog adoption website. It let's you search your area for dogs in need of a new home
+      </div>
+      <Link to='/login'>
+      <img  id = "old-logo" src={drawnLogo} alt="a poorly drawn image of a dog" />
+      </Link>
+      <div>
+      Just enter a Zip Code and Breed into the search bar above to start your journey. Can you collect them all?
+      </div>
+    </div>
+    );
+    
   } else if (index !== -1) {
     const dogCard = new DogCardClass(props.dogByZip[index]);
     // console.log(dogCard)

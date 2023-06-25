@@ -101,10 +101,11 @@ nav{
   display: flex;
   flex-direction: column;
   margin-right:2rem;
-  color:#59594A;
-  }
+  color:#3a251d;
+  
+}
 .evil {
-    color:#CF5C36;
+color:#59594A;
 }
 .power-level{
    display: flex;

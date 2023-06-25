@@ -39,7 +39,7 @@ const logout = (event)=> {
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "/graphql",
 });
 
 // sets request middleware to attach JWT token to each request with authorization header
@@ -81,11 +81,11 @@ function App() {
             colorPrimary: token.colorPrimary,
           }
         }}>
-          <Layout>
+          <Layout style={{minHeight:'100vh', alignItems:'center'}}>
             <Router>
               <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData}/>
-               <Content>
-                <p onClick = {logout}>This is content!!!!!  Hello World</p>
+               <Content style = {{alignItems:'center', maxWidth:'80%'}}>
+                {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />

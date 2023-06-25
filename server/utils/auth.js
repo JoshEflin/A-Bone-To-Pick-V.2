@@ -1,7 +1,7 @@
 // taken straight from brew buddies auth.js
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const expiration = '2h';
+const expiration = "2h";
 
 module.exports = {
   // protects routes via authentication
@@ -10,7 +10,7 @@ module.exports = {
     let token = req.body.token || req.query.token || req.headers.authorization;
     // removes "Bearer", then returns token string
     if (req.headers.authorization) {
-      token = token.split(' ').pop().trim();
+      token = token.split(" ").pop().trim();
     }
     // return request if token is false
     if (!token) {
@@ -18,16 +18,20 @@ module.exports = {
     }
     // adds the decoded user data to request to be accessed in resolver
     try {
-      const { data } = jwt.verify(token, process.env.secret, { maxAge: expiration });
+      const { data } = jwt.verify(token, process.env.SECRET, {
+        maxAge: expiration,
+      });
       req.user = data;
     } catch {
-      console.log('Invalid token');
+      console.log("Invalid token");
     }
     // returns request object to be passed to resolver as 'context'
     return req;
   },
   signToken({ email, username, _id }) {
     const payload = { email, username, _id };
-    return jwt.sign({ data: payload }, process.env.secret, { expiresIn: expiration });
+    return jwt.sign({ data: payload }, process.env.SECRET, {
+      expiresIn: expiration,
+    });
   },
 };

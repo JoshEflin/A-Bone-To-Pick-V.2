@@ -64,7 +64,7 @@ const Navbar = (props) => {
               open={visible}
               style={{ zIndex: 99999 }}
             >
-              <LeftMenu mode={"inline"} />
+              <LeftMenu mode={"inline"} setDogCardData={setDogCardData}/>
               <RightMenu mode={"inline"} />
             </Drawer>
           </div>
