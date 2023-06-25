@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_ME = gql`
-query Me {
+  query Me {
     me {
       _id
       username
@@ -36,13 +36,63 @@ query Me {
     }
   }
 `;
-export const GET_USER =  gql`query User($id: ID!) {
-  user(_id: $id) {
-    _id
-    username
-    email
-    password
-    profilePic
+export const GET_DOGS_DB = gql`
+  query AllDogs {
+    allDogs {
+      id
+      name
+      age
+      sex
+      photo
+      breed
+      size
+      trained
+      contact {
+        address {
+          address1
+          address2
+          city
+          state
+          postcode
+          country
+        }
+        email
+        phone
+      }
+      description
+      status
+      energy
+      playfulness
+      protectiveness
+      trainability
+      barking
+      minHeightFemale
+      maxHeightFemale
+      minWeightFemale
+      maxWeightFemale
+      minHeightMale
+      maxHeightMale
+      minWeightMale
+      maxWeightMale
+      users {
+        username
+        profilePic
+        dogCards {
+          _id
+        }
+      }
+    }
   }
-}
-`
+`;
+
+export const GET_USER = gql`
+  query User($id: ID!) {
+    user(_id: $id) {
+      _id
+      username
+      email
+      password
+      profilePic
+    }
+  }
+`;
