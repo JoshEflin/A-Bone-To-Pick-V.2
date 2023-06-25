@@ -20,11 +20,25 @@
 .header {
   background-color: #df9a5c;
 }
-.navbar{
+.navbar-menu{
+  display:inline-block;
   
 }
 .search-form {
-  margin-top:80px;
+  
+  margin-top:3px;
+  display: flex;
+  align-items: center;
+}
+.search-form-btn {
+  margin:auto;
+  padding-right:10px
+}
+.zip-code-search {
+  margin-bottom: 3px;
+}
+.breed-search {
+  margin-bottom: 3px;
 }
 .logo {
 margin-bottom: -15px;
@@ -94,7 +108,12 @@ main {
   background: none;
   margin-right: 10px;
 }
-
+#login-form {
+  margin:0 450px 0 450px 
+}
+#signup-form {
+  margin:0 450px 0 450px
+}
 .ant-drawer-body {
   padding: 0;
 }
@@ -112,6 +131,7 @@ main {
 }
 
 .ant-drawer-body .ant-menu-horizontal {
+  height:fit-content;
   border-bottom: none;
 }
 
@@ -141,6 +161,13 @@ main {
 
   .username {
     display: inline-block;
+  }
+  .left-menu .search-form {
+    margin:10px;
+  }
+ 
+  .ant-menu-inline .ant-menu-item{
+    height:70px;
   }
 }
 

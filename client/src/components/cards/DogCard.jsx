@@ -5,30 +5,30 @@ import { Col } from "antd";
 class DogCardClass {
   constructor(data) {
     (this._id = data._id),
-      (this.dogId = data.id),
-      (this.name = data.name),
-      (this.age = data.age),
-      (this.sex = data.sex),
-      (this.photo = data.photo ? data.photo : defaultDog),
-      (this.breed = data.breed),
-      (this.size = data.size),
-      (this.trained = data.trained),
-      (this.contact = data.contact),
-      (this.description = data.description),
-      (this.status = data.status),
-      (this.energy = data.energy),
-      (this.playfulness = data.playfulness),
-      (this.protectiveness = data.protectiveness),
-      (this.trainability = data.trainability),
-      (this.barking = data.barking),
-      (this.minHeightFemale = data.minHeightFemale),
-      (this.maxHeightFemale = data.maxHeightFemale),
-      (this.minWeightFemale = data.minWeightFemale);
+    (this.dogId = data.id),
+    (this.name = data.name),
+    (this.age = data.age),
+    (this.sex = data.sex),
+    (this.photo = data.photo ? data.photo : defaultDog),
+    (this.breed = data.breed),
+    (this.size = data.size),
+    (this.trained = data.trained),
+    (this.contact = data.contact),
+    (this.description = data.description),
+    (this.status = data.status),
+    (this.energy = data.energy),
+    (this.playfulness = data.playfulness),
+    (this.protectiveness = data.protectiveness),
+    (this.trainability = data.trainability),
+    (this.barking = data.barking),
+    (this.minHeightFemale = data.minHeightFemale),
+    (this.maxHeightFemale = data.maxHeightFemale),
+    (this.minWeightFemale = data.minWeightFemale);
     (this.maxWeightFemale = data.maxWeightFemale),
-      (this.minHeightMale = data.minHeightMale),
-      (this.maxHeightMale = data.maxHeightMale),
-      (this.minWeightMale = data.minWeightMale),
-      (this.maxWeightMale = data.maxWeightMale);
+    (this.minHeightMale = data.minHeightMale),
+    (this.maxHeightMale = data.maxHeightMale),
+    (this.minWeightMale = data.minWeightMale),
+    (this.maxWeightMale = data.maxWeightMale);
   }
 }
 
@@ -92,15 +92,15 @@ function ProtectIcon({ num }) {
 }
 
 export default function DogCards({ props, fn, index }) {
-  console.log(props)
-  if (!props ) {
+  console.log(props);
+  if (!props) {
     return <div>No dogs found.</div>;
   } else if (index !== -1) {
     const dogCard = new DogCardClass(props.dogByZip[index]);
     // console.log(dogCard)
     return (
       <Col>
-        <div  className="card">
+        <div className="card">
           <div className="card-border">
             <div className="card-header">
               <span className="name">{dogCard.name}</span>
@@ -158,12 +158,7 @@ export default function DogCards({ props, fn, index }) {
       const dogCard = new DogCardClass(card);
       // console.log(dogCard);
       return (
-        <div
-          
-          key={i}
-          className="card"
-          onClick={() => fn(i)}
-        >
+        <div key={i} className="card" onClick={() => fn(i)}>
           <div className="card-border">
             <div className="card-header">
               <span className="name">{dogCard.name}</span>

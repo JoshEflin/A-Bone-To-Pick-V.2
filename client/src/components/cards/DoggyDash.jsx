@@ -9,8 +9,8 @@ import SearchBar from "../SearchBar";
 
 export default function DoggyDash(props ) {
   const {dogCardData, setDogCardData} = props;
-  console.log(dogCardData);
-  console.log(setDogCardData)
+  // console.log(dogCardData);
+  // console.log(setDogCardData)
   const [zipString, setZipString] = useState("");
   const [idString, setIdString] = useState("");
   const [showModal, setShowModal] = useState(false);

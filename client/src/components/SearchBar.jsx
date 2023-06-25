@@ -2,10 +2,10 @@ import { GET_BY_ID, GET_BY_ZIP, RESCUE_DOG_TO_DB } from "../utils/mutations";
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { Input, Form, Button } from "antd";
+import {Link} from 'react-router-dom'
 
-
-export default function SearchBar({setDogCardData}, dogCardData) {
-  console.log(setDogCardData)
+export default function SearchBar({ setDogCardData }, dogCardData) {
+  // console.log(setDogCardData);
   const [zipString, setZipString] = useState("");
   const [idString, setIdString] = useState("");
   const [form] = Form.useForm();
@@ -40,22 +40,23 @@ export default function SearchBar({setDogCardData}, dogCardData) {
   };
 
   return (
-   
-    <Form  className = "search-form" layout="horizontal" form={form}>
-      <Form.Item label="Enter Zip Code" name="zipSearch">
-        <Input placeholder=" ZipCode" onChange={handleZipSearch} />
-      </Form.Item>
-      <Form.Item label="Enter Breed " name="BreedSearch">
-        <Input placeholder="Breed" onChange={handleBreedSearch} />
-      </Form.Item>
-  
-      <Form.Item name="submit">
+    <Form className="search-form" layout="horizontal" form={form}>
+      <Form.Item name="submit" className="search-form-btn">
         <Button type="primary" onClick={handleSearchSubmit}>
-          Search{" "}
+          <Link to= '/'>
+            Search
+          </Link>
+          
         </Button>
       </Form.Item>
-
+      <div className="input-container">
+        <Form.Item className= "zip-code-search" name="zipSearch">
+          <Input placeholder=" Zip Code" onChange={handleZipSearch} />
+        </Form.Item>
+        <Form.Item className = "breed-search" name="BreedSearch">
+          <Input placeholder="Breed" onChange={handleBreedSearch} />
+        </Form.Item>
+      </div>
     </Form>
-
   );
 }

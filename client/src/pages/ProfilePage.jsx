@@ -3,8 +3,11 @@ import { Row, Col, Button, Card } from "antd";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
 import styles from "./ProfilePage.module.css";
+import DoggyDash from '../components/cards/DoggyDash'
 
-export default function Profile() {
+export default function Profile(props) {
+  const {setDogCardData, dogCardData}=props
+  console.log(setDogCardData)
   const navigate = useNavigate();
 
   const { _id } = useParams();
@@ -56,6 +59,7 @@ export default function Profile() {
           </div>
           </Col>
           <Col>
+          <DoggyDash setDogCardData={setDogCardData} dogCardData={dogCardData}/>
             <div>meProfile username is {userData?.username}</div>
             <div>meProfile email is {userData?.email}</div>
           </Col>
