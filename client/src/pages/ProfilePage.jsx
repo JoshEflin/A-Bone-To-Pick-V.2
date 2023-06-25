@@ -40,8 +40,8 @@ export default function Profile(props) {
   if (meData && userData && meData._id === userData._id) {
     return (
       <>
-        <Row className={styles.profileRow}>
-        <Col span={6}>
+        <Row >
+        <Col className={styles.profileCol} span={6}>
           <div>
             {imageData ? (
               <img
