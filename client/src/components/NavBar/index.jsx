@@ -49,7 +49,8 @@ const Navbar = (props) => {
             </div>
           <div className="navbar-menu">
             <div className="leftMenu">
-              <LeftMenu mode={"horizontal"} />
+              <LeftMenu mode={"horizontal"} setDogCardData={setDogCardData} />
+              
             </div>
             <Button className="menuButton" type="text" onClick={showDrawer}>
               <MenuOutlined />
@@ -70,7 +71,7 @@ const Navbar = (props) => {
         </Layout.Header>
       </Layout>
     </nav>
-      <SearchBar setDogCardData={setDogCardData}/>
+      
       </>
   );
 };
