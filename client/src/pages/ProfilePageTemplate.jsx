@@ -41,7 +41,7 @@ export default function Profile(props) {
     return (
       <>
         <Row className={styles.profileRow}>
-        <Col span={6}>
+        <Col className={styles.profileSidebar} span={6}>
           <div>
             {imageData ? (
               <img
@@ -59,10 +59,10 @@ export default function Profile(props) {
           </div>
             <div>meProfile username is {userData?.username}</div>
             <div>meProfile email is {userData?.email}</div>
-            <div><button className={styles.btnProfile}>View My Pack</button></div>
-            <div><button className={styles.btnProfile}>Edit Profile</button></div>
+            <button className={styles.button}>View Collection</button>
+            <button className={styles.button}>Edit Profile</button>
           </Col>
-          <Col className={styles.doggyDash}  sm={24} md={16}>
+          <Col sm={24} md={16}>
           <DoggyDash setDogCardData={setDogCardData} dogCardData={dogCardData}/>
           </Col>
         </Row>
