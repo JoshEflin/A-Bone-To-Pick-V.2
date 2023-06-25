@@ -112,6 +112,10 @@ color:#59594A;
   flex-direction: column;
   /* width:50px; */
 }
+.mobileDog {
+  max-width: 100%;
+  border-radius: 5%;
+}
 @media screen and (min-width:767px) {
   .card{
     padding:.5rem;

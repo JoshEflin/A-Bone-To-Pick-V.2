@@ -1,5 +1,5 @@
 // decodes a token and get the user information
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
 
 // creates a new class to instantiate for a user
 class AuthService {
@@ -23,26 +23,27 @@ class AuthService {
         return true;
       } else return false;
     } catch (err) {
+      console.error(err);
       return false;
     }
   }
 
   getToken() {
     // retrieves the user token from localStorage
-    return localStorage.getItem('id_token');
+    return localStorage.getItem("id_token");
   }
 
   login(idToken) {
     // saves user token to localStorage
-    localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
   }
 
   logout() {
     // clears user token and profile data from localStorage
-    localStorage.removeItem('id_token');
+    localStorage.removeItem("id_token");
     // reloads page and resets state of application
-    window.location.assign('/');
+    window.location.assign("/");
   }
 }
 

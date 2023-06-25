@@ -22,6 +22,7 @@ import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
 import Foot from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
+import SingleDoggyShare from "./pages/SingleDoggyShare"
 import ProfilePage from "./pages/ProfilePage";
 import NavBar from './components/NavBar';
 import Auth from "./utils/auth";
