@@ -11,7 +11,7 @@ const logout = (event) => {
 
 const RightMenu = ({ mode }) => {
   if (Auth.loggedIn()) {
-    console.log(Auth.getProfile());
+    // console.log(Auth.getProfile());
     const username = Auth.getProfile();
     return (
       <Menu
