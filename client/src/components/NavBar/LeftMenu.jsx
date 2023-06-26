@@ -12,7 +12,7 @@ const logout = (event) => {
 };
 
 const LeftMenu = ({ mode, setDogCardData, data }) => {
-  console.log(data, "from popular dogs");
+  // console.log(data, "from popular dogs");
 
   const handleButtonClick = () => {
     // setCardSelectedIndex(-1);

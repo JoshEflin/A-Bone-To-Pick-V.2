@@ -65,7 +65,7 @@ const client = new ApolloClient({
 function App() {
   const { loading, error, data } = useQuery(GET_DOGS_DB);
 
-  console.log(data);
+  // console.log(data);
   const token = {
     colorPrimary: "#df9a5c", // ugly orange
     colorBackground:"rgb(242, 247, 246)"
@@ -75,7 +75,7 @@ function App() {
   } = theme.useToken();
   const [count, setCount] = useState(0);
   const [dogCardData, setDogCardData] = useState(null);
-  console.log(dogCardData);
+  // console.log(dogCardData);
   // const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
 
   return (
