@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { GET_DOGS_DB } from "./utils/queries";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
+  useQuery,
+  useMutation,
 } from "@apollo/client";
 import {
   Layout,
@@ -23,21 +26,18 @@ import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
 import Foot from "./components/Footer/Footer";
 import DoggyDash from "./components/cards/DoggyDash";
-import SingleDoggyShare from "./pages/SingleDoggyShare"
+import SingleDoggyShare from "./pages/SingleDoggyShare";
 import ProfilePage from "./pages/ProfilePage";
-import NavBar from './components/NavBar';
+import NavBar from "./components/NavBar";
 import Auth from "./utils/auth";
 import SearchBar from "./components/SearchBar";
 
 const { Content } = Layout;
 
-
-
-const logout = (event)=> {
+const logout = (event) => {
   event.preventDefault();
-  Auth.logout()
-}
-
+  Auth.logout();
+};
 
 // sets endpoint for main GraphQL API
 const httpLink = createHttpLink({
@@ -63,21 +63,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 function App() {
+  const { loading, error, data } = useQuery(GET_DOGS_DB);
+
+  console.log(data);
   const token = {
     colorPrimary: "#df9a5c", // ugly orange
     colorBackground:"rgb(242, 247, 246)"
-  }
+  };
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   const [count, setCount] = useState(0);
   const [dogCardData, setDogCardData] = useState(null);
- 
+  console.log(dogCardData);
+  // const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
 
   return (
     <>
-      <ApolloProvider client={client}>
-        <ConfigProvider
+      <ConfigProvider
         theme={{
           token: {
             colorPrimary: token.colorPrimary,
@@ -85,7 +88,7 @@ function App() {
         }}>
           <Layout style={{minHeight:'100vh', alignItems:'center',maxWidth:'80%'}}>
             <Router>
-              <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData}/>
+              <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData} data={data}/>
                <Content style = {{alignItems:'center'}}>
                 {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
                 <Routes>
@@ -99,7 +102,7 @@ function App() {
             </Router>
           </Layout>
         </ConfigProvider>
-      </ApolloProvider>
+      
     </>
   );
 }
