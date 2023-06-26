@@ -1,6 +1,5 @@
 /* card view is the container that holds all the dog cards*/
 .card-view{
-    ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,6 +54,7 @@
 .flex{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 /* need better names for item and item2 */
 .item, .item2 {

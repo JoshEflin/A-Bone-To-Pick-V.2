@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
 import styles from "./ProfilePage.module.css";
 import DoggyDash from '../components/cards/DoggyDash'
+import { Divider } from "antd";
 
 export default function Profile(props) {
   const {setDogCardData, dogCardData}=props
@@ -40,10 +41,54 @@ export default function Profile(props) {
   }
   if (meData && userData && meData._id === userData._id) {
     return (
-      <>
+      
         <Row >
-        <Col className={styles.profileCol} span={6}>
-          <div>
+        <Col className={styles.profileCol} span={6}>PROFILE
+        <div  className="user-card">
+        <div className="user-card-border">
+          <div className="user-card-header">
+            <span className="user-name">
+              Fred
+            </span>
+            <span className="user-breed">
+              Human
+            </span>
+          </div>
+          <div className="user-card-header2">
+            <span className="cards-owned">
+              card#
+            </span>
+            
+          </div>
+          {imageData ? (
+              <img
+                className={styles.profilePic}
+                src={imageData}
+                alt="Database profile"
+              />
+            ) : (
+              <img
+                className={styles.profilePic}
+                src={defaultProfilePic}
+                alt="Default profile"
+              />
+            )}
+          <div className="user-attributes">
+            <span className="size">
+              size: fat
+            </span>
+            <span className="house-trained">
+              <i className=" fa-solid fa-poop"></i>
+            </span>
+          </div>
+            <div className="flex">
+              <button className={styles.btnProfile}>View My Pack</button>
+            <button className={styles.btnProfile}>Edit Profile</button>
+            </div>
+          
+        </div>
+      </div>
+          {/* <div>
             {imageData ? (
               <img
                 className={styles.profilePic}
@@ -60,20 +105,20 @@ export default function Profile(props) {
           </div>
             <div>meProfile username is {userData?.username}</div>
             <div>meProfile email is {userData?.email}</div>
-            <div><button className={styles.btnProfile}>View My Pack</button></div>
-            <div><button className={styles.btnProfile}>Edit Profile</button></div>
+            */}
           </Col>
-          <Col className={styles.doggyDash}  sm={24} md={16}>
+          
+          <Col className={styles.doggyDash}  span={18}>
           <DoggyDash setDogCardData={setDogCardData} dogCardData={dogCardData}/>
           </Col>
         </Row>
-      </>
+      
     );
   } else if (userData) {
     return (
       <>
         <Row>
-        <Col>
+        <Col span={8}>
           <div>
             {imageData ? (
               <img
