@@ -1,14 +1,35 @@
 import React from "react";
-import { Menu, Col } from "antd";
+import { Menu, Col, Button } from "antd";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { GET_DOGS_DB } from "../../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
 import SearchBar from "../SearchBar";
+
 const logout = (event) => {
   event.preventDefault();
   Auth.logout();
 };
 
-const LeftMenu = ({ mode, setDogCardData }) => {
+
+const LeftMenu = ({ mode, setDogCardData, setCardSelectedIndex }) => {
+  
+    const  {
+      loading, 
+      error,
+      data
+    } = useQuery(GET_DOGS_DB);
+  
+    console.log( data, "from popular dogs");
+
+    const handleButtonClick = () => {
+      setCardSelectedIndex(-1);
+      console.log(setDogCardData)
+      setDogCardData(data.allDogs)
+      
+
+    }
+  
   // console.log(setDogCardData);
   return (
     <Menu
@@ -22,7 +43,8 @@ const LeftMenu = ({ mode, setDogCardData }) => {
       <Menu.Item key="Home">
         <Link to="/">Home</Link>
       </Menu.Item>
-      <Menu.Item key="search-db">Popular Dogs</Menu.Item>
+      <Menu.Item key="search-db"onClick={handleButtonClick}><Link to="/">Popular Dogs</Link>
+      </Menu.Item>
       {Auth.loggedIn() ? (
         <>
           <Menu.Item key="Profile">
@@ -47,6 +69,7 @@ const LeftMenu = ({ mode, setDogCardData }) => {
           </Menu.Item>
         </>
       )}
+    
     </Menu>
   );
 };

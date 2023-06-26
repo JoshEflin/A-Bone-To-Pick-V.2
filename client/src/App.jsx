@@ -71,6 +71,7 @@ function App() {
   } = theme.useToken();
   const [count, setCount] = useState(0);
   const [dogCardData, setDogCardData] = useState(null);
+  const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
  
 
   return (
@@ -84,13 +85,13 @@ function App() {
         }}>
           <Layout style={{minHeight:'100vh', alignItems:'center'}}>
             <Router>
-              <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData}/>
+              <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData} cardSelectedIndex={cardSelectedIndex} setCardSelectedIndex={setCardSelectedIndex}/>
                <Content style = {{alignItems:'center', maxWidth:'80%'}}>
                 {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
-                  <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData}  />}/>
+                  <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData} cardSelectedIndex={cardSelectedIndex} setCardSelectedIndex={setCardSelectedIndex} />}/>
                   <Route path="/profile/:_id" element={<ProfilePage setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
                 </Routes>
               </Content> 

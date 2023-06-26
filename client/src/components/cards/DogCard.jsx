@@ -95,23 +95,29 @@ function ProtectIcon({ num }) {
 
 export default function DogCards({ props, fn, index }) {
   console.log(props);
+  console.log(fn);
+  console.log(index);
   if (!props) {
     return (
-    <div classname='empty-doggy-dash'>
-      <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
-      <div>
-        A Bone To Pick is  the perfect dog adoption website. It let's you search your area for dogs in need of a new home
-      </div>
-      <Link to='/login'>
-      <img  id = "old-logo" src={drawnLogo} alt="a poorly drawn image of a dog" />
-      </Link>
-      <div>
-      Just enter a Zip Code and Breed into the search bar above to start your journey. Can you collect them all?
-      </div>
-    </div>
+    // <div classname='empty-doggy-dash'>
+    //   <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
+    //   <div>
+    //     A Bone To Pick is  the perfect dog adoption website. It let's you search your area for dogs in need of a new home
+    //   </div>
+    //   <Link to='/login'>
+    //   <img  id = "old-logo" src={drawnLogo} alt="a poorly drawn image of a dog" />
+    //   </Link>
+    //   <div>
+    //   Just enter a Zip Code and Breed into the search bar above to start your journey. Can you collect them all?
+    //   </div>
+    // </div>
+    <div>Emptyness</div>
     );
     
   } else if (index !== -1) {
+     if(props.hasOwnProperty("dogByZip")){
+      const { dogByZip } = props;
+    } else {dogByZip = props}
     const dogCard = new DogCardClass(props.dogByZip[index]);
     // console.log(dogCard)
     return (
@@ -169,7 +175,10 @@ export default function DogCards({ props, fn, index }) {
     );
   } else {
     // console.log(props)
-    const { dogByZip } = props;
+    if(props.hasOwnProperty("dogByZip")){
+      const { dogByZip } = props;
+    } else {dogByZip = props}
+    // const dogArr = dogByZip? dogByZip : props;
     const dogCardArr = dogByZip.map((card, i) => {
       const dogCard = new DogCardClass(card);
       // console.log(dogCard);

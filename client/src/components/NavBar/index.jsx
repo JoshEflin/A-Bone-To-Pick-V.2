@@ -12,7 +12,8 @@ import SearchBar from "../SearchBar";
 const { Header } = Layout;
 
 const Navbar = (props) => {
-  const {DogCardData, setDogCardData} = props
+  const {DogCardData, setDogCardData, cardSelectedIndex, setCardSelectedIndex} = props
+  console.log(setCardSelectedIndex, "from navbar")
 
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
@@ -49,7 +50,7 @@ const Navbar = (props) => {
             </div>
           <div className="navbar-menu">
             <div className="leftMenu">
-              <LeftMenu mode={"horizontal"} setDogCardData={setDogCardData} />
+              <LeftMenu mode={"horizontal"} setDogCardData={setDogCardData} setCardSelectedIndex={setCardSelectedIndex} />
               
             </div>
             <Button className="menuButton" type="text" onClick={showDrawer}>
@@ -64,7 +65,7 @@ const Navbar = (props) => {
               open={visible}
               style={{ zIndex: 99999 }}
             >
-              <LeftMenu mode={"inline"} setDogCardData={setDogCardData}/>
+              <LeftMenu mode={"inline"} setDogCardData={setDogCardData} setCardSelectedIndex={setCardSelectedIndex}/>
               <RightMenu mode={"inline"} />
             </Drawer>
           </div>
