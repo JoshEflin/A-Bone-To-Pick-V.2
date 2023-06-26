@@ -7,7 +7,8 @@ import DoggyDash from '../components/cards/DoggyDash'
 
 export default function Profile(props) {
   const {setDogCardData, dogCardData}=props
-  console.log(setDogCardData)
+  console.log(dogCardData)
+  // console.log(setDogCardData)
   const navigate = useNavigate();
 
   const { _id } = useParams();
@@ -22,7 +23,7 @@ export default function Profile(props) {
     },
   });
   const userData = dataUser?.user;
-  console.log("User Data", userData?._id);
+  // console.log("User Data", userData?._id);
   const {
     loading: loadingMe,
     error: errorMe,
@@ -30,7 +31,7 @@ export default function Profile(props) {
     refetch,
   } = useQuery(GET_ME);
   const meData = dataMe?.me;
-  console.log("MeData", meData?._id);
+  // console.log("MeData", meData?._id);
   const imageData = userData?.profilePic;
   let defaultProfilePic =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
