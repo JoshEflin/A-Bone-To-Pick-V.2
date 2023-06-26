@@ -11,25 +11,15 @@ const logout = (event) => {
   Auth.logout();
 };
 
+const LeftMenu = ({ mode, setDogCardData, data }) => {
+  console.log(data, "from popular dogs");
 
-const LeftMenu = ({ mode, setDogCardData, setCardSelectedIndex }) => {
-  
-    const  {
-      loading, 
-      error,
-      data
-    } = useQuery(GET_DOGS_DB);
-  
-    console.log( data, "from popular dogs");
+  const handleButtonClick = () => {
+    // setCardSelectedIndex(-1);
+    console.log(setDogCardData);
+    setDogCardData(data);
+  };
 
-    const handleButtonClick = () => {
-      setCardSelectedIndex(-1);
-      console.log(setDogCardData)
-      setDogCardData(data.allDogs)
-      
-
-    }
-  
   // console.log(setDogCardData);
   return (
     <Menu
@@ -43,7 +33,8 @@ const LeftMenu = ({ mode, setDogCardData, setCardSelectedIndex }) => {
       <Menu.Item key="Home">
         <Link to="/">Home</Link>
       </Menu.Item>
-      <Menu.Item key="search-db"onClick={handleButtonClick}><Link to="/">Popular Dogs</Link>
+      <Menu.Item key="search-db" onClick={handleButtonClick}>
+        <Link to="/">Popular Dogs</Link>
       </Menu.Item>
       {Auth.loggedIn() ? (
         <>
@@ -51,7 +42,7 @@ const LeftMenu = ({ mode, setDogCardData, setCardSelectedIndex }) => {
             <Link to="/">Profile</Link>
           </Menu.Item>
           <Menu.Item key="friends">
-            <Link to='myFriends'>Friends</Link>
+            <Link to="myFriends">Friends</Link>
           </Menu.Item>
           <Menu.Item key="Logout">
             <Link to="/" onClick={logout}>
@@ -69,7 +60,6 @@ const LeftMenu = ({ mode, setDogCardData, setCardSelectedIndex }) => {
           </Menu.Item>
         </>
       )}
-    
     </Menu>
   );
 };

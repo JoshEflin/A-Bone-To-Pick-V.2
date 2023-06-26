@@ -1,36 +1,36 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
-import drawnLogo from "../../assets/images/homepagelogo.png"
+import drawnLogo from "../../assets/images/homepagelogo.png";
 import { Col } from "antd";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class DogCardClass {
   constructor(data) {
     (this._id = data._id),
-    (this.dogId = data.id),
-    (this.name = data.name),
-    (this.age = data.age),
-    (this.sex = data.sex),
-    (this.photo = data.photo ? data.photo : defaultDog),
-    (this.breed = data.breed),
-    (this.size = data.size),
-    (this.trained = data.trained),
-    (this.contact = data.contact),
-    (this.description = data.description),
-    (this.status = data.status),
-    (this.energy = data.energy),
-    (this.playfulness = data.playfulness),
-    (this.protectiveness = data.protectiveness),
-    (this.trainability = data.trainability),
-    (this.barking = data.barking),
-    (this.minHeightFemale = data.minHeightFemale),
-    (this.maxHeightFemale = data.maxHeightFemale),
-    (this.minWeightFemale = data.minWeightFemale);
+      (this.dogId = data.id),
+      (this.name = data.name),
+      (this.age = data.age),
+      (this.sex = data.sex),
+      (this.photo = data.photo ? data.photo : defaultDog),
+      (this.breed = data.breed),
+      (this.size = data.size),
+      (this.trained = data.trained),
+      (this.contact = data.contact),
+      (this.description = data.description),
+      (this.status = data.status),
+      (this.energy = data.energy),
+      (this.playfulness = data.playfulness),
+      (this.protectiveness = data.protectiveness),
+      (this.trainability = data.trainability),
+      (this.barking = data.barking),
+      (this.minHeightFemale = data.minHeightFemale),
+      (this.maxHeightFemale = data.maxHeightFemale),
+      (this.minWeightFemale = data.minWeightFemale);
     (this.maxWeightFemale = data.maxWeightFemale),
-    (this.minHeightMale = data.minHeightMale),
-    (this.maxHeightMale = data.maxHeightMale),
-    (this.minWeightMale = data.minWeightMale),
-    (this.maxWeightMale = data.maxWeightMale);
+      (this.minHeightMale = data.minHeightMale),
+      (this.maxHeightMale = data.maxHeightMale),
+      (this.minWeightMale = data.minWeightMale),
+      (this.maxWeightMale = data.maxWeightMale);
   }
 }
 
@@ -93,32 +93,31 @@ function ProtectIcon({ num }) {
   return value;
 }
 
-export default function DogCards({ props, fn, index }) {
-  console.log(props);
+export default function DogCards({ dogCardData, fn, index }) {
+  // console.log(dogCardData);
   console.log(fn);
   console.log(index);
-  if (!props) {
+  if (!dogCardData) {
     return (
-    // <div classname='empty-doggy-dash'>
-    //   <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
-    //   <div>
-    //     A Bone To Pick is  the perfect dog adoption website. It let's you search your area for dogs in need of a new home
-    //   </div>
-    //   <Link to='/login'>
-    //   <img  id = "old-logo" src={drawnLogo} alt="a poorly drawn image of a dog" />
-    //   </Link>
-    //   <div>
-    //   Just enter a Zip Code and Breed into the search bar above to start your journey. Can you collect them all?
-    //   </div>
-    // </div>
-    <div>Emptyness</div>
+      // <div classname='empty-doggy-dash'>
+      //   <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
+      //   <div>
+      //     A Bone To Pick is  the perfect dog adoption website. It let's you search your area for dogs in need of a new home
+      //   </div>
+      //   <Link to='/login'>
+      //   <img  id = "old-logo" src={drawnLogo} alt="a poorly drawn image of a dog" />
+      //   </Link>
+      //   <div>
+      //   Just enter a Zip Code and Breed into the search bar above to start your journey. Can you collect them all?
+      //   </div>
+      // </div>
+      <div>Emptyness</div>
     );
-    
   } else if (index !== -1) {
-     if(props.hasOwnProperty("dogByZip")){
-      const { dogByZip } = props;
-    } else {dogByZip = props}
-    const dogCard = new DogCardClass(props.dogByZip[index]);
+    //  if(dogCardData.hasOwnProperty("dogByZip")){
+    const { dogByZip } = dogCardData;
+    // } else {dogByZip = dogCardData}
+    const dogCard = new DogCardClass(dogCardData.dogByZip[index]);
     // console.log(dogCard)
     return (
       <Col>
@@ -174,11 +173,13 @@ export default function DogCards({ props, fn, index }) {
       </Col>
     );
   } else {
-    // console.log(props)
-    if(props.hasOwnProperty("dogByZip")){
-      const { dogByZip } = props;
-    } else {dogByZip = props}
-    // const dogArr = dogByZip? dogByZip : props;
+    let dogByZip;
+    if (dogCardData.hasOwnProperty("dogByZip")) {
+      dogByZip = dogCardData.dogByZip;
+    } else {
+      dogByZip = dogCardData.allDogs;
+    }
+    // const dogArr = dogByZip? dogByZip : dogCardData;
     const dogCardArr = dogByZip.map((card, i) => {
       const dogCard = new DogCardClass(card);
       // console.log(dogCard);

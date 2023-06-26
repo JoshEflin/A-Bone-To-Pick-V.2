@@ -7,8 +7,8 @@ import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
 import SearchBar from "../SearchBar";
 
-export default function DoggyDash(props ) {
-  const {dogCardData, setDogCardData, cardSelectedIndex, setCardSelectedIndex} = props;
+export default function DoggyDash(props) {
+  const { dogCardData, setDogCardData } = props;
   // console.log(dogCardData);
   // console.log(setDogCardData)
   const [zipString, setZipString] = useState("");
@@ -18,6 +18,7 @@ export default function DoggyDash(props ) {
   const [breedString, setBreedString] = useState("");
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [rescueDogtoDB, { error }] = useMutation(RESCUE_DOG_TO_DB);
+  const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
   const [DogsByZip, { error: errorZip, data: dataZip }] =
     useMutation(GET_BY_ZIP);
   const {
@@ -38,7 +39,7 @@ export default function DoggyDash(props ) {
   };
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardData.dogByZip[cardSelectedIndex];
-    console.log(myDog)
+    console.log(myDog);
     const contactData = {
       email: myDog.email,
       phone: myDog.phone,
@@ -54,7 +55,7 @@ export default function DoggyDash(props ) {
       const { data } = await rescueDogtoDB({
         variables: {
           dogId: myDog.id,
-          userId:meData.me._id,
+          userId: meData.me._id,
           ...myDog,
           contact: contactData,
         },
@@ -69,22 +70,20 @@ export default function DoggyDash(props ) {
     }
   };
   const isMobile = window.innerWidth <= 480;
-  const dogPhoto =
-    (dogCardData && dogCardData.dogByZip[cardSelectedIndex]?.photo) || "";
+  console.log(dogCardData);
+  // const dogPhoto = dogCardData.dogByZip? dogCardData.dogByZip[cardSelectedIndex].photo: dogCardData.allDogs[cardSelectedIndex].photo;
 
   if (cardSelectedIndex === -1) {
     return (
-        
-        <section>
-          <Row justify="center">
-            <DogCards
-              props={dogCardData}
-              fn={handleCardSelect}
-              index={cardSelectedIndex}
-            />
-          </Row>
-        </section>
-
+      <section>
+        <Row justify="center">
+          <DogCards
+            dogCardData={dogCardData}
+            fn={handleCardSelect}
+            index={cardSelectedIndex}
+          />
+        </Row>
+      </section>
     );
   } else {
     if (Auth.loggedIn()) {
