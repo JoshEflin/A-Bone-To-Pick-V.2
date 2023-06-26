@@ -84,7 +84,7 @@ export default function DoggyDash(props ) {
               fn={handleCardSelect}
               index={cardSelectedIndex}
             />
-          </Row>
+          // </Row>
         </section>
 
     );

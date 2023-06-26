@@ -1,3 +1,10 @@
+#root > section{
+  margin:auto;
+}
+body {
+  background-color: rgb(242, 247, 246);
+}
+
 #old-logo {
   object-fit: contain;
   aspect-ratio: 1/1;

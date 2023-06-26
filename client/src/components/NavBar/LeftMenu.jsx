@@ -9,7 +9,7 @@ const logout = (event) => {
 };
 
 const LeftMenu = ({ mode, setDogCardData }) => {
-  // console.log(setDogCardData);
+  console.log(setDogCardData);
   return (
     <Menu
       style={{ alignItems: "center", justifyContent: "center" }}

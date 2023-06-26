@@ -18,6 +18,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import "./card.css";
+import"./user-card.css"
 import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
 import Foot from "./components/Footer/Footer";
@@ -64,7 +65,7 @@ const client = new ApolloClient({
 function App() {
   const token = {
     colorPrimary: "#df9a5c", // ugly orange
-    
+    colorBackground:"rgb(242, 247, 246)"
   }
   const {
     token: { colorBgContainer },
@@ -82,10 +83,10 @@ function App() {
             colorPrimary: token.colorPrimary,
           }
         }}>
-          <Layout style={{minHeight:'100vh', alignItems:'center'}}>
+          <Layout style={{minHeight:'100vh', alignItems:'center',maxWidth:'80%'}}>
             <Router>
               <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData}/>
-               <Content style = {{alignItems:'center', maxWidth:'80%'}}>
+               <Content style = {{alignItems:'center'}}>
                 {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
