@@ -85,6 +85,7 @@ const typeDefs = gql`
     user(_id: ID!): User
     me: User
     allDogs: [Dog]
+    dogDbById(_id: ID!): Dog
   }
 
   type Mutation {

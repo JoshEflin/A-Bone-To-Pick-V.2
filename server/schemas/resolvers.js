@@ -28,6 +28,10 @@ const resolvers = {
       throw new AuthenticationError("Please log in to do this.");
     },
     allDogs: async () => Dog.find().populate(["users"]),
+    dogDbById: async (parent, id) => {
+
+      return Dog.findOne({ _id: id._id }).populate(["users"])
+    }
   },
   Mutation: {
     dogById: async (parent, { dogID, breed }) => {
@@ -40,6 +44,7 @@ const resolvers = {
       console.log("dogByZip resolver\n------------------", dogCardArray);
       return dogCardArray;
     },
+    
     addUser: async (parent, { username, email, password, profilePic }) => {
       const newUser = await User.create({
         username,
