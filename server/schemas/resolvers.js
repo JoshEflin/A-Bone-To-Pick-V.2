@@ -11,16 +11,19 @@ const {
 
 const resolvers = {
   Query: {
-    users: async () => User.find().populate(["dogCards"]),
+    users: async () => User.find().populate(["dogCards", "friends"]),
     // finding one user by _id.   parameter might be changed to another parameter
     user: async (parent, id) => {
       console.log(id);
 
-      return User.findOne({ _id: id._id }).populate(["dogCards"]);
+      return User.findOne({ _id: id._id }).populate(["dogCards", "friends"]);
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate(["dogCards"]);
+        return User.findOne({ _id: context.user._id }).populate([
+          "dogCards",
+          "friends",
+        ]);
       }
       throw new AuthenticationError("Please log in to do this.");
     },
@@ -93,20 +96,18 @@ const resolvers = {
       },
       context
     ) => {
-    
       console.log(userId, " this shuld be user id");
-      console.log(dogId)
+      console.log(dogId);
       console.log("From addDog mutation");
 
       if (dogId) {
         const savableDog = await Dog.findOne({ id: dogId });
-            console.log(savableDog, "line 102")
+        console.log(savableDog, "line 102");
         //check to see if a dog is already in database.  If it is
         // saves dog to the user
-        if (savableDog === null ||undefined) {
+        if (savableDog === null || undefined) {
           const newDog = await Dog.create({
-          
-            id:dogId ,
+            id: dogId,
             name,
             age,
             sex,
@@ -131,12 +132,12 @@ const resolvers = {
             minWeightMale,
             maxWeightMale,
           });
-          
+
           const newUserDog = await User.findOneAndUpdate(
             { _id: userId },
             {
               $addToSet: {
-                dogCards: newDog._id
+                dogCards: newDog._id,
               },
             },
             {
@@ -145,12 +146,12 @@ const resolvers = {
           );
           const newDogUser = await Dog.findByIdAndUpdate(
             { _id: newDog._id },
-              {
-                $addToSet: {
-                  users: userId,
-                },
-              }
-          )
+            {
+              $addToSet: {
+                users: userId,
+              },
+            }
+          );
           const token = signToken(newUserDog);
           return {
             token,
@@ -158,12 +159,12 @@ const resolvers = {
           };
         } else {
           console.log("here");
-          console.log(dogId, " dog id")
-          console.log(savableDog.id, " savabledog.id")
+          console.log(dogId, " dog id");
+          console.log(savableDog.id, " savabledog.id");
           if (savableDog.id === dogId) {
             console.log("Dog already exists but here's a card!");
             const newUserDog = await User.findOneAndUpdate(
-              { _id: userId},
+              { _id: userId },
               {
                 $addToSet: {
                   dogCards: savableDog._id,
@@ -173,9 +174,8 @@ const resolvers = {
                 new: true,
               }
             );
-            console.log(newUserDog)
+            console.log(newUserDog);
             const updateDog = await Dog.findOneAndUpdate(
-                
               { id: savableDog.id },
               {
                 $addToSet: {
@@ -188,7 +188,6 @@ const resolvers = {
               token,
               dog: savableDog,
             };
-            
           }
         }
       }
