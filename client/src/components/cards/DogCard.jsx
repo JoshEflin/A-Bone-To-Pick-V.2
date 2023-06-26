@@ -93,11 +93,11 @@ function ProtectIcon({ num }) {
   return value;
 }
 
-export default function DogCards({ dogCardData, fn, index }) {
-  // console.log(dogCardData);
-  console.log(fn);
-  console.log(index);
-  if (!dogCardData) {
+export default function DogCards({ dogCardDataArray, fn, index }) {
+  // console.log(dogCardDataArray);
+  // console.log(fn);
+  // console.log(index);
+  if (!dogCardDataArray) {
     return (
       // <div classname='empty-doggy-dash'>
       //   <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
@@ -115,9 +115,9 @@ export default function DogCards({ dogCardData, fn, index }) {
     );
   } else if (index !== -1) {
     //  if(dogCardData.hasOwnProperty("dogByZip")){
-    const { dogByZip } = dogCardData;
+    
     // } else {dogByZip = dogCardData}
-    const dogCard = new DogCardClass(dogCardData.dogByZip[index]);
+    const dogCard = new DogCardClass(dogCardDataArray[index]);
     // console.log(dogCard)
     return (
       <Col>
@@ -173,14 +173,14 @@ export default function DogCards({ dogCardData, fn, index }) {
       </Col>
     );
   } else {
-    let dogByZip;
-    if (dogCardData.hasOwnProperty("dogByZip")) {
-      dogByZip = dogCardData.dogByZip;
-    } else {
-      dogByZip = dogCardData.allDogs;
-    }
+    // let dogByZip;
+    // if (dogCardData.hasOwnProperty("dogByZip")) {
+    //   dogByZip = dogCardData.dogByZip;
+    // } else {
+    //   dogByZip = dogCardData.allDogs;
+    // }
     // const dogArr = dogByZip? dogByZip : dogCardData;
-    const dogCardArr = dogByZip.map((card, i) => {
+    const dogCardArr = dogCardDataArray.map((card, i) => {
       const dogCard = new DogCardClass(card);
       // console.log(dogCard);
       return (

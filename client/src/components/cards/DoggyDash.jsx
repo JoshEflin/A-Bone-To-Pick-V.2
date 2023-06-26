@@ -37,8 +37,23 @@ export default function DoggyDash(props) {
     setCardSelectedIndex(-1);
     setShowModal(false);
   };
+// USE THIS FUNCTION TO STRIP transform dogCardData into an array instead of an object. any new queries need to be inserted as if checks as seen below!!!
+  const serializeDogCardData = (dogCardData)=> {
+      let dogCardDataArray;
+      if (!dogCardData) {
+        return
+      } else if('dogByZip' in dogCardData){
+        dogCardDataArray = dogCardData.dogByZip;
+      } else if ('allDogs' in dogCardData){
+        dogCardDataArray = dogCardData.allDogs;
+      } else if ('profileCards'in dogCardData){
+        dogCardDataArray = dogCardData.profileCards;
+      }
+      return dogCardDataArray;
+  }
+  const dogCardDataArray = serializeDogCardData(dogCardData);
   const handleRescueDogtoDB = async () => {
-    let myDog = dogCardData.dogByZip[cardSelectedIndex];
+    let myDog = dogCardDataArray[cardSelectedIndex];
     console.log(myDog);
     const contactData = {
       email: myDog.email,
@@ -70,15 +85,15 @@ export default function DoggyDash(props) {
     }
   };
   const isMobile = window.innerWidth <= 480;
-  console.log(dogCardData);
-  // const dogPhoto = dogCardData.dogByZip? dogCardData.dogByZip[cardSelectedIndex].photo: dogCardData.allDogs[cardSelectedIndex].photo;
+  // console.log(dogCardData);
+  // const dogPhoto = dogCardDataArray[cardSelectedIndex].photo;
 
   if (cardSelectedIndex === -1) {
     return (
       <section>
         <Row justify="center">
           <DogCards
-            dogCardData={dogCardData}
+            dogCardDataArray={dogCardDataArray}
             fn={handleCardSelect}
             index={cardSelectedIndex}
           />
@@ -98,11 +113,11 @@ export default function DoggyDash(props) {
           >
             <Row>
               <Col>
-                {dogCardData && isMobile ? (
-                  <img className="mobileDog" src={dogPhoto} alt="Dog Photo" />
+                {dogCardDataArray && isMobile ? (
+                  <img className="mobileDog" src={dogCardDataArray[cardSelectedIndex].photo} alt="Dog Photo" />
                 ) : (
                   <DogCards
-                    props={dogCardData}
+                    dogCardDataArray={dogCardDataArray}
                     fn={handleCardSelect}
                     index={cardSelectedIndex}
                   />
@@ -113,17 +128,18 @@ export default function DoggyDash(props) {
                 <Button>Rescue</Button>
                 {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}
                 <div>
-                  {dogCardData.dogByZip[cardSelectedIndex].contact.email}
+                  {console.log(dogCardDataArray)}
+                  {dogCardDataArray[cardSelectedIndex].contact.email}
                 </div>
                 <div>
-                  {dogCardData.dogByZip[cardSelectedIndex].contact.phone}
+                  {dogCardDataArray[cardSelectedIndex].contact.phone}
                 </div>
                 {meData &&
                 meData.me.dogCards.some(
-                  (dog) => dog.id === dogCardData.dogByZip[cardSelectedIndex].id
+                  (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id
                 ) ? (
                   <Button
-                    href={`/singleDog/${dogCardData.dogByZip[cardSelectedIndex].id}`}
+                    href={`/singleDog/${dogCardDataArray[cardSelectedIndex].id}`}
                   >
                     Share me!
                   </Button>

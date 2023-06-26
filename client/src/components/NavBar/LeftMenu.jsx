@@ -12,7 +12,9 @@ const logout = (event) => {
 };
 
 const LeftMenu = ({ mode, setDogCardData, data }) => {
-  console.log(data, "from popular dogs");
+  
+  
+  // console.log(data, "from popular dogs");
 
   const handleButtonClick = () => {
     // setCardSelectedIndex(-1);
@@ -38,8 +40,9 @@ const LeftMenu = ({ mode, setDogCardData, data }) => {
       </Menu.Item>
       {Auth.loggedIn() ? (
         <>
+        
           <Menu.Item key="Profile">
-            <Link to="/">Profile</Link>
+            <Link to={`/profile/${Auth.getProfile().data._id}`}>Profile</Link>
           </Menu.Item>
           <Menu.Item key="friends">
             <Link to="myFriends">Friends</Link>

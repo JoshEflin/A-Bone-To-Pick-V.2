@@ -32,7 +32,9 @@ export default function Profile(props) {
     refetch,
   } = useQuery(GET_ME);
   const meData = dataMe?.me;
-  // console.log("MeData", meData?._id);
+  console.log("MeData", meData);
+  const profileCards = { profileCards:meData.dogCards}
+  
   const imageData = userData?.profilePic;
   let defaultProfilePic =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
@@ -109,7 +111,7 @@ export default function Profile(props) {
           </Col>
           
           <Col className={styles.doggyDash}  span={18}>
-          <DoggyDash setDogCardData={setDogCardData} dogCardData={dogCardData}/>
+          <DoggyDash setDogCardData={setDogCardData} dogCardData={profileCards}/>
           </Col>
         </Row>
       

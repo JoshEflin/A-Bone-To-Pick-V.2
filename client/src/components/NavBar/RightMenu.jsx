@@ -11,8 +11,8 @@ const logout = (event) => {
 
 const RightMenu = ({ mode }) => {
   if (Auth.loggedIn()) {
-    // console.log(Auth.getProfile());
-    const username = Auth.getProfile();
+    const authData = Auth.getProfile();
+    const {email, username,_id}=authData.data
     return (
       <Menu
         mode={mode}
@@ -24,13 +24,13 @@ const RightMenu = ({ mode }) => {
           title={
             <>
               <Avatar icon={<UserOutlined />} />
-              <span className="username">John Doe</span>
+              <span className="username">{username}</span>
             </>
           }
         >
           <Menu.Item key="profile">
             <CodeOutlined />{" "}
-            <Link to={`/profile/${username.data._id}`}>Profile</Link>
+            <Link to={`/profile/${_id}`}>Profile</Link>
           </Menu.Item>
           <Menu.Item key="logout">
             <Link to="/" onClick={logout}>
@@ -54,12 +54,12 @@ const RightMenu = ({ mode }) => {
           </>
         }
       >
-        <Menu.Item key="profile">
-          <CodeOutlined /> <Link to="/profile">Profile</Link>
+        <Menu.Item key="login">
+          <CodeOutlined /> <Link to='/login'>login</Link>
         </Menu.Item>
-        <Menu.Item key="logout">
-          <Link to="/" onClick={logout}>
-            <LogoutOutlined /> Logout
+        <Menu.Item key="signUp">
+          <Link to="/signup" >
+            <LogoutOutlined /> Sign Up
           </Link>
         </Menu.Item>
       </Menu.SubMenu>
