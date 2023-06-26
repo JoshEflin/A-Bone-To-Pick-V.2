@@ -48,7 +48,7 @@ export default function Profile(props) {
         <div className="user-card-border">
           <div className="user-card-header">
             <span className="user-name">
-              Fred
+              {meData.username}
             </span>
             <span className="user-breed">
               Human
@@ -56,7 +56,7 @@ export default function Profile(props) {
           </div>
           <div className="user-card-header2">
             <span className="cards-owned">
-              card#
+              {meData.email}
             </span>
             
           </div>
@@ -75,7 +75,7 @@ export default function Profile(props) {
             )}
           <div className="user-attributes">
             <span className="size">
-              size: fat
+              Saved {meData.dogCards.length} Cards(poorly worded)
             </span>
             <span className="house-trained">
               <i className=" fa-solid fa-poop"></i>
