@@ -42,7 +42,7 @@ export default function Profile(props) {
   if (meData && userData && meData._id === userData._id) {
     return (
       
-        <Row >
+        <Row className={styles.profileRow}>
         <Col className={styles.profileCol} span={6}>PROFILE
         <div  className="user-card">
         <div className="user-card-border">

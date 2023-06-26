@@ -86,7 +86,9 @@ function App() {
             colorPrimary: token.colorPrimary,
           }
         }}>
-          <Layout style={{minHeight:'100vh', alignItems:'center',maxWidth:'80%'}}>
+          <Layout className="layout" 
+          // style={{minHeight:'100vh', alignItems:'center',maxWidth:'80%'}}
+          >
             <Router>
               <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData} data={data}/>
                <Content style = {{alignItems:'center'}}>

@@ -1,12 +1,17 @@
 /* .profilePic{
     width: 400px;
     border-radius: 100%;
-}
-
-.profileCol{
-    width: 700px;
 } */
 
+.profileCol{
+    /* width: 700px; */
+    justify-content: left;
+}
+
+/* .profileCol {
+  display: flex;
+  justify-content: flex-start;
+} */
 .btnProfile {
   align-items: center;
   background-clip: padding-box;
@@ -50,6 +55,9 @@
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
+}
+@media (max-width: 1000px) {
+  
 }
 
 @media (max-width: 768px) {
