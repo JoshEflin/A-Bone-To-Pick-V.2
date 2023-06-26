@@ -46,6 +46,8 @@ export default function DoggyDash(props) {
         dogCardDataArray = dogCardData.dogByZip;
       } else if ('allDogs' in dogCardData){
         dogCardDataArray = dogCardData.allDogs;
+      } else if ('profileCards'in dogCardData){
+        dogCardDataArray = dogCardData.profileCards;
       }
       return dogCardDataArray;
   }
