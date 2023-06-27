@@ -54,9 +54,8 @@ export default function Profile(props) {
       </Row>
     );
   } else if (userData && meData && meData._id != userData._id) {
-    console.log(userData.dogCards)
     const userCardData={profileCards: userData.dogCards}
-    console.log(userCardData);
+    
     return (
       <>
         <Row>
