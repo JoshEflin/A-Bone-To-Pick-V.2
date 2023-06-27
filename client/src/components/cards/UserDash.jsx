@@ -18,9 +18,8 @@ export default function UserDash() {
   if (!users) {
     return <div>...Loading</div>;
   } else {
-    console.log(users);
+    
     const userArr= users.map((userData, i) => {
-      console.log(userData);
       return (
         <Col span={8}>
           <ProfileCard key={i} props={userData} />

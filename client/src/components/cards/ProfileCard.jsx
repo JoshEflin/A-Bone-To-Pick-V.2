@@ -1,12 +1,12 @@
 import styles from '../../pages/ProfilePage.module.css';
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery} from "@apollo/client";
 import { useState, useEffect } from "react";
 import { ADD_FRIEND, REMOVE_FRIEND, EDIT_USER } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
 import { Button, Form, Input } from 'antd'
 
 
 export default function ProfileCard({props}) {
-console.log(props)
 
 const imageData = props?.profilePic;
   let defaultProfilePic =
@@ -70,24 +70,6 @@ const handleFollowFriend = async () => {
     }
   };
 
-  
-
-  //just switch the button to do handleRemoveFriend once userdata and medata are available
-
-  // const handleRemoveFriend = async () => {//used to be friendId variable inside async parenthesis
-  //   try {
-  //     const { data } = await removeFriend({
-  //       variables: {
-  //         friendId: "649a24501d67e6365ae03efe",
-  //       },
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-
-
 return (
   <div  className="user-card">
         <div className="user-card-border">
@@ -129,6 +111,9 @@ return (
           </div>
             <div className="flex">
               <button onClick = {handleFollowFriend} className={styles.btnProfile}>Add Friend</button>
+              <button className={styles.btnProfile} >
+               <Link to={`/profile/${props._id}`}> View My Pack</Link>
+                </button>
               <button className={styles.btnProfile} onClick={() => setShowForm(!showForm)}>
           {showForm ? "Close" : "Edit Profile"}
         </button>

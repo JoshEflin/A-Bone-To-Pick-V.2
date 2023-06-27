@@ -10,12 +10,22 @@ body {
   align-items: center;
   max-width: 80%;
 }
-
-#old-logo {
-  object-fit: contain;
-  aspect-ratio: 1/1;
-  max-height: 40%;
+.empty-doggy-dash {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
 }
+#old-logo {
+padding-top: 10px;
+padding-bottom: 10px;
+max-width: 375px;
+aspect-ratio: 1/1;
+}
+.welcome-message,
+.instructions{
+  padding: 10px;
+}
+
 .header {
   background-color: #df9a5c;
 }
@@ -24,7 +34,6 @@ body {
   
 }
 .search-form {
-  
   margin-top:3px;
   display: flex;
   align-items: center;
@@ -108,10 +117,12 @@ main {
   margin-right: 10px;
 }
 #login-form {
-  margin:0 450px 0 450px 
+  margin-top:50px;
+  min-width:250px;
 }
 #signup-form {
-  margin:0 450px 0 450px
+  margin-top:50px;
+  min-width:250px;
 }
 .ant-drawer-body {
   padding: 0;
