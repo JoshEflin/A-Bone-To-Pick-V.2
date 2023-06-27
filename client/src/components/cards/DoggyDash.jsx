@@ -18,6 +18,8 @@ import {
   LinkedinIcon,
   EmailIcon
 } from "react-share";
+import serializeDogCardData from './serializeDogCardData'
+
 
 export default function DoggyDash(props) {
   const { dogCardData, setDogCardData } = props;
@@ -31,9 +33,12 @@ export default function DoggyDash(props) {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [rescueDogtoDB, { error }] = useMutation(RESCUE_DOG_TO_DB);
   const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
+  
+  
   const [DogsByZip, { error: errorZip, data: dataZip }] =
     useMutation(GET_BY_ZIP);
-  const {
+  
+    const {
     loading: loadingMe,
     error: meError,
     data: meData,
@@ -49,21 +54,9 @@ export default function DoggyDash(props) {
     setCardSelectedIndex(-1);
     setShowModal(false);
   };
-  // USE THIS FUNCTION TO STRIP transform dogCardData into an array instead of an object. any new queries need to be inserted as if checks as seen below!!!
-  const serializeDogCardData = (dogCardData) => {
-    let dogCardDataArray;
-    if (!dogCardData) {
-      return;
-    } else if ("dogByZip" in dogCardData) {
-      dogCardDataArray = dogCardData.dogByZip;
-    } else if ("allDogs" in dogCardData) {
-      dogCardDataArray = dogCardData.allDogs;
-    } else if ("profileCards" in dogCardData) {
-      dogCardDataArray = dogCardData.profileCards;
-    }
-    return dogCardDataArray;
-  };
+ 
   const dogCardDataArray = serializeDogCardData(dogCardData);
+  
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardDataArray[cardSelectedIndex];
     console.log(myDog);
@@ -96,6 +89,7 @@ export default function DoggyDash(props) {
       console.error(err);
     }
   };
+  
   const isMobile = window.innerWidth <= 480;
   // console.log(dogCardData);
   // const dogPhoto = dogCardDataArray[cardSelectedIndex].photo;

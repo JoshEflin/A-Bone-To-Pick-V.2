@@ -31,11 +31,11 @@ class DogCardClass {
       (this.maxHeightMale = data.maxHeightMale),
       (this.minWeightMale = data.minWeightMale),
       (this.maxWeightMale = data.maxWeightMale);
+      (this.users = data.users? data.users :" No Users Yet")
   }
 }
 
 function EnergyIcon({ num }) {
-  // console.log(num)
   let value;
   if (num === 0) {
     return <i className="fa-solid fa-bolt-lightning"></i>;
@@ -49,7 +49,6 @@ function EnergyIcon({ num }) {
   return value;
 }
 function TrainabilityIcon({ num }) {
-  // console.log(num, " Trainability");
   let value;
   if (num === 0) {
     return <i className=" fa-solid fa-scale-balanced"></i>;
@@ -64,7 +63,6 @@ function TrainabilityIcon({ num }) {
 }
 
 function PlayIcon({ num }) {
-  // console.log(num, "Playfulness");
   let value;
   if (num === 0) {
     return <i className="fa-solid fa-face-grin-tears"></i>;
@@ -79,7 +77,6 @@ function PlayIcon({ num }) {
 }
 
 function ProtectIcon({ num }) {
-  // console.log(num, "Protectiveness");
   let value;
   if (num === 0) {
     return <i className="fa-solid fa-shield"></i>;
@@ -95,8 +92,7 @@ function ProtectIcon({ num }) {
 
 export default function DogCards({ dogCardDataArray, fn, index }) {
   // console.log(dogCardDataArray);
-  // console.log(fn);
-  // console.log(index);
+  
   if (!dogCardDataArray) {
     return (
       // <div classname='empty-doggy-dash'>
@@ -114,8 +110,6 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
       <div>Emptyness</div>
     );
   } else if (index !== -1) {
-    //  if(dogCardData.hasOwnProperty("dogByZip")){
-    
     // } else {dogByZip = dogCardData}
     const dogCard = new DogCardClass(dogCardDataArray);
     // console.log(dogCard)
@@ -173,16 +167,10 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
       </Col>
     );
   } else {
-    // let dogByZip;
-    // if (dogCardData.hasOwnProperty("dogByZip")) {
-    //   dogByZip = dogCardData.dogByZip;
-    // } else {
-    //   dogByZip = dogCardData.allDogs;
-    // }
-    // const dogArr = dogByZip? dogByZip : dogCardData;
+   
     const dogCardArr = dogCardDataArray.map((card, i) => {
       const dogCard = new DogCardClass(card);
-      // console.log(dogCard);
+      console.log(dogCard);
       return (
         <div key={i} className="card" onClick={() => fn(i)}>
           <div className="card-border">
