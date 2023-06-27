@@ -1,41 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Gloria+Hallelujah&display=swap");
 /* card view is the container that holds all the dog cards*/
-.card-view{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.card-border{
-    padding:.5rem .5rem;
-    background: linear-gradient(15deg, hsl(266, 32%, 64%), hsl(60, 9%, 32%));
-    border-radius: 5px;
-    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+.card-border {
+  padding: 0.5rem 0.5rem;
+  background: linear-gradient(15deg, hsl(266, 32%, 64%), hsl(60, 9%, 32%));
+  border-radius: 5px;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
 }
-.card:nth-child(odd){
-  cursor: pointer;
-  transform: rotate(-2deg);
-  top:6px;
-  
-}
-.card:nth-child(even){
-  cursor: pointer;
-  transform: rotate(1deg);
-  top:-6px;
-  
-}
-.card:hover, .card:focus{
-  box-shadow:10px 10px 7px rgba(0,0,0,.7);
-  transform: scale(1.09);
-  transition: transform .15s ease-in-out
-}
+
 .card {
-    max-width: 350px;
-    border-radius: 5px;
-    background-color: hsl(238, 35%, 19%);
-    padding-top:.5rem;
-    margin-top: 2rem;
-    /* set media queery to only have vertical margin and padding on screens less than tablet */
+  max-width: 350px;
+  border-radius: 5px;
+  background-color: hsl(238, 35%, 19%);
+  padding: 0.25rem;
+  margin: 1rem;
 }
-.card-border >img{
+.card-border > img {
   border-radius: 5px;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -43,82 +27,99 @@
   height: 320px;
 }
 
-.dog-attributes{
-    display:flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: hsl(178, 69%, 47%);
-    border-radius: 5px;
-    font-family: 'Gloria Hallelujah', cursive;
+.dog-attributes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: hsl(178, 69%, 47%);
+  border-radius: 5px;
+  font-family: "Gloria Hallelujah", cursive;
+  /* margin-top:.125rem; */
 }
-.flex{
+.flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 /* need better names for item and item2 */
-.item, .item2 {
+.item,
+.item2 {
   font-weight: 600;
   font-size: medium;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
 }
-.item2 i{
-  margin-right:.5rem;
+.item2 i {
+  margin-right: 0.5rem;
   width: 16px;
   height: auto;
 }
-.columns{
+.columns {
   justify-content: space-around;
 }
-nav{
-  padding:1rem;
-  margin:1rem;
+nav {
+  padding: 1rem;
+  margin: 1rem;
   border-radius: 5px;
 }
-.card-header{
+.card-header {
   display: flex;
   justify-content: space-around;
-  padding:.5rem;
-  border-radius:5px;
-  font-family: 'Gloria Hallelujah', cursive;
+  padding: 0.125rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Gloria Hallelujah", cursive;
   background-color: hsl(178, 69%, 47%);
-  color:hsl(238, 35%, 19%);
+  color: hsl(238, 35%, 19%);
 }
-.card-header2{
+.card-header2 {
   display: flex;
   justify-content: space-around;
-  padding:.5rem;
-  border-radius:5px;
-  font-family: 'Gloria Hallelujah', cursive;
-  color:hsl(60, 9%, 69%);
+  padding: 0.25rem;
+  border-radius: 5px;
+  font-family: "Gloria Hallelujah", cursive;
+  color: hsl(60, 9%, 69%);
 }
-.dog-stats{
+.dog-stats {
   display: flex;
 }
-.description{
+.description {
   font-weight: 500;
   display: flex;
   flex-direction: column;
-  margin-right:2rem;
-  color:#3a251d;
-  
+  margin-right: 2rem;
+  color: #3a251d;
 }
 .evil {
-color:#59594A;
+  color: #59594a;
 }
-.power-level{
-   display: flex;
+.power-level {
+  display: flex;
   flex-direction: column;
-  /* width:50px; */
 }
 .mobileDog {
   max-width: 100%;
   border-radius: 5%;
 }
-@media screen and (min-width:767px) {
-  .card{
-    padding:.5rem;
+@media screen and (min-width: 700px) {
+  .card {
+    padding: 0.5rem;
     margin: 2rem;
+  }
+  .card:nth-child(odd) {
+    cursor: pointer;
+    transform: rotate(-2deg);
+    top: 6px;
+  }
+  .card:nth-child(even) {
+    cursor: pointer;
+    transform: rotate(1deg);
+    top: -6px;
+  }
+  .card:hover,
+  .card:focus {
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    transform: scale(1.09);
+    transition: transform 0.15s ease-in-out;
   }
 }
