@@ -184,3 +184,17 @@ export const GET_BY_ID = gql`
     }
   }
 `;
+export const ADD_FRIEND = gql`
+  mutation addFriend($friendId: ID!) {
+    addFriend(friendId: $friendId) {
+      _id
+    }
+  }
+`;
+export const REMOVE_FRIEND = gql`
+  mutation removeFriend($friendId: ID!) {
+    removeFriend(friendId: $friendId) {
+      _id
+    }
+  }
+`;
