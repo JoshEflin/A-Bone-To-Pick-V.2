@@ -85,7 +85,7 @@ const typeDefs = gql`
     user(_id: ID!): User
     me: User
     allDogs: [Dog]
-    dogDbById(_id: ID!): Dog
+    dogDbById(id: String!): Dog
   }
 
   type Mutation {

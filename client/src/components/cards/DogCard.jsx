@@ -117,7 +117,7 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
     //  if(dogCardData.hasOwnProperty("dogByZip")){
     
     // } else {dogByZip = dogCardData}
-    const dogCard = new DogCardClass(dogCardDataArray[index]);
+    const dogCard = new DogCardClass(dogCardDataArray);
     // console.log(dogCard)
     return (
       <Col>

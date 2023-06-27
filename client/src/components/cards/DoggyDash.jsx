@@ -117,7 +117,7 @@ export default function DoggyDash(props) {
                   <img className="mobileDog" src={dogCardDataArray[cardSelectedIndex].photo} alt="Dog Photo" />
                 ) : (
                   <DogCards
-                    dogCardDataArray={dogCardDataArray}
+                    dogCardDataArray={dogCardDataArray[cardSelectedIndex]}
                     fn={handleCardSelect}
                     index={cardSelectedIndex}
                   />
@@ -139,7 +139,7 @@ export default function DoggyDash(props) {
                   (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id
                 ) ? (
                   <Button
-                    href={`/singleDog/${dogCardDataArray[cardSelectedIndex].id}`}
+                    href={`/shared/${dogCardDataArray[cardSelectedIndex].id}`}
                   >
                     Share me!
                   </Button>

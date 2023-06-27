@@ -85,6 +85,43 @@ export const GET_DOGS_DB = gql`
   }
 `;
 
+export const GET_DOG_BY_ID_DB = gql`
+query dogDbById($id: String!) {
+  dogDbById(id: $id) {
+    _id
+    id
+    name
+    age
+    sex
+    photo
+    breed
+    size
+    trained
+    description
+    status
+    energy
+    playfulness
+    protectiveness
+    trainability
+    barking
+    minHeightFemale
+    maxHeightFemale
+    minWeightFemale
+    maxWeightFemale
+    minHeightMale
+    maxHeightMale
+    minWeightMale
+    maxWeightMale
+    users {
+      _id
+      username
+      email
+      password
+      profilePic
+    }
+  }
+}`
+
 export const GET_USER = gql`
   query Query($id: ID!) {
     user(_id: $id) {
