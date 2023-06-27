@@ -6,6 +6,18 @@ import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
 import SearchBar from "../SearchBar";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  LinkedinShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  LinkedinIcon,
+  EmailIcon
+} from "react-share";
 
 export default function DoggyDash(props) {
   const { dogCardData, setDogCardData } = props;
@@ -37,20 +49,20 @@ export default function DoggyDash(props) {
     setCardSelectedIndex(-1);
     setShowModal(false);
   };
-// USE THIS FUNCTION TO STRIP transform dogCardData into an array instead of an object. any new queries need to be inserted as if checks as seen below!!!
-  const serializeDogCardData = (dogCardData)=> {
-      let dogCardDataArray;
-      if (!dogCardData) {
-        return
-      } else if('dogByZip' in dogCardData){
-        dogCardDataArray = dogCardData.dogByZip;
-      } else if ('allDogs' in dogCardData){
-        dogCardDataArray = dogCardData.allDogs;
-      } else if ('profileCards'in dogCardData){
-        dogCardDataArray = dogCardData.profileCards;
-      }
-      return dogCardDataArray;
-  }
+  // USE THIS FUNCTION TO STRIP transform dogCardData into an array instead of an object. any new queries need to be inserted as if checks as seen below!!!
+  const serializeDogCardData = (dogCardData) => {
+    let dogCardDataArray;
+    if (!dogCardData) {
+      return;
+    } else if ("dogByZip" in dogCardData) {
+      dogCardDataArray = dogCardData.dogByZip;
+    } else if ("allDogs" in dogCardData) {
+      dogCardDataArray = dogCardData.allDogs;
+    } else if ("profileCards" in dogCardData) {
+      dogCardDataArray = dogCardData.profileCards;
+    }
+    return dogCardDataArray;
+  };
   const dogCardDataArray = serializeDogCardData(dogCardData);
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardDataArray[cardSelectedIndex];
@@ -102,6 +114,7 @@ export default function DoggyDash(props) {
     );
   } else {
     if (Auth.loggedIn()) {
+      {console.log(dogCardDataArray[cardSelectedIndex])}
       return (
         <>
           <Modal
@@ -114,7 +127,11 @@ export default function DoggyDash(props) {
             <Row>
               <Col>
                 {dogCardDataArray && isMobile ? (
-                  <img className="mobileDog" src={dogCardDataArray[cardSelectedIndex].photo} alt="Dog Photo" />
+                  <img
+                    className="mobileDog"
+                    src={dogCardDataArray[cardSelectedIndex].photo}
+                    alt="Dog Photo"
+                  />
                 ) : (
                   <DogCards
                     dogCardDataArray={dogCardDataArray[cardSelectedIndex]}
@@ -123,26 +140,56 @@ export default function DoggyDash(props) {
                   />
                 )}
               </Col>
-              {/* <img src={dogPhoto} alt="Dog Photo" /> */}
               <Col>
-                <Button>Rescue</Button>
-                {/* {console.log(dogCardData.dogByZip[cardSelectedIndex].contact)} */}
-                <div>
-                  {console.log(dogCardDataArray)}
-                  {dogCardDataArray[cardSelectedIndex].contact.email}
-                </div>
-                <div>
-                  {dogCardDataArray[cardSelectedIndex].contact.phone}
-                </div>
+                <div>{dogCardDataArray[cardSelectedIndex].contact.phone}</div>
                 {meData &&
                 meData.me.dogCards.some(
                   (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id
                 ) ? (
+                  <>
                   <Button
                     href={`/shared/${dogCardDataArray[cardSelectedIndex].id}`}
                   >
-                    Share me!
+                    
+                    See my profile!
                   </Button>
+                  <div>
+                  <FacebookShareButton
+                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                    quote={"Check out this cute dog I found!"}
+                    hashtag="#muo"
+                  >
+                    <FacebookIcon size={32} round />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                    quote={"Check out this cute dog I found!"}
+                    hashtag="#muo"
+                  >
+                    <TwitterIcon size={32} round />
+                  </TwitterShareButton>
+                  <WhatsappShareButton
+                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                    quote={"Check out this cute dog I found!"}
+                    hashtag="#muo"
+                  >
+                    <WhatsappIcon size={32} round />
+                  </WhatsappShareButton>
+                  <LinkedinShareButton
+                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                    quote={"Check out this cute dog I found!"}
+                    hashtag="#muo"
+                  >
+                    <LinkedinIcon size={32} round />
+                  </LinkedinShareButton>
+                  <EmailShareButton
+                  url={dogCardDataArray[cardSelectedIndex].contact.email}
+                  quote={"Check out this cute dog I found!"}
+                  hashtag="#muo">
+                    <EmailIcon size={32} round/>
+                  </EmailShareButton>
+                </div>
+                </>
                 ) : (
                   <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
                 )}
