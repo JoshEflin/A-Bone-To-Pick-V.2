@@ -32,7 +32,7 @@ export default function Profile(props) {
     refetch,
   } = useQuery(GET_ME);
   const meData = dataMe?.me;
-  // console.log("MeData", meData);
+  console.log("MeData", meData);
   const profileCards = { profileCards: meData?.dogCards };
   
   if (!userData) {
@@ -41,8 +41,8 @@ export default function Profile(props) {
   if (meData && userData && meData._id === userData._id) {
     //  profileCards = { profileCards:meData.dogCards}
     return (
-      <Row className={styles.profileRow}>
-        <Col className={styles.profileCol} span={6}>
+      <Row className={styles.profileRow} gutter={40}>
+        <Col className={styles.profileCol+"gutter-row"} span={6}>
           PROFILE
           <ProfileCard props={meData} />
         </Col>
@@ -59,8 +59,8 @@ export default function Profile(props) {
     
     return (
       <>
-        <Row className={styles.profileRow}>
-        <Col className={styles.profileCol} span={6}>
+        <Row className={styles.profileRow} gutter={40}>
+        <Col className={styles.profileCol+"gutter-row"} span={6}>
             <ProfileCard props={userData} />
           </Col>
           <Col className={styles.doggyDash} span={18}>
