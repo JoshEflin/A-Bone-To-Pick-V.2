@@ -25,12 +25,12 @@ const [form] = Form.useForm();
 
 
 
-const handleFollowFriend = async () => {
-  console.log("friendId is currently hardcoded")
+const handleFollowFriend = async (event) => {
+  console.log(props._id)
   try {
     const { data } = await addFriend({
       variables: {
-        friendId: "649a24501d67e6365ae03efe",
+        friendId: props._id,
       },
     });
     console.log("Hello")
@@ -41,6 +41,20 @@ const handleFollowFriend = async () => {
       console.error(err);
     }
   }
+
+  const handleRemoveFriend = async (event) => {
+    try {
+      const { data } = await removeFriend({
+        variables: {
+          friendId: props._id, // Replace with the actual friend ID
+        },
+      });
+      console.log("Friend removed:", data.removeFriend);
+
+    } catch (error) {
+      console.error("Error removing friend:", error);
+    }
+  };
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -111,6 +125,7 @@ return (
           </div>
             <div className="flex">
               <button onClick = {handleFollowFriend} className={styles.btnProfile}>Add Friend</button>
+              <button onClick = {handleRemoveFriend} className={styles.btnProfile}>Delete Friend</button>
               <button className={styles.btnProfile} >
                <Link to={`/profile/${props._id}`}> View My Pack</Link>
                 </button>
