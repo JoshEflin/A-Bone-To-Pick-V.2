@@ -250,7 +250,25 @@ const resolvers = {
         }
       }
     },
+    removeDog: async (parent, { dogId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              dogCards: dogId,
+            },
+          },
+          {
+            new: true,
+          }
+        ).populate(["dogCards", "friends"]);
+      }
+      throw new AuthenticationError("Please log in to do this.");
+    },
   },
+  
+
 };
 
 module.exports = resolvers;
