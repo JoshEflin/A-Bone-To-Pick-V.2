@@ -30,7 +30,7 @@ import SingleDoggyShare from "./pages/SingleDoggyShare";
 import ProfilePage from "./pages/ProfilePage";
 import NavBar from "./components/NavBar";
 import Auth from "./utils/auth";
-import SearchBar from "./components/SearchBar";
+import UserDash from "./components/cards/UserDash";
 
 const { Content } = Layout;
 
@@ -96,6 +96,7 @@ function App() {
                 <Routes>
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/login" element={<LoginPage />} />
+                  <Route path='/userDash' element={<UserDash />} />
                   <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData}  />}/>
                   <Route path="/profile/:_id" element={<ProfilePage setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
                 </Routes>

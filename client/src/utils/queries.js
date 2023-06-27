@@ -133,3 +133,49 @@ export const GET_USER = gql`
     }
   }
 `;
+export const GET_USERS = gql`
+  query Users {
+    users {
+      username
+      email
+      profilePic
+      dogCards {
+        id
+        name
+        age
+        sex
+        photo
+        breed
+        size
+        trained
+        contact {
+          email
+          phone
+          address {
+            address1
+            address2
+            city
+            state
+            postcode
+            country
+          }
+        }
+        description
+        status
+        energy
+        playfulness
+        protectiveness
+        trainability
+        barking
+        minHeightFemale
+        maxHeightFemale
+        minWeightFemale
+        maxWeightFemale
+        minHeightMale
+        maxHeightMale
+        minWeightMale
+        maxWeightMale
+      }
+    }
+  }
+`;
