@@ -98,7 +98,8 @@ const typeDefs = gql`
       profilePic: String
     ): Auth
     login(email: String!, password: String!): Auth
-
+    addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
     saveDog(
       userId: ID
       dogId: Int!

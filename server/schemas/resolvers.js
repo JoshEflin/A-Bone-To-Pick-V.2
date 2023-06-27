@@ -69,6 +69,40 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addFriend: async (parent, { friendId }, context) => {
+      console.log(context.user)
+      if (context.user) {
+        const newFriend = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $addToSet: {
+              friends: friendId,
+            },
+          },
+          {
+            new: true,
+          }
+        );
+        return {
+          newFriend,
+        };
+      }
+    },
+    removeFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              friends: friendId,
+            },
+          },
+          {
+            new: true,
+          }
+        );
+      }
+    },
     // addDog: needs to be created.  I am not sure the how similar it will be to the query dogById.
     saveDog: async (
       parent,
