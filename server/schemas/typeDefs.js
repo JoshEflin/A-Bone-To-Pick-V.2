@@ -1,9 +1,9 @@
 // taken from brew buddies to get started, will change typedefs to fit bone2pick
 
-// input AddressInput and input ContactInput are needed in the mutation of dog info in general because 
-// (according to chatgpt: In summary, the Contact type represents the output representation of contact information, 
+// input AddressInput and input ContactInput are needed in the mutation of dog info in general because
+// (according to chatgpt: In summary, the Contact type represents the output representation of contact information,
 // while the ContactInput input type represents the input representation for creating or updating contact information.)
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -13,13 +13,14 @@ const typeDefs = gql`
     password: String!
     profilePic: String
     dogCards: [Dog]
+    friends: [User]
   }
 
   type Auth {
     token: ID!
     user: User
   }
-  
+
   type Address {
     address1: String
     address2: String
@@ -84,8 +85,9 @@ const typeDefs = gql`
     user(_id: ID!): User
     me: User
     allDogs: [Dog]
+    dogDbById(_id: ID!): Dog
   }
-  
+
   type Mutation {
     dogById(dogID: String, breed: String): Dog
     dogByZip(zipCode: String, breed: String): [Dog]
@@ -95,11 +97,9 @@ const typeDefs = gql`
       password: String!
       profilePic: String
     ): Auth
-    login(
-      email: String!
-      password: String!
-    ): Auth
-
+    login(email: String!, password: String!): Auth
+    addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
     saveDog(
       userId: ID
       dogId: Int!
@@ -131,5 +131,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
-
