@@ -86,13 +86,50 @@ export const GET_DOGS_DB = gql`
 `;
 
 export const GET_USER = gql`
-  query User($id: ID!) {
+  query Query($id: ID!) {
     user(_id: $id) {
-      _id
       username
       email
       password
       profilePic
+      dogCards {
+        _id
+        id
+        name
+        age
+        sex
+        photo
+        breed
+        size
+        trained
+        contact {
+          email
+          phone
+          address {
+            address1
+            address2
+            city
+            state
+            postcode
+            country
+          }
+        }
+        description
+        status
+        energy
+        playfulness
+        protectiveness
+        trainability
+        barking
+        minHeightFemale
+        maxHeightFemale
+        minWeightFemale
+        maxWeightFemale
+        minHeightMale
+        maxHeightMale
+        minWeightMale
+        maxWeightMale
+      }
     }
   }
 `;
