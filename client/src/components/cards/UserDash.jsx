@@ -28,7 +28,7 @@ export default function UserDash() {
       );
     });
     return(
-      <Row>
+      <Row justify="center">
       {userArr}
       </Row>
     )
