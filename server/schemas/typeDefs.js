@@ -129,6 +129,7 @@ const typeDefs = gql`
       minWeightMale: Float
       maxWeightMale: Float
     ): Auth
+    removeDog(dogId: ID!): User
   }
 `;
 
