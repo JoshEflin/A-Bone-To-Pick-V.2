@@ -69,6 +69,25 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    editUser: async (parent,  { username, profilePic }, context) => {
+      if (context.user) {
+        const editedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $set: {
+              username,
+              profilePic
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        return  editedUser ;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addFriend: async (parent, { friendId }, context) => {
       console.log(context.user)
       if (context.user) {
@@ -135,7 +154,7 @@ const resolvers = {
       },
       context
     ) => {
-      console.log(userId, " this shuld be user id");
+      console.log(userId, " this should be user id");
       console.log(dogId);
       console.log("From addDog mutation");
 

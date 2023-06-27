@@ -125,6 +125,7 @@ query dogDbById($id: String!) {
 export const GET_USER = gql`
   query Query($id: ID!) {
     user(_id: $id) {
+      _id
       username
       email
       password
