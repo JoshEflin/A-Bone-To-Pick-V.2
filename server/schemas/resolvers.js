@@ -30,7 +30,7 @@ const resolvers = {
     allDogs: async () => Dog.find().populate(["users"]),
     dogDbById: async (parent, id) => {
 
-      return Dog.findOne({ _id: id._id }).populate(["users"])
+      return Dog.findOne({ id: id.id }).populate(["users"])
     }
   },
   Mutation: {

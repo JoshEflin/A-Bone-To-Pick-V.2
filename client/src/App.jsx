@@ -99,6 +99,8 @@ function App() {
                   <Route path='/userDash' element={<UserDash />} />
                   <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData}  />}/>
                   <Route path="/profile/:_id" element={<ProfilePage setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
+                  <Route path="/shared/:id" element={<SingleDoggyShare setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
+
                 </Routes>
               </Content> 
               <Foot />

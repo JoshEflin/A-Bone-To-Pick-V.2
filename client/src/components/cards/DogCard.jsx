@@ -110,8 +110,8 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
       <div>Emptyness</div>
     );
   } else if (index !== -1) {
-    
-    const dogCard = new DogCardClass(dogCardDataArray[index]);
+    // } else {dogByZip = dogCardData}
+    const dogCard = new DogCardClass(dogCardDataArray);
     // console.log(dogCard)
     return (
       <Col>

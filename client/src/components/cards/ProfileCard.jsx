@@ -36,9 +36,9 @@ return (
               />
             )}
           <div className="user-attributes">
-            <span className="size">
+            {/* <span className="size">
               Saved {props.dogCards.length} Cards(poorly worded)
-            </span>
+            </span> */}
             <span className="house-trained">
               <i className=" fa-solid fa-poop"></i>
             </span>
