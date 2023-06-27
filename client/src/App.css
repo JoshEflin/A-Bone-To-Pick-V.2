@@ -186,4 +186,12 @@ main {
     height:70px;
   }
 }
+@media screen and (max-width:384px) {
+  .logo{
+    position: fixed;
+    left:25px;
+    top: 32px;
+  }
+  
+}
 
