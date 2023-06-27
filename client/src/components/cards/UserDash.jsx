@@ -3,7 +3,7 @@ import ProfileCard from "./ProfileCard";
 import { useState } from "react";
 import { GET_USERS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
-import { Row,Col } from "antd";
+import { Row, Col } from "antd";
 
 export default function UserDash() {
   const [userCardIndex, setUserCardIndex] = useState(-1);
@@ -19,16 +19,18 @@ export default function UserDash() {
     return <div>...Loading</div>;
   } else {
     console.log(users);
-    return users.map((userData, i) => {
+    const userArr= users.map((userData, i) => {
       console.log(userData);
       return (
-        
-          
-     <ProfileCard key={i}props={userData} />
-           
-        
+        <Col span={8}>
+          <ProfileCard key={i} props={userData} />
+        </Col>
       );
     });
+    return(
+      <Row>
+      {userArr}
+      </Row>
+    )
   }
-  
 }
