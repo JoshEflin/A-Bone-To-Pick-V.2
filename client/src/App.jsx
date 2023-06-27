@@ -21,7 +21,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import "./card.css";
-import"./user-card.css"
+import "./user-card.css";
 import SignupPage from "./pages/SignupForm";
 import LoginPage from "./pages/LoginForm";
 import Foot from "./components/Footer/Footer";
@@ -68,7 +68,7 @@ function App() {
   // console.log(data);
   const token = {
     colorPrimary: "#df9a5c", // ugly orange
-    colorBackground:"rgb(242, 247, 246)"
+    colorBackground: "rgb(242, 247, 246)",
   };
   const {
     token: { colorBgContainer },
@@ -84,30 +84,58 @@ function App() {
         theme={{
           token: {
             colorPrimary: token.colorPrimary,
-          }
-        }}>
-          <Layout className="layout" 
-          style={{minHeight:'100vh', alignItems:'center',}}
-          >
-            <Router>
-              <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData} data={data}/>
-               <Content style = {{alignItems:'center'}}>
-                {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
-                <Routes>
-                  <Route path="/signup" element={<SignupPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path='/userDash' element={<UserDash />} />
-                  <Route path="/" element={<DoggyDash setDogCardData={setDogCardData } dogCardData={dogCardData}  />}/>
-                  <Route path="/profile/:_id" element={<ProfilePage setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
-                  <Route path="/shared/:id" element={<SingleDoggyShare setDogCardData={setDogCardData} dogCardData={dogCardData} />} />
-
-                </Routes>
-              </Content> 
-              <Foot />
-            </Router>
-          </Layout>
-        </ConfigProvider>
-      
+          },
+        }}
+      >
+        <Layout
+          className="layout"
+          style={{ minHeight: "100vh", alignItems: "center" }}
+        >
+          <Router>
+            <NavBar
+              dogCardData={dogCardData}
+              setDogCardData={setDogCardData}
+              data={data}
+            />
+            <Content style={{ alignItems: "center" }}>
+              {/* <p onClick = {logout}>This is content!!!!!  Hello World</p> */}
+              <Routes>
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/userDash" element={<UserDash />} />
+                <Route
+                  path="/"
+                  element={
+                    <DoggyDash
+                      setDogCardData={setDogCardData}
+                      dogCardData={dogCardData}
+                    />
+                  }
+                />
+                <Route
+                  path="/profile/:_id"
+                  element={
+                    <ProfilePage
+                      setDogCardData={setDogCardData}
+                      dogCardData={dogCardData}
+                    />
+                  }
+                />
+                <Route
+                  path="/shared/:id"
+                  element={
+                    <SingleDoggyShare
+                      setDogCardData={setDogCardData}
+                      dogCardData={dogCardData}
+                    />
+                  }
+                />
+              </Routes>
+            </Content>
+            <Foot />
+          </Router>
+        </Layout>
+      </ConfigProvider>
     </>
   );
 }

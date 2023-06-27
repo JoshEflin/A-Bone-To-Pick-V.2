@@ -10,12 +10,22 @@ body {
   align-items: center;
   max-width: 80%;
 }
-
-#old-logo {
-  object-fit: contain;
-  aspect-ratio: 1/1;
-  max-height: 40%;
+.empty-doggy-dash {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
 }
+#old-logo {
+padding-top: 10px;
+padding-bottom: 10px;
+max-width: 375px;
+aspect-ratio: 1/1;
+}
+.welcome-message,
+.instructions{
+  padding: 10px;
+}
+
 .header {
   background-color: #df9a5c;
 }

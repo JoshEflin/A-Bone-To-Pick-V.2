@@ -8,8 +8,8 @@ import DoggyDash from "../components/cards/DoggyDash";
 import { Divider } from "antd";
 import ProfileCard from "../components/cards/ProfileCard";
 export default function Profile(props) {
-  const { setDogCardData, dogCardData } = props;
-  console.log(setDogCardData);
+  const { setDogCardData, dogCardData,cardSelectedIndex } = props;
+  console.log(cardSelectedIndex);
   const navigate = useNavigate();
   const { _id } = useParams();
   console.log(_id);

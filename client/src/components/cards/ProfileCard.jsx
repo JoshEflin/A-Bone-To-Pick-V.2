@@ -4,9 +4,6 @@ import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 import { Link } from 'react-router-dom';
 
 export default function ProfileCard({props}) {
-console.log(props)
-
-  
 
 const imageData = props?.profilePic;
   let defaultProfilePic =

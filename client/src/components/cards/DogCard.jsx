@@ -1,7 +1,7 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
 import drawnLogo from "../../assets/images/homepagelogo.png";
-import { Col } from "antd";
+import { Col,Row } from "antd";
 import { Link } from "react-router-dom";
 
 class DogCardClass {
@@ -31,7 +31,7 @@ class DogCardClass {
       (this.maxHeightMale = data.maxHeightMale),
       (this.minWeightMale = data.minWeightMale),
       (this.maxWeightMale = data.maxWeightMale);
-      (this.users = data.users? data.users :" No Users Yet")
+    this.users = data.users ? data.users : " No Users Yet";
   }
 }
 
@@ -92,22 +92,27 @@ function ProtectIcon({ num }) {
 
 export default function DogCards({ dogCardDataArray, fn, index }) {
   // console.log(dogCardDataArray);
-  
-  if (!dogCardDataArray) {
+
+  if (!dogCardDataArray ) {
     return (
-      // <div classname='empty-doggy-dash'>
-      //   <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
-      //   <div>
-      //     A Bone To Pick is  the perfect dog adoption website. It let's you search your area for dogs in need of a new home
-      //   </div>
-      //   <Link to='/login'>
-      //   <img  id = "old-logo" src={drawnLogo} alt="a poorly drawn image of a dog" />
-      //   </Link>
-      //   <div>
-      //   Just enter a Zip Code and Breed into the search bar above to start your journey. Can you collect them all?
-      //   </div>
-      // </div>
-      <div>Emptyness</div>
+      // <Row span={8} justify={"center"}>
+      // <Col justify="center">
+        <div className="empty-doggy-dash">
+          <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
+          <div className="instructions">
+            A Bone To Pick is the perfect dog adoption website. It let's you
+            search your area for dogs in need of a new home
+          </div>
+          <Link to="/login">
+            <img id = "old-logo"src={drawnLogo} alt="a poorly drawn image of a dog" />
+          </Link>
+          <div className="instructions">
+            Just enter a Zip Code and Breed into the search bar above to start
+            your journey. Can you collect them all?
+          </div>
+        </div>
+      // </Col>
+      // </Row>
     );
   } else if (index !== -1) {
     // } else {dogByZip = dogCardData}
@@ -167,10 +172,9 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
       </Col>
     );
   } else {
-   
     const dogCardArr = dogCardDataArray.map((card, i) => {
       const dogCard = new DogCardClass(card);
-      console.log(dogCard);
+      // console.log(dogCard);
       return (
         <div key={i} className="card" onClick={() => fn(i)}>
           <div className="card-border">

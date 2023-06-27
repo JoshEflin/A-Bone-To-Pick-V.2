@@ -12,7 +12,6 @@ const { Header } = Layout;
 
 const Navbar = (props) => {
   const { DogCardData, setDogCardData, data } = props;
-  // console.log(setCardSelectedIndex, "from navbar")
 
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
