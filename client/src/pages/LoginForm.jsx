@@ -93,9 +93,6 @@ const Login = () => {
         Or <Link to="/signup">Register now!</Link>
       </Form.Item>
     </Form>
-
-  <p>Hello Login world</p>
-
   </>
 
   );

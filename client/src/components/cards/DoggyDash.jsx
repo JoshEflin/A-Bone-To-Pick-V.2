@@ -6,6 +6,7 @@ import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
 import SearchBar from "../SearchBar";
+import { AiFillPhone } from "react-icons/ai";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -135,7 +136,9 @@ export default function DoggyDash(props) {
                 )}
               </Col>
               <Col>
-                <div>{dogCardDataArray[cardSelectedIndex].contact.phone}</div>
+                  <AiFillPhone></AiFillPhone>
+                <div>{dogCardDataArray[cardSelectedIndex]?.contact.phone}</div>
+                {console.log(dogCardDataArray[cardSelectedIndex])}
                 {meData &&
                 meData.me.dogCards.some(
                   (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id
@@ -151,35 +154,35 @@ export default function DoggyDash(props) {
                   <FacebookShareButton
                     url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
                     quote={"Check out this cute dog I found!"}
-                    hashtag="#muo"
+                    hashtag="#a-bone-to-pick"
                   >
                     <FacebookIcon size={32} round />
                   </FacebookShareButton>
                   <TwitterShareButton
                     url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
                     quote={"Check out this cute dog I found!"}
-                    hashtag="#muo"
+                    hashtag="#a-bone-to-pick"
                   >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
                   <WhatsappShareButton
                     url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
                     quote={"Check out this cute dog I found!"}
-                    hashtag="#muo"
+                    hashtag="#a-bone-to-pick"
                   >
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
                   <LinkedinShareButton
                     url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
                     quote={"Check out this cute dog I found!"}
-                    hashtag="#muo"
+                    hashtag="#a-bone-to-pick"
                   >
                     <LinkedinIcon size={32} round />
                   </LinkedinShareButton>
                   <EmailShareButton
                   url={dogCardDataArray[cardSelectedIndex].contact.email}
-                  quote={"Check out this cute dog I found!"}
-                  hashtag="#muo">
+                  quote={`Hi there! I am writing to get more information on a dog you have available named ${dogCardDataArray[cardSelectedIndex].name}. I have their petfinder ID listed as ${dogCardDataArray[cardSelectedIndex].id} and I found them at https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}. Thank you and I can't wait to meet my new friend!`}
+                  hashtag="#a-bone-to-pick">
                     <EmailIcon size={32} round/>
                   </EmailShareButton>
                 </div>
