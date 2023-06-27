@@ -24,7 +24,6 @@ body {
   
 }
 .search-form {
-  
   margin-top:3px;
   display: flex;
   align-items: center;
@@ -108,10 +107,12 @@ main {
   margin-right: 10px;
 }
 #login-form {
-  margin:0 450px 0 450px 
+  margin-top:50px;
+  min-width:250px;
 }
 #signup-form {
-  margin:0 450px 0 450px
+  margin-top:50px;
+  min-width:250px;
 }
 .ant-drawer-body {
   padding: 0;

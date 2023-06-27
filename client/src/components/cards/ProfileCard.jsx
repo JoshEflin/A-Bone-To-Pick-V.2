@@ -1,9 +1,12 @@
 import styles from '../../pages/ProfilePage.module.css';
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery} from "@apollo/client";
 import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
 
 export default function ProfileCard({props}) {
 console.log(props)
+
+  
 
 const imageData = props?.profilePic;
   let defaultProfilePic =
@@ -85,6 +88,9 @@ return (
           </div>
             <div className="flex">
               <button onClick = {handleFollowFriend} className={styles.btnProfile}>Add Friend</button>
+              <button className={styles.btnProfile} >
+               <Link to={`/profile/${props._id}`}> View My Pack</Link>
+                </button>
             <button className={styles.btnProfile}>Edit Profile</button>
             </div>
           

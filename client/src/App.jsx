@@ -87,7 +87,7 @@ function App() {
           }
         }}>
           <Layout className="layout" 
-          // style={{minHeight:'100vh', alignItems:'center',maxWidth:'80%'}}
+          style={{minHeight:'100vh', alignItems:'center',}}
           >
             <Router>
               <NavBar dogCardData={dogCardData} setDogCardData={setDogCardData} data={data}/>

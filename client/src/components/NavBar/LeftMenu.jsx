@@ -45,7 +45,7 @@ const LeftMenu = ({ mode, setDogCardData, data }) => {
             <Link to={`/profile/${Auth.getProfile().data._id}`}>Profile</Link>
           </Menu.Item>
           <Menu.Item key="friends">
-            <Link to="myFriends">Friends</Link>
+            <Link to="/userDash">Users</Link>
           </Menu.Item>
           <Menu.Item key="Logout">
             <Link to="/" onClick={logout}>

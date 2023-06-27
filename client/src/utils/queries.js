@@ -173,6 +173,7 @@ export const GET_USER = gql`
 export const GET_USERS = gql`
   query Users {
     users {
+      _id
       username
       email
       profilePic

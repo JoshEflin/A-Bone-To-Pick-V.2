@@ -17,6 +17,7 @@ export default function Profile(props) {
     loading: loadingUser,
     error: errorUser,
     data: dataUser,
+  
   } = useQuery(GET_USER, {
     variables: {
       id: _id,
