@@ -13,7 +13,7 @@ const SingleDog = () => {
   } = useQuery(GET_DOG_BY_ID_DB, {
     variables: { id },
   });
-  console.log(dataDog.dogDbById.users)
+  console.log(dataDog?.dogDbById?.users)
 
   const handleCardSelect = () => {
     console.log("hello world");
@@ -21,7 +21,7 @@ const SingleDog = () => {
 
   return (
     <DogCards
-      dogCardDataArray={dataDog.dogDbById}
+      dogCardDataArray={dataDog?.dogDbById}
       fn={handleCardSelect}
       index={0}
     />
