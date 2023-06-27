@@ -53,7 +53,7 @@ const handleFollowFriend = async () => {
     const filteredData = Object.entries(userFormData)
       .filter(([_, value]) => value !== "")
       .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-  
+  console.log(filteredData)
     try {
       const { data } = await editUser({
         variables: {
