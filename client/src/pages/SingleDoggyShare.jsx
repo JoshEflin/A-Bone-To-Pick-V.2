@@ -37,7 +37,7 @@ const SingleDog = () => {
         fn={handleCardSelect}
         index={0}
       />
-
+    <div>These users are interested in adopting {dataDog?.dogDbById.name}</div>
       {dataDog?.dogDbById?.users &&
         dataDog?.dogDbById?.users.length > 0 &&
         dataDog?.dogDbById?.users.map((user) => (
