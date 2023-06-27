@@ -33,6 +33,16 @@ export const LOGIN = gql`
   }
 `;
 
+export const EDIT_USER = gql`
+  mutation editUser($editUserId: ID!, $username: String, $profilePic: String) {
+    editUser(id: $editUserId, username: $username, profilePic: $profilePic) {
+      username
+      profilePic
+      _id
+    }
+  }
+`;
+
 export const RESCUE_DOG_TO_DB = gql`
   mutation SaveDog(
     $dogId: Int!

@@ -87,6 +87,7 @@ const typeDefs = gql`
     allDogs: [Dog]
     dogDbById(id: String!): Dog
   }
+ 
 
   type Mutation {
     dogById(dogID: String, breed: String): Dog
@@ -100,6 +101,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addFriend(friendId: ID!): User
     removeFriend(friendId: ID!): User
+    editUser(id: ID!, username: String, profilePic: String): User
     saveDog(
       userId: ID
       dogId: Int!
