@@ -1,15 +1,15 @@
 .user-card-border{
   padding:.5rem .5rem;
-  background: linear-gradient(15deg, white, #f8dcce);
+  background: linear-gradient(15deg, rgb(145, 97, 97), #d19a7f);
   border-radius: 5px;
   box-shadow: 5px 5px 7px rgba(33,33,33,.7);
 }
 
 
 .user-card {
-  width: 270px;
+  width: 320px;
   border-radius: 5px;
-  background-color: #ecb2b5;
+  background-color: #3a1044a6;
 
   padding-top:.5rem;
   margin-top: 2rem;
@@ -22,7 +22,10 @@ object-fit: cover;
 max-width: 100%;
 height: 310px;
 }
-
+.house-trained >p {
+  padding:0;
+  margin:0;
+}
 .user-attributes{
   display:flex;
   align-items: center;

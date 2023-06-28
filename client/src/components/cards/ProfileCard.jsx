@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 
 export default function ProfileCard({ props }) {
-  console.log(props)
+  console.log(props);
   const imageData = props?.profilePic;
   let defaultProfilePic =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
@@ -27,7 +27,7 @@ export default function ProfileCard({ props }) {
     data: dataMe,
     refetch,
   } = useQuery(GET_ME);
-  console.log(dataMe)
+  console.log(dataMe);
   const handleFollowFriend = async (event) => {
     console.log(props._id);
     try {
@@ -112,17 +112,20 @@ export default function ProfileCard({ props }) {
           {/* <span className="size">
               Saved {props.dogCards.length} Cards(poorly worded)
             </span> */}
-          <span className="house-trained">
-            <i className=" fa-solid fa-poop"></i>
-          </span>
+          {/* <span className="house-trained">
+            <p>This human is house trained</p>
+          </span> */}
         </div>
         <div className="flex">
           {props &&
-            (props.friends && props.friends.some((friend) => friend._id === props._id) ? (
+            (props.friends &&
+            props.friends.some((friend) => friend._id === props._id) ? (
               <button
                 className={styles.btnProfile}
                 onClick={() => handleRemoveFriend(friend._id)}
-                style={{ display: props._id !== dataMe?.me._id ? "block" : "none" }}
+                style={{
+                  display: props._id !== dataMe?.me._id ? "block" : "none",
+                }}
               >
                 Remove Friend
               </button>
@@ -130,15 +133,18 @@ export default function ProfileCard({ props }) {
               <button
                 className={styles.btnProfile}
                 onClick={handleFollowFriend}
-                style={{ display: props._id !== dataMe?.me._id ? "block" : "none" }}
+                style={{
+                  display: props._id !== dataMe?.me._id ? "block" : "none",
+                }}
               >
                 Add Friend
               </button>
             ))}
-
-          <button className={styles.btnProfile}>
-            <Link to={`/profile/${props._id}`}> View My Pack</Link>
-          </button>
+          <Link to={`/profile/${props._id}`}>
+            <button className={styles.btnProfile}>
+              View My Pack
+            </button>
+          </Link>
           <button
             className={styles.btnProfile}
             onClick={() => setShowForm(!showForm)}

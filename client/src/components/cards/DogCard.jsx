@@ -107,7 +107,7 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
    else if (index !== -1) {
     // } else {dogByZip = dogCardData}
     const dogCard = new DogCardClass(dogCardDataArray);
-    // console.log(dogCard)
+    console.log(dogCard.trained)
     return (
       <Col>
         <div className="card">
@@ -123,7 +123,7 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
             <img src={dogCard.photo} alt="photo of Doggo" />
             <div className="dog-attributes">
               <span className="size">{dogCard.size}</span>
-              {dogCard.trained ? (
+              {dogCard.trained===true ? (
                 <span className="house-trained">
                   <i className=" fa-solid fa-toilet"></i>
                 </span>
@@ -187,8 +187,15 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
             <div className="dog-attributes">
               <span className="size">{dogCard.size}</span>
               <span className="house-trained">
-                {/* ternary here */}
-                <i className=" fa-solid fa-poop"></i>
+              {dogCard.trained===true ? (
+                <span className="house-trained">
+                  <i className=" fa-solid fa-toilet"></i>
+                </span>
+              ) : (
+                <span className="house-trained">
+                  <i className=" fa-solid fa-poop"></i>
+                </span>
+              )}
               </span>
             </div>
             <div className="dog-stats">
