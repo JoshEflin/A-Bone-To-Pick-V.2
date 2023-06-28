@@ -113,17 +113,19 @@ export default function ProfileCard({ props }) {
           {/* <span className="size">
               Saved {props.dogCards.length} Cards(poorly worded)
             </span> */}
-          <span className="house-trained">
-            <i className=" fa-solid fa-poop"></i>
-          </span>
+          {/* <span className="house-trained">
+            <p>This human is house trained</p>
+          </span> */}
         </div>
         <div className="flex">
+
           {dataMe &&
             (dataMe?.me.friends &&
             dataMe?.me.friends.some((friend) => friend._id === props._id) ? (
               <button
                 className={styles.btnProfile}
                 onClick={() => handleRemoveFriend(props._id)}
+
                 style={{
                   display: props._id !== dataMe?.me._id ? "block" : "none",
                 }}
@@ -141,6 +143,7 @@ export default function ProfileCard({ props }) {
                 Add Friend
               </button>
             ))}
+
           {props._id !== dataMe.me._id ? (
             <button className={styles.btnProfile}>
               <Link to={`/profile/${props._id}`}>View My Pack</Link>
