@@ -6,7 +6,9 @@ import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
 import SearchBar from "../SearchBar";
+import styles from "./Modal.module.css";
 import { AiFillPhone } from "react-icons/ai";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -31,6 +33,7 @@ export default function DoggyDash(props) {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [rescueDogtoDB, { error }] = useMutation(RESCUE_DOG_TO_DB);
   const [cardSelectedIndex, setCardSelectedIndex] = useState(-1);
+  const [copied, setCopied] = useState(false);
 
   const [DogsByZip, { error: errorZip, data: dataZip }] =
     useMutation(GET_BY_ZIP);
@@ -50,6 +53,7 @@ export default function DoggyDash(props) {
   const handleModalClose = () => {
     setCardSelectedIndex(-1);
     setShowModal(false);
+    setCopied(false)
   };
 
   const dogCardDataArray = serializeDogCardData(dogCardData);
@@ -86,6 +90,10 @@ export default function DoggyDash(props) {
       console.error(err);
     }
   };
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(dogCardDataArray[cardSelectedIndex]?.contact.phone)
+  setCopied(true);
+  }
 
   const isMobile = window.innerWidth <= 480;
   // console.log(dogCardData);
@@ -147,6 +155,18 @@ export default function DoggyDash(props) {
               </Col>
               <Col>
                   <AiFillPhone></AiFillPhone>
+              <Col justify="center">
+                {dogCardDataArray[cardSelectedIndex]?.contact.phone && (
+                  <>
+                  <CopyToClipboard text={dogCardDataArray[cardSelectedIndex]?.contact.phone}>
+                    <span className={styles.phoneNumber} onClick={handleCopyToClipboard}>
+                    <AiFillPhone />
+                      {dogCardDataArray[cardSelectedIndex]?.contact.phone}
+                    </span>
+                  </CopyToClipboard>
+                  {copied && <div>Phone number copied to your clipboard!</div>}
+                  </>
+                )}
                 {console.log(dogCardDataArray[cardSelectedIndex])}
                 <div>{dogCardDataArray[cardSelectedIndex]?.contact.phone}</div>
                 {meData &&
@@ -154,54 +174,59 @@ export default function DoggyDash(props) {
                   (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id
                 ) ? (
                   <>
-                  <Button
-                    href={`/shared/${dogCardDataArray[cardSelectedIndex].id}`}
-                  >
-                    
-                    See my profile!
-                  </Button>
-                  <div>
-                  <FacebookShareButton
-                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
-                    quote={"Check out this cute dog I found!"}
-                    hashtag="#a-bone-to-pick"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
-                    quote={"Check out this cute dog I found!"}
-                    hashtag="#a-bone-to-pick"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
-                    quote={"Check out this cute dog I found!"}
-                    hashtag="#a-bone-to-pick"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-                  <LinkedinShareButton
-                    url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
-                    quote={"Check out this cute dog I found!"}
-                    hashtag="#a-bone-to-pick"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                  <EmailShareButton
-                  url={dogCardDataArray[cardSelectedIndex].contact.email}
-                  quote={`Hi there! I am writing to get more information on a dog you have available named ${dogCardDataArray[cardSelectedIndex].name}. I have their petfinder ID listed as ${dogCardDataArray[cardSelectedIndex].id} and I found them at https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}. Thank you and I can't wait to meet my new friend!`}
-                  hashtag="#a-bone-to-pick">
-                    <EmailIcon size={32} round/>
-                  </EmailShareButton>
-                </div>
-                </>
+                    <div>{dogCardDataArray[cardSelectedIndex].description}</div>
+                    <div>
+                    <Button
+                      href={`/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                    >
+                      See my profile!
+                    </Button>
+                    <Button href={dogCardDataArray[cardSelectedIndex].url}>Rescue Me!</Button>
+                    </div>
+                    <div>
+                      <FacebookShareButton
+                        url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                        quote={"Check out this cute dog I found!"}
+                        hashtag="#a-bone-to-pick"
+                      >
+                        <FacebookIcon size={40} round />
+                      </FacebookShareButton>
+                      <TwitterShareButton
+                        url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                        quote={"Check out this cute dog I found!"}
+                        hashtag="#a-bone-to-pick"
+                      >
+                        <TwitterIcon size={40} round />
+                      </TwitterShareButton>
+                      <WhatsappShareButton
+                        url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                        quote={"Check out this cute dog I found!"}
+                        hashtag="#a-bone-to-pick"
+                      >
+                        <WhatsappIcon size={40} round />
+                      </WhatsappShareButton>
+                      <LinkedinShareButton
+                        url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
+                        quote={"Check out this cute dog I found!"}
+                        hashtag="#a-bone-to-pick"
+                      >
+                        <LinkedinIcon size={40} round />
+                      </LinkedinShareButton>
+                      <EmailShareButton
+                        url={dogCardDataArray[cardSelectedIndex].contact.email}
+                        quote={`Hi there! I am writing to get more information on a dog you have available named ${dogCardDataArray[cardSelectedIndex].name}. I have their petfinder ID listed as ${dogCardDataArray[cardSelectedIndex].id} and I found them at https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}. Thank you and I can't wait to meet my new friend!`}
+                        hashtag="#a-bone-to-pick"
+                      >
+                        <EmailIcon size={40} round />
+                      </EmailShareButton>
+                    </div>
+                  </>
                 ) : (
                   <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
                 )}
 
                 {console.log(meData)}
+              </Col>
               </Col>
             </Row>
           </Modal>

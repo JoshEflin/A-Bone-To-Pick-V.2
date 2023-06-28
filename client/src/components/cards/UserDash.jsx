@@ -5,7 +5,7 @@ import { GET_USERS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { Row, Col } from "antd";
 
-export default function UserDash() {
+export default function UserDash(   ) {
   const [userCardIndex, setUserCardIndex] = useState(-1);
   const {
     loading: loadingMe,
