@@ -148,7 +148,11 @@ export default function ProfileCard({ props }) {
             <button className={styles.btnProfile}>
               <Link to={`/profile/${props._id}`}>View My Pack</Link>
             </button>
-          ) : null}
+          ) : 
+          <button className={styles.btnProfile}>
+              <Link to={`/profile/${dataMe?.me?._id}`}>Visit Your Profile</Link>
+            </button>
+          }
           <button
             className={styles.btnProfile}
             onClick={() => setShowForm(!showForm)}
