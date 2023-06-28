@@ -21,7 +21,7 @@ export default function UserDash() {
     
     const userArr= users.map((userData, i) => {
       return (
-        <Col span={8}>
+        <Col  >
           <ProfileCard key={i} props={userData} />
         </Col>
       );
@@ -29,7 +29,7 @@ export default function UserDash() {
     return(
       <Row justify="center">
       {userArr}
-      </Row>
+       </Row>
     )
   }
 }
