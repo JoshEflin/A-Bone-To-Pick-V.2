@@ -56,7 +56,7 @@ export default function DoggyDash(props) {
 
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardDataArray[cardSelectedIndex];
-    console.log(myDog);
+    console.log(meData);
     const contactData = {
       email: myDog.email,
       phone: myDog.phone,

@@ -8,6 +8,9 @@ export const GET_ME = gql`
       email
       password
       profilePic
+      friends {
+        _id
+      }
       dogCards {
         _id
         id
@@ -44,9 +47,6 @@ export const GET_ME = gql`
             postcode
             country
           }
-        }
-        friends {
-          _id
         }
       }
     }
