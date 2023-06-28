@@ -1,8 +1,10 @@
 import { useState } from "react";
 import defaultDog from "../../assets/images/default-dog.png";
 import drawnLogo from "../../assets/images/homepagelogo.png";
-import { Col,Row } from "antd";
+import { Col, Row } from "antd";
 import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
+import Home from "../../pages/Home";
 
 class DogCardClass {
   constructor(data) {
@@ -93,27 +95,15 @@ function ProtectIcon({ num }) {
 export default function DogCards({ dogCardDataArray, fn, index }) {
   // console.log(dogCardDataArray);
 
-  if (!dogCardDataArray ) {
-    return (
-      // <Row span={8} justify={"center"}>
-      // <Col justify="center">
-        <div className="empty-doggy-dash">
-          <p className="welcome-message">Welcome to the Doggy Dashboard!</p>
-          <div className="instructions">
-            A Bone To Pick is the perfect dog adoption website. It let's you
-            search your area for dogs in need of a new home
-          </div>
-          <Link to="/login">
-            <img id = "old-logo"src={drawnLogo} alt="a poorly drawn image of a dog" />
-          </Link>
-          <div className="instructions">
-            Just enter a Zip Code and Breed into the search bar above to start
-            your journey. Can you collect them all?
-          </div>
-        </div>
-      // </Col>
-      // </Row>
-    );
+  if (!dogCardDataArray) {
+    if (!Auth.loggedIn) {
+      return <Home link={"/login"} />;
+    } else {
+      return (
+        // send to profile/:id
+        <Home link={`/`} />
+      );
+    }
   } else if (index !== -1) {
     // } else {dogByZip = dogCardData}
     const dogCard = new DogCardClass(dogCardDataArray);
@@ -133,10 +123,17 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
             <img src={dogCard.photo} alt="photo of Doggo" />
             <div className="dog-attributes">
               <span className="size">{dogCard.size}</span>
-              <span className="house-trained">
-                {/* ternary here */}
-                <i className=" fa-solid fa-poop"></i>
-              </span>
+              {dogCard.trained ? (
+                <span className="house-trained">
+                  <i className=" fa-solid fa-toilet"></i>
+                </span>
+              ) : (
+                <span className="house-trained">
+                  <i className=" fa-solid fa-poop"></i>
+                </span>
+              )}
+
+              <i className=" fa-solid fa-poop"></i>
             </div>
             <div className="dog-stats">
               <div className="description">
