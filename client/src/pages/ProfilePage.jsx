@@ -32,7 +32,7 @@ export default function Profile(props) {
     refetch,
   } = useQuery(GET_ME);
   const meData = dataMe?.me;
-  console.log("MeData", meData);
+  console.log(dataMe);
   const profileCards = { profileCards: meData?.dogCards };
   
   if (!userData) {

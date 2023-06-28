@@ -9,22 +9,11 @@ export const GET_ME = gql`
       password
       profilePic
       dogCards {
+        _id
         id
         name
         age
         sex
-        contact {
-          email
-          phone
-          address {
-            address1
-            address2
-            city
-            state
-            postcode
-            country
-          }
-        }
         photo
         breed
         size
@@ -44,10 +33,26 @@ export const GET_ME = gql`
         maxHeightMale
         minWeightMale
         maxWeightMale
+        contact {
+          email
+          phone
+          address {
+            address1
+            address2
+            city
+            state
+            postcode
+            country
+          }
+        }
+        friends {
+          _id
+        }
       }
     }
   }
 `;
+
 export const GET_DOGS_DB = gql`
   query AllDogs {
     allDogs {
@@ -153,18 +158,6 @@ export const GET_USER = gql`
         breed
         size
         trained
-        contact {
-          email
-          phone
-          address {
-            address1
-            address2
-            city
-            state
-            postcode
-            country
-          }
-        }
         description
         status
         energy
@@ -180,6 +173,21 @@ export const GET_USER = gql`
         maxHeightMale
         minWeightMale
         maxWeightMale
+        contact {
+          email
+          phone
+          address {
+            address1
+            address2
+            city
+            state
+            postcode
+            country
+          }
+        }
+      }
+      friends {
+        _id
       }
     }
   }
