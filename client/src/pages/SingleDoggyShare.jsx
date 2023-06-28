@@ -34,29 +34,27 @@ const SingleDog = () => {
 
   return (
     <>
-    <Row>
-      <Col className={styles.profileCol} span={18}>
-        <DogCards
-          dogCardDataArray={dataDog?.dogDbById}
-          fn={handleCardSelect}
-          index={0}
-        />
-      </Col>
-      <Col className={styles.doggyDash}>
-        <Divider className={styles.divider} />
-        <h2 className={styles.headerList}>
-          These users are interested in adopting {dataDog?.dogDbById.name}
-        </h2>
-        {dataDog?.dogDbById?.users &&
-          dataDog?.dogDbById?.users.length > 0 &&
-          dataDog?.dogDbById?.users.map((user) => (
-            <>
-            <Col>
-            <ProfileCard key={user.id} props={user} />
-            </Col>
-            </>
-          ))}
-      </Col>
+      <Row>
+        <Col className={styles.profileCol} span={18}>
+          <DogCards
+            dogCardDataArray={dataDog?.dogDbById}
+            fn={handleCardSelect}
+            index={0}
+          />
+        </Col>
+        <Col className={styles.doggyDash}>
+          <Divider className={styles.divider} />
+          <h2 className={styles.headerList}>
+            These users are interested in adopting {dataDog?.dogDbById.name}
+          </h2>
+          <Row wrap="true">
+            {dataDog?.dogDbById?.users &&
+              dataDog?.dogDbById?.users.length > 0 &&
+              dataDog?.dogDbById?.users.map((user) => (
+                <ProfileCard key={1} props={user} />
+              ))}
+          </Row>
+        </Col>
       </Row>
     </>
   );
