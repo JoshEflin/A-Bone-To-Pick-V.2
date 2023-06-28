@@ -95,16 +95,16 @@ function ProtectIcon({ num }) {
 export default function DogCards({ dogCardDataArray, fn, index }) {
   // console.log(dogCardDataArray);
 
-  if (!dogCardDataArray) {
-    if (!Auth.loggedIn) {
+  // if (!dogCardDataArray) 
+    if (!Auth.loggedIn()) {
       return <Home link={"/login"} />;
-    } else {
+    } else if (!dogCardDataArray){
       return (
         // send to profile/:id
         <Home link={`/`} />
       );
     }
-  } else if (index !== -1) {
+   else if (index !== -1) {
     // } else {dogByZip = dogCardData}
     const dogCard = new DogCardClass(dogCardDataArray);
     // console.log(dogCard)
@@ -133,7 +133,7 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
                 </span>
               )}
 
-              <i className=" fa-solid fa-poop"></i>
+              {/* <i className=" fa-solid fa-poop"></i> */}
             </div>
             <div className="dog-stats">
               <div className="description">
