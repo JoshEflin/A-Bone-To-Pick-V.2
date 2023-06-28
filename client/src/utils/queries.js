@@ -10,6 +10,8 @@ export const GET_ME = gql`
       profilePic
       friends {
         _id
+        username
+        profilePic
       }
       dogCards {
         _id
@@ -188,6 +190,8 @@ export const GET_USER = gql`
       }
       friends {
         _id
+        username
+        profilePic
       }
     }
   }
