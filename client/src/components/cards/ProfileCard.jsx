@@ -151,6 +151,7 @@ export default function ProfileCard({ props }) {
             onClick={() => setShowForm(!showForm)}
             style={{ display: props._id === dataMe?.me._id ? "block" : "none" }}
           >
+            
             {showForm ? "Close" : "Edit Profile"}
           </button>
           {showForm && (
