@@ -56,7 +56,7 @@ export default function DoggyDash(props) {
 
   const handleRescueDogtoDB = async () => {
     let myDog = dogCardDataArray[cardSelectedIndex];
-    console.log(myDog);
+    console.log(meData);
     const contactData = {
       email: myDog.email,
       phone: myDog.phone,
@@ -129,12 +129,14 @@ export default function DoggyDash(props) {
           >
             <Row>
               <Col>
-                {dogCardDataArray && isMobile ? (
+                {dogCardDataArray && isMobile ? (<>
+                  {console.log(dogCardDataArray)}
                   <img
                     className="mobileDog"
                     src={dogCardDataArray[cardSelectedIndex].photo}
                     alt="Dog Photo"
                   />
+                  </>
                 ) : (
                   <DogCards
                     dogCardDataArray={dogCardDataArray[cardSelectedIndex]}
@@ -145,8 +147,8 @@ export default function DoggyDash(props) {
               </Col>
               <Col>
                   <AiFillPhone></AiFillPhone>
-                <div>{dogCardDataArray[cardSelectedIndex]?.contact.phone}</div>
                 {console.log(dogCardDataArray[cardSelectedIndex])}
+                <div>{dogCardDataArray[cardSelectedIndex]?.contact.phone}</div>
                 {meData &&
                 meData.me.dogCards.some(
                   (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id

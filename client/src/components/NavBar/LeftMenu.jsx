@@ -14,7 +14,7 @@ const logout = (event) => {
 const LeftMenu = ({ mode, setDogCardData, data,setCardSelectedIndex }) => {
   
   
-  // console.log(data, "from popular dogs");
+  console.log(data, "leftMenu");
 
   const handleButtonClick = () => {
     // setCardSelectedIndex(-1);

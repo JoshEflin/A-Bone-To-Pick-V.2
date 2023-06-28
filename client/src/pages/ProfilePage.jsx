@@ -9,10 +9,10 @@ import { Divider } from "antd";
 import ProfileCard from "../components/cards/ProfileCard";
 export default function Profile(props) {
   const { setDogCardData, dogCardData,cardSelectedIndex } = props;
-  console.log(cardSelectedIndex);
+  // console.log(cardSelectedIndex);
   const navigate = useNavigate();
   const { _id } = useParams();
-  console.log(_id);
+  // console.log(_id);
   const {
     loading: loadingUser,
     error: errorUser,
@@ -24,7 +24,7 @@ export default function Profile(props) {
     },
   });
   const userData = dataUser?.user;
-  console.log("User Data", userData);
+  // console.log("User Data", userData);
   const {
     loading: loadingMe,
     error: errorMe,
@@ -41,8 +41,8 @@ export default function Profile(props) {
   if (meData && userData && meData._id === userData._id) {
     //  profileCards = { profileCards:meData.dogCards}
     return (
-      <Row className={styles.profileRow}>
-        <Col className={styles.profileCol} span={6}>
+      <Row className={styles.profileRow} gutter={40}>
+        <Col className={styles.profileCol+"gutter-row"} span={6}>
           PROFILE
           <ProfileCard props={meData} />
         </Col>
@@ -59,16 +59,16 @@ export default function Profile(props) {
     
     return (
       <>
-        <Row>
-          <Col span={6}>
+        <Row className={styles.profileRow} gutter={40}>
+        <Col className={styles.profileCol+"gutter-row"} span={6}>
             <ProfileCard props={userData} />
           </Col>
-          <Col>
-            <DoggyDash
-              setDogCardData={setDogCardData}
-              dogCardData={userCardData}
-            />
-          </Col>
+          <Col className={styles.doggyDash} span={18}>
+          <DoggyDash
+            setDogCardData={setDogCardData}
+            dogCardData={userCardData}
+          />
+        </Col>
         </Row>
       </>
     );

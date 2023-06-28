@@ -24,6 +24,7 @@ aspect-ratio: 1/1;
 .welcome-message,
 .instructions{
   padding: 10px;
+  margin:5px;
 }
 
 .header {
@@ -185,5 +186,14 @@ main {
   .ant-menu-inline .ant-menu-item{
     height:70px;
   }
+}
+@media screen and (max-width:384px) {
+  .logo{
+    position: fixed;
+    left:25px;
+    top: 32px;
+  }
+  
+  
 }
 
