@@ -1,41 +1,58 @@
 import { gql } from "@apollo/client";
 
 export const GET_ME = gql`
-  query Me {
-    me {
+query me {
+  me {
+    _id
+    username
+    email
+    password
+    profilePic
+    dogCards {
       _id
-      username
-      email
-      password
-      profilePic
-      dogCards {
-        id
-        name
-        age
-        sex
-        photo
-        breed
-        size
-        trained
-        description
-        status
-        energy
-        playfulness
-        protectiveness
-        trainability
-        barking
-        minHeightFemale
-        maxHeightFemale
-        minWeightFemale
-        maxWeightFemale
-        minHeightMale
-        maxHeightMale
-        minWeightMale
-        maxWeightMale
+      id
+      name
+      age
+      sex
+      photo
+      breed
+      size
+      trained
+      contact {
+        email
+        phone
+        address {
+          address1
+          address2
+          city
+          state
+          postcode
+          country
+        }
       }
+      description
+      status
+      energy
+      playfulness
+      protectiveness
+      trainability
+      barking
+      minHeightFemale
+      maxHeightFemale
+      minWeightFemale
+      maxWeightFemale
+      minHeightMale
+      maxHeightMale
+      minWeightMale
+      maxWeightMale
+    }
+    friends {
+      _id
+     
     }
   }
-`;
+}`;
+
 export const GET_DOGS_DB = gql`
   query AllDogs {
     allDogs {
@@ -123,53 +140,48 @@ query dogDbById($id: String!) {
 }`
 
 export const GET_USER = gql`
-  query Query($id: ID!) {
-    user(_id: $id) {
+query Query($id: ID!) {
+  user(_id: $id) {
+    _id
+    username
+    email
+    password
+    profilePic
+    dogCards {
       _id
-      username
-      email
-      password
-      profilePic
-      dogCards {
-        _id
-        id
-        name
-        age
-        sex
-        photo
-        breed
-        size
-        trained
-        contact {
-          email
-          phone
-          address {
-            address1
-            address2
-            city
-            state
-            postcode
-            country
-          }
-        }
-        description
-        status
-        energy
-        playfulness
-        protectiveness
-        trainability
-        barking
-        minHeightFemale
-        maxHeightFemale
-        minWeightFemale
-        maxWeightFemale
-        minHeightMale
-        maxHeightMale
-        minWeightMale
-        maxWeightMale
+      id
+      name
+      age
+      sex
+      photo
+      breed
+      size
+      trained
+      description
+      status
+      energy
+      playfulness
+      protectiveness
+      trainability
+      barking
+      minHeightFemale
+      maxHeightFemale
+      minWeightFemale
+      maxWeightFemale
+      minHeightMale
+      maxHeightMale
+      minWeightMale
+      maxWeightMale
+      contact {
+        email
+        phone
       }
     }
+    friends {
+      _id
+    }
   }
+}
 `;
 export const GET_USERS = gql`
   query Users {
