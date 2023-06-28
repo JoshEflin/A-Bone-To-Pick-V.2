@@ -118,14 +118,12 @@ export default function ProfileCard({ props }) {
           </span> */}
         </div>
         <div className="flex">
-
           {dataMe &&
             (dataMe?.me.friends &&
             dataMe?.me.friends.some((friend) => friend._id === props._id) ? (
               <button
                 className={styles.btnProfile}
                 onClick={() => handleRemoveFriend(props._id)}
-
                 style={{
                   display: props._id !== dataMe?.me._id ? "block" : "none",
                 }}
@@ -145,16 +143,17 @@ export default function ProfileCard({ props }) {
             ))}
 
           {props._id !== dataMe.me._id ? (
-            <button className={styles.btnProfile}>
-              <Link to={`/profile/${props._id}`}>View My Pack</Link>
-            </button>
+            <Link to={`/profile/${props._id}`}>
+              <button className={styles.btnProfile}>
+                View My Pack
+              </button>
+            </Link>
           ) : null}
           <button
             className={styles.btnProfile}
             onClick={() => setShowForm(!showForm)}
             style={{ display: props._id === dataMe?.me._id ? "block" : "none" }}
           >
-            
             {showForm ? "Close" : "Edit Profile"}
           </button>
           {showForm && (
