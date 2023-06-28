@@ -56,6 +56,15 @@
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
 }
+.headerList {
+  align-items: center;
+  font-family: "Gloria Hallelujah", cursive;
+}
+.divider {
+  height: '4px';
+  margin: '20px';
+  background-color: #df9a5c;
+}
 @media (max-width: 1000px) {
   
 }
