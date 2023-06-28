@@ -29,7 +29,7 @@ export default function ProfileCard({ props }) {
   } = useQuery(GET_ME);
   console.log(dataMe);
   const handleFollowFriend = async (event) => {
-    console.log(props._id);
+    console.log(dataMe.me);
     try {
       const { data } = await addFriend({
         variables: {
@@ -118,14 +118,12 @@ export default function ProfileCard({ props }) {
           </span> */}
         </div>
         <div className="flex">
-
           {dataMe &&
             (dataMe?.me.friends &&
             dataMe?.me.friends.some((friend) => friend._id === props._id) ? (
               <button
                 className={styles.btnProfile}
                 onClick={() => handleRemoveFriend(props._id)}
-
                 style={{
                   display: props._id !== dataMe?.me._id ? "block" : "none",
                 }}
@@ -137,24 +135,31 @@ export default function ProfileCard({ props }) {
                 className={styles.btnProfile}
                 onClick={handleFollowFriend}
                 style={{
-                  display: props._id !== dataMe?.me._id ? "block" : "none",
+                  display: props._id !== dataMe?.me?._id ? "block" : "none",
                 }}
               >
                 Add Friend
               </button>
             ))}
 
-          {props._id !== dataMe.me._id ? (
-            <button className={styles.btnProfile}>
-              <Link to={`/profile/${props._id}`}>View My Pack</Link>
-            </button>
-          ) : null}
+          {props._id !== dataMe?.me?._id ? (
+            <Link to={`/profile/${props._id}`}>
+              <button className={styles.btnProfile}>
+                View My Pack
+              </button>
+            </Link>
+          ) : 
+              <Link to={`/profile/${dataMe?.me?._id}`}>
+                <button className={styles.btnProfile}>
+                  My Profile
+                </button>
+                </Link>
+                }
           <button
             className={styles.btnProfile}
             onClick={() => setShowForm(!showForm)}
             style={{ display: props._id === dataMe?.me._id ? "block" : "none" }}
           >
-            
             {showForm ? "Close" : "Edit Profile"}
           </button>
           {showForm && (

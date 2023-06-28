@@ -2,8 +2,10 @@ import { React, useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { GET_DOG_BY_ID_DB } from "../utils/queries";
+import { Divider, Col, Row } from "antd";
 import DogCards from "../components/cards/DogCard";
 import ProfileCard from "../components/cards/ProfileCard";
+import styles from "./ProfilePage.module.css";
 
 const SingleDog = () => {
   const { id } = useParams();
@@ -32,17 +34,28 @@ const SingleDog = () => {
 
   return (
     <>
-      <DogCards
-        dogCardDataArray={dataDog?.dogDbById}
-        fn={handleCardSelect}
-        index={0}
-      />
-    <div>These users are interested in adopting {dataDog?.dogDbById.name}</div>
-      {dataDog?.dogDbById?.users &&
-        dataDog?.dogDbById?.users.length > 0 &&
-        dataDog?.dogDbById?.users.map((user) => (
-          <ProfileCard key={user.id} props={user} />
-        ))}
+      <Row>
+        <Col className={styles.profileCol} span={18}>
+          <DogCards
+            dogCardDataArray={dataDog?.dogDbById}
+            fn={handleCardSelect}
+            index={0}
+          />
+        </Col>
+        <Col className={styles.doggyDash}>
+          <Divider className={styles.divider} />
+          <h2 className={styles.headerList}>
+            These users are interested in adopting {dataDog?.dogDbById.name}
+          </h2>
+          <Row wrap="true">
+            {dataDog?.dogDbById?.users &&
+              dataDog?.dogDbById?.users.length > 0 &&
+              dataDog?.dogDbById?.users.map((user) => (
+                <ProfileCard key={1} props={user} />
+              ))}
+          </Row>
+        </Col>
+      </Row>
     </>
   );
 };
