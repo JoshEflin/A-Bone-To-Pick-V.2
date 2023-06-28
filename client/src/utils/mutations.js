@@ -48,6 +48,7 @@ export const RESCUE_DOG_TO_DB = gql`
     $dogId: Int!
     $userId: ID
     $name: String
+    $url: String
     $age: String
     $sex: String
     $photo: String
@@ -74,6 +75,7 @@ export const RESCUE_DOG_TO_DB = gql`
     saveDog(
       dogId: $dogId
       userId: $userId
+      url: $url
       name: $name
       age: $age
       sex: $sex
@@ -117,6 +119,7 @@ export const GET_BY_ZIP = gql`
     dogByZip(zipCode: $zipCode, breed: $breed) {
       id
       name
+      url
       age
       sex
       photo
@@ -158,6 +161,7 @@ export const GET_BY_ID = gql`
     dogById(dogID: $dogId, breed: $breed) {
       id
       name
+      url
       age
       sex
       photo

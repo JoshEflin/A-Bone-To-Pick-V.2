@@ -29,9 +29,8 @@ const resolvers = {
     },
     allDogs: async () => Dog.find().populate(["users"]),
     dogDbById: async (parent, id) => {
-
-      return Dog.findOne({ id: id.id }).populate(["users"])
-    }
+      return Dog.findOne({ id: id.id }).populate(["users"]);
+    },
   },
   Mutation: {
     dogById: async (parent, { dogID, breed }) => {
@@ -44,7 +43,7 @@ const resolvers = {
       console.log("dogByZip resolver\n------------------", dogCardArray);
       return dogCardArray;
     },
-    
+
     addUser: async (parent, { username, email, password, profilePic }) => {
       const newUser = await User.create({
         username,
@@ -69,14 +68,14 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    editUser: async (parent,  { username, profilePic }, context) => {
+    editUser: async (parent, { username, profilePic }, context) => {
       if (context.user) {
         const editedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $set: {
               username,
-              profilePic
+              profilePic,
             },
           },
           {
@@ -84,12 +83,12 @@ const resolvers = {
             runValidators: true,
           }
         );
-        return  editedUser ;
+        return editedUser;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     addFriend: async (parent, { friendId }, context) => {
-      console.log(context.user)
+      console.log(context.user);
       if (context.user) {
         const newFriend = await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -129,6 +128,7 @@ const resolvers = {
         userId,
         dogId,
         name,
+        url,
         age,
         sex,
         photo,
@@ -155,18 +155,19 @@ const resolvers = {
       context
     ) => {
       console.log(userId, " this should be user id");
-      console.log(dogId);
+      console.log(url), "url";
       console.log("From addDog mutation");
 
       if (dogId) {
         const savableDog = await Dog.findOne({ id: dogId });
-        console.log(savableDog, "line 102");
+        console.log(savableDog, "line 163 resolvers");
         //check to see if a dog is already in database.  If it is
         // saves dog to the user
-        if (savableDog === null || undefined) {
+        if (savableDog === null || savableDog === undefined) {
           const newDog = await Dog.create({
             id: dogId,
             name,
+            url,
             age,
             sex,
             photo,
@@ -267,8 +268,6 @@ const resolvers = {
       throw new AuthenticationError("Please log in to do this.");
     },
   },
-  
-
 };
 
 module.exports = resolvers;

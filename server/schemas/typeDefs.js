@@ -54,6 +54,7 @@ const typeDefs = gql`
   type Dog {
     _id: ID
     id: Int!
+    url: String
     name: String
     age: String
     sex: String
@@ -87,7 +88,6 @@ const typeDefs = gql`
     allDogs: [Dog]
     dogDbById(id: String!): Dog
   }
- 
 
   type Mutation {
     dogById(dogID: String, breed: String): Dog
@@ -105,6 +105,7 @@ const typeDefs = gql`
     saveDog(
       userId: ID
       dogId: Int!
+      url: String
       name: String
       age: String
       sex: String

@@ -10,6 +10,7 @@ class DogCardClass {
   constructor(data) {
     (this._id = data._id),
       (this.dogId = data.id),
+      (this.url= data.url? data.url :"https://www.petfinder.com/dog/arf-vader-63952645/pa/philadelphia/street-tails-animal-rescue-pa222/?referrer_id=5a9d8a8f-ae90-4b08-afbc-7166942d1e98" ),
       (this.name = data.name),
       (this.age = data.age),
       (this.sex = data.sex),
