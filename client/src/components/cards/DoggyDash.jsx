@@ -1,7 +1,7 @@
 import { GET_BY_ID, GET_BY_ZIP, RESCUE_DOG_TO_DB } from "../../utils/mutations";
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { Input, Form, Button, Modal, Row, Col } from "antd";
+import { Input, Form, Button, Modal, Row, Col, Space } from "antd";
 import { GET_ME } from "../../utils/queries";
 import DogCards from "./DogCard";
 import Auth from "../../utils/auth";
@@ -132,7 +132,6 @@ export default function DoggyDash(props) {
             open={showModal}
             onCancel={handleModalClose}
             footer={null}
-            width="75%"
             style={{ maxWidth: "100%" }}
           >
             <Row>
@@ -153,8 +152,6 @@ export default function DoggyDash(props) {
                   />
                 )}
               </Col>
-              <Col>
-                  <AiFillPhone></AiFillPhone>
               <Col justify="center">
                 {dogCardDataArray[cardSelectedIndex]?.contact.phone && (
                   <>
@@ -174,7 +171,7 @@ export default function DoggyDash(props) {
                   (dog) => dog.id === dogCardDataArray[cardSelectedIndex].id
                 ) ? (
                   <>
-                    <div>{dogCardDataArray[cardSelectedIndex].description}</div>
+                    <Space size="middle" align="center">
                     <div>
                     <Button
                       href={`/shared/${dogCardDataArray[cardSelectedIndex].id}`}
@@ -183,6 +180,7 @@ export default function DoggyDash(props) {
                     </Button>
                     <Button href={dogCardDataArray[cardSelectedIndex].url}>Rescue Me!</Button>
                     </div>
+                    
                     <div>
                       <FacebookShareButton
                         url={`https://a-bone-to-pick.herokuapp.com/shared/${dogCardDataArray[cardSelectedIndex].id}`}
@@ -219,14 +217,15 @@ export default function DoggyDash(props) {
                       >
                         <EmailIcon size={40} round />
                       </EmailShareButton>
+                     
                     </div>
+                    </Space>
                   </>
                 ) : (
                   <Button onClick={handleRescueDogtoDB}>Save to My Pack</Button>
                 )}
 
                 {console.log(meData)}
-              </Col>
               </Col>
             </Row>
           </Modal>

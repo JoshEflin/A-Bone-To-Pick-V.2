@@ -1,11 +1,10 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Row, Col, Button, Card } from "antd";
+import { Row, Col, Button, Card, Divider } from "antd";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
 import styles from "./ProfilePage.module.css";
 import DoggyDash from "../components/cards/DoggyDash";
-import { Divider } from "antd";
 import ProfileCard from "../components/cards/ProfileCard";
 export default function Profile(props) {
   const { setDogCardData, dogCardData, cardSelectedIndex } = props;
@@ -41,18 +40,20 @@ export default function Profile(props) {
     //  profileCards = { profileCards:meData.dogCards}
     return (
       <Row className={styles.profileRow}>
-        <Col className={styles.profileCol} span={6}>
+        <Col className={styles.profileCol} span={7}>
           <ProfileCard props={meData} />
         </Col>
         <Col className={styles.doggyDash} span={18}>
+        <Divider justify="center" className={styles.divider}/>
+        <h2 className={styles.headerList}>Your Pack</h2>
           <DoggyDash
             setDogCardData={setDogCardData}
             dogCardData={profileCards}
           />
-          {/* <UserDash
-          setUserData={meData.friends}
-          userData={profileCards}
-          /> */}
+          </Col>
+          <Divider justify="center" className={styles.divider}/>
+          <Col>
+          <h2 className={styles.headerList}>Human Friends</h2>
           {meData?.friends && meData.friends.length > 0 && (
             <>
               {meData.friends.map((friend) => (
@@ -78,10 +79,13 @@ export default function Profile(props) {
             <ProfileCard props={userData} />
           </Col>
           <Col>
+          <h2 className={styles.headerList}>Your Pack</h2>
             <DoggyDash
               setDogCardData={setDogCardData}
               dogCardData={userCardData}
             />
+            <Divider className={styles.divider}/>
+            <h2 className={styles.headerList}>Human Friends</h2>
             {userData?.friends && userData.friends.length > 0 && (
               <>
                 {userData.friends.map((friend) => (

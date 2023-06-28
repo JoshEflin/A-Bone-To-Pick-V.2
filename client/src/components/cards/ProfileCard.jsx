@@ -29,7 +29,7 @@ export default function ProfileCard({ props }) {
   } = useQuery(GET_ME);
   console.log(dataMe);
   const handleFollowFriend = async (event) => {
-    console.log(props._id);
+    console.log(dataMe.me);
     try {
       const { data } = await addFriend({
         variables: {
@@ -135,14 +135,14 @@ export default function ProfileCard({ props }) {
                 className={styles.btnProfile}
                 onClick={handleFollowFriend}
                 style={{
-                  display: props._id !== dataMe?.me._id ? "block" : "none",
+                  display: props._id !== dataMe?.me?._id ? "block" : "none",
                 }}
               >
                 Add Friend
               </button>
             ))}
 
-          {props._id !== dataMe.me._id ? (
+          {props._id !== dataMe?.me?._id ? (
             <Link to={`/profile/${props._id}`}>
               <button className={styles.btnProfile}>
                 View My Pack
