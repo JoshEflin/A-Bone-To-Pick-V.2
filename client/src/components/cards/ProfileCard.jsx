@@ -53,6 +53,7 @@ export default function ProfileCard({ props }) {
         },
       });
       console.log("Friend removed:", data.removeFriend);
+      refetch()
     } catch (error) {
       console.error("Error removing friend:", error);
     }
@@ -117,11 +118,11 @@ export default function ProfileCard({ props }) {
           </span>
         </div>
         <div className="flex">
-          {props &&
-            (props.friends && props.friends.some((friend) => friend._id === props._id) ? (
+          {dataMe &&
+            (dataMe?.me.friends && dataMe?.me.friends.some((friend) => friend._id === props._id) ? (
               <button
                 className={styles.btnProfile}
-                onClick={() => handleRemoveFriend(friend._id)}
+                onClick={() => handleRemoveFriend(props._id)}
                 style={{ display: props._id !== dataMe?.me._id ? "block" : "none" }}
               >
                 Remove Friend
@@ -135,7 +136,6 @@ export default function ProfileCard({ props }) {
                 Add Friend
               </button>
             ))}
-
           <button className={styles.btnProfile}>
             <Link to={`/profile/${props._id}`}> View My Pack</Link>
           </button>
