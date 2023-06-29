@@ -9,6 +9,7 @@ const dogApiKey = process.env.DOG_API_KEY;
 class DogCardData {
   constructor(pfData, breed) {
     (this.id = pfData.id),
+      (this.url = pfData.url),
       (this.name = pfData.name),
       (this.age = pfData.age),
       (this.sex = pfData.gender),
@@ -69,7 +70,7 @@ async function getPetsByZip(zipCode, breed) {
       }
     );
     const dogsArrayByZip = data.data.animals;
-    console.log(dogsArrayByZip, " empty api call");
+    console.log(dogsArrayByZip, " DogByZip API Call");
     return dogsArrayByZip;
   } catch (e) {
     const errorDog = {

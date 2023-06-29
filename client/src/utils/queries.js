@@ -16,6 +16,7 @@ export const GET_ME = gql`
       dogCards {
         _id
         id
+        url
         name
         age
         sex

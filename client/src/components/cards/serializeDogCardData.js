@@ -10,6 +10,7 @@ const serializeDogCardData = (dogCardData) => {
   } else if ("profileCards" in dogCardData) {
     dogCardDataArray = dogCardData.profileCards;
   }
+  console.log(dogCardDataArray, "Data from API call in serializeCardData");
   return dogCardDataArray;
 };
 
