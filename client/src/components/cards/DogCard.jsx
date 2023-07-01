@@ -96,15 +96,16 @@ function ProtectIcon({ num }) {
 export default function DogCards({ dogCardDataArray, fn, index }) {
   // console.log(dogCardDataArray);
 
-  // if (!dogCardDataArray) 
-    if (!Auth.loggedIn()) {
+  // if (!dogCardDataArray) {}
+    if (!Auth.loggedIn() && !dogCardDataArray) {
       return <Home link={"/login"} />;
-    } else if (!dogCardDataArray){
-      return (
-        // send to profile/:id
-        <Home link={`/`} />
-      );
-    }
+    } 
+    // else if (!Auth.loggedIn()){
+    //   return (
+    //     // send to profile/:id
+    //     <Home link={`/login`} />
+    //   );
+    // }
    else if (index !== -1) {
     // } else {dogByZip = dogCardData}
     const dogCard = new DogCardClass(dogCardDataArray);
@@ -234,4 +235,5 @@ export default function DogCards({ dogCardDataArray, fn, index }) {
     });
     return dogCardArr;
   }
+  
 }

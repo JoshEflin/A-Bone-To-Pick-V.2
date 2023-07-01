@@ -44,7 +44,7 @@ export default function SearchBar({ setDogCardData }, dogCardData) {
       <Form.Item name="submit" className="search-form-btn">
         <Button type="primary" onClick={handleSearchSubmit}>
           {/* <Link to= '/'> */} {/* turned off by Fred just to test some things on profilePage*/}
-          <Link>
+          <Link to = '/'>
             Search
           </Link> 
           
