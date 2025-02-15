@@ -12,9 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^9.1.2"
   },
   "dependencies": {
-    "react-share": "^4.4.1"
+    "react-share": "^5.2.0"
   }
 }
